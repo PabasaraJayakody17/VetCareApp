@@ -1,0 +1,43 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Welcome</ion-title>
+    <ion-buttons slot="start">
+      <ion-icon name="arrow-back-outline" (click)="navigateToHome()"></ion-icon>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="content">
+    <div class="ion-padding">
+      <ion-item>
+        <ion-input type="text" placeholder="First Name"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-input type="text" placeholder="Last Name"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-input type="text" placeholder="Email   This will be your Username"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-input type="text" placeholder="Pohen No."></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-select placeholder="Designation">
+          <ion-select-option value="Veterinarian">Veterinarian</ion-select-option>
+          <ion-select-option value="Livestock Development Instructor">Livestock Development Instructor</ion-select-option>
+        </ion-select>
+      </ion-item>
+      <ion-item>
+        <ion-input [type]="showPassword ? 'text': 'password'" placeholder="Password"></ion-input>
+        <ion-icon [name]="passwordToggleIcon"  item-end (click)="togglePassword()"></ion-icon>
+      </ion-item>
+      <ion-item>
+        <ion-input [type]="showConfirmPassword ? 'text': 'password'" placeholder="Confirm Password"></ion-input>
+        <ion-icon [name]="confirmpasswordToggleIcon"  item-end (click)="toggleConfirmPassword()"></ion-icon>
+      </ion-item>
+    </div>
+    <ion-button class="actionbutton" expand="full" shape="round" (click)="navigateToLogin()">Sing Up</ion-button>
+    <ion-button fill="clear" (click)="navigateToLogin()">Already have an account?<p>Login</p></ion-button>
+  </div>
+</ion-content>

@@ -1,0 +1,88 @@
+<ion-header>
+  <ion-toolbar class="toolbar">
+    <ion-title>VetCare App</ion-title>
+    <ion-buttons class="setting" slot="end">
+      <ion-icon name="settings-sharp"></ion-icon>
+    </ion-buttons>
+  </ion-toolbar>
+  <ion-toolbar>
+    <ion-title>Vaccination Inormation</ion-title>
+    <ion-buttons slot="start">
+      <ion-icon class="back" name="arrow-back-outline" routerLink="/tabs/cattle-info"></ion-icon>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-card>
+    <ion-card-header></ion-card-header>
+    <ion-card-content>
+      <ion-grid class="info">
+        <ion-row>
+          <ion-col size="7">
+            <div>Vaccination Info. ID : </div>
+          </ion-col>
+          <ion-col size="5">
+            <div>001</div>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col size="7">
+            <div>Date : </div>
+          </ion-col>
+          <ion-col size="5">
+            <div>2020-2-3</div>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col size="7">
+            <div>Name of vaccine : </div>
+          </ion-col>
+          <ion-col size="5">
+            <div>Biobos IBR</div>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col size="7">
+            <div>Purpose of Vaccine : </div>
+          </ion-col>
+          <ion-col size="5">
+            <div>Inactivated bovine herpessvirus</div>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col size="7">
+            <div>Next vacciantion date: </div>
+          </ion-col>
+          <ion-col size="5">
+            <div>2020-0-15</div>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col size="7">
+            <div>Reason of Next Vaccination : </div>
+          </ion-col>
+          <ion-col size="5">
+            <div>Mannheimia Heamolytica</div>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col size="7">
+            <div>Remarks : </div>
+          </ion-col>
+          <ion-col size="5">
+            <div>No</div>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col size="6">
+            <ion-button class="actionbutton" expand="block">UPDATE</ion-button>
+          </ion-col>
+          <ion-col size="6">
+            <ion-button class="actionbutton" expand="block" color="danger">DELETE</ion-button>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </ion-card-content>
+  </ion-card>
+</ion-content>

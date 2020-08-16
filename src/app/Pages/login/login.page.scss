@@ -1,0 +1,51 @@
+ion-toolbar{
+    padding-left: 30px;
+    ion-icon{
+        font-size: 25px;
+    }
+}
+
+.content{
+    margin-top: 200px;
+    margin-left: 40px;
+    margin-right: 40px;
+}
+ion-input{
+    border-radius: 5px;
+    font-size: small;
+    padding-left: 12px !important;
+}
+
+.actionbutton{
+    background-color: turquoise;
+    color: black;
+    border-radius: 20px;
+    margin-left: 15px;
+    margin-right: 13px;
+    font-size: small;
+    text-transform: none;
+}
+
+ion-checkbox{
+    border-radius: 5px;
+    margin-bottom: 7px;
+    margin-left: 0px;
+    --height: 10px;
+    --width: 15px;
+}
+
+ion-label{
+    display: inline-block;
+    vertical-align: top;
+}
+
+p{
+    font-size: small;
+    margin-bottom: 3px;
+}
+
+ion-button{
+    font-size: small;
+    //margin-right: 10px;
+    text-transform: none;
+}

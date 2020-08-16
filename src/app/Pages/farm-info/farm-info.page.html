@@ -1,0 +1,186 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>VetCare App</ion-title>
+    <ion-buttons class="setting" slot="end">
+      <ion-icon name="settings-sharp"></ion-icon>
+    </ion-buttons>
+  </ion-toolbar>
+  <ion-toolbar>
+    <ion-title>Farm Inormation</ion-title>
+    <ion-buttons slot="start">
+      <ion-icon class="back" name="arrow-back-outline" routerLink="/tabs/farm"></ion-icon>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-card>
+    <ion-card-header></ion-card-header>
+    <ion-card-content>
+      <ion-grid class="info">
+        <ion-row>
+          <ion-col size="7">
+            <div>Farm Name : </div>
+          </ion-col>
+          <ion-col size="5">
+            <div>S.M.Priyantha</div>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col size="7">
+            <div>Farm Reg.No : </div>
+          </ion-col>
+          <ion-col size="5">
+            <div>81246977070</div>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col size="7">
+            <div>Ower Name : </div>
+          </ion-col>
+          <ion-col size="5">
+            <div>S.M.Priyantha</div>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col size="7">
+            <div>Veterinarian Division : </div>
+          </ion-col>
+          <ion-col size="5">
+            <div>Badulla</div>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col size="7">
+            <div>G.S Division : </div>
+          </ion-col>
+          <ion-col size="5">
+            <div>Bulathwaththa</div>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col size="7">
+            <div>Address : </div>
+          </ion-col>
+          <ion-col size="5">
+            <div>Udaliyadda, Bulathwaththa</div>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col size="7">
+            <div>Contact Number : </div>
+          </ion-col>
+          <ion-col size="5">
+            <div>0713567833</div>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col size="7">
+            <div>Cattle Count : </div>
+          </ion-col>
+          <ion-col size="5">
+            <div>9</div>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col size="7">
+            <div>Dairy Cattle Count : </div>
+          </ion-col>
+          <ion-col size="5">
+            <div>3</div>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+      <ion-button class="actionbutton" expand="full" shape="round">UPDATE</ion-button>
+    </ion-card-content>
+  </ion-card>
+
+  <!--ion-item-divider></ion-item-divider-->
+  <ion-toolbar>
+    <ion-title>Cattle Information</ion-title>
+    <ion-buttons class="add" slot="end">
+      <ion-icon name="add-circle-sharp"></ion-icon>
+    </ion-buttons>
+  </ion-toolbar>
+
+  <ion-grid id="cattle">
+    <ion-row class="content">
+      <ion-col size="6" routerLink="/tabs/cattle-info">
+        <div>81246977075</div>
+      </ion-col>
+      <ion-col size="4">
+        <div>Female</div>
+      </ion-col>
+      <ion-col size="2">
+        <div>
+          <ion-icon name="trash-outline" color="danger" (click)="presentAlertCofirm()"></ion-icon>
+        </div>
+      </ion-col>
+    </ion-row>
+    <ion-row class="content">
+      <ion-col size="6">
+        <div>81246977075</div>
+      </ion-col>
+      <ion-col size="4">
+        <div>Male</div>
+      </ion-col>
+      <ion-col size="2">
+        <div>
+          <ion-icon name="trash-outline" color="danger" (click)="presentAlertCofirm()"></ion-icon>
+        </div>
+      </ion-col>
+    </ion-row>
+    <ion-row class="content">
+      <ion-col size="6">
+        <div>81246977075</div>
+      </ion-col>
+      <ion-col size="4">
+        <div>Female</div>
+      </ion-col>
+      <ion-col size="2">
+        <div>
+          <ion-icon name="trash-outline" color="danger" (click)="presentAlertCofirm()"></ion-icon>
+        </div>
+      </ion-col>
+    </ion-row>
+    <ion-row class="content">
+      <ion-col size="6">
+        <div>81246977075</div>
+      </ion-col>
+      <ion-col size="4">
+        <div>Female</div>
+      </ion-col>
+      <ion-col size="2">
+        <div>
+          <ion-icon name="trash-outline" color="danger" (click)="presentAlertCofirm()"></ion-icon>
+        </div>
+      </ion-col>
+    </ion-row>
+    <ion-row class="content">
+      <ion-col size="6">
+        <div>81246977075</div>
+      </ion-col>
+      <ion-col size="4">
+        <div>Male</div>
+      </ion-col>
+      <ion-col size="2">
+        <div>
+          <ion-icon name="trash-outline" color="danger" (click)="presentAlertCofirm()"></ion-icon>
+        </div>
+      </ion-col>
+    </ion-row>
+    <ion-row class="content">
+      <ion-col size="6">
+        <div>81246977075</div>
+      </ion-col>
+      <ion-col size="4">
+        <div>Male</div>
+      </ion-col>
+      <ion-col size="2">
+        <div>
+          <ion-icon name="trash-outline" color="danger" (click)="presentAlertCofirm()"></ion-icon>
+        </div>
+      </ion-col>
+    </ion-row>
+  </ion-grid> 
+</ion-content>

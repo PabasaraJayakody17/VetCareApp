@@ -1,0 +1,31 @@
+ion-toolbar{
+    padding-left: 30px;
+    padding-right: 30px;
+    .back{
+        font-size: 25px;
+    }
+    .setting{
+        font-size: 25px;
+    }
+}
+
+.actionbutton{
+    background-color: turquoise;
+    color: black;
+    border-radius: 20px;
+    margin-left: 15px;
+    margin-right: 13px;
+    font-size: small;
+    text-transform: none;
+}
+
+/*.content{
+    //margin-top: 100px;
+    margin-left: 10px;
+    margin-right: 20px;
+}
+ion-input{
+    border-radius: 5px;
+    font-size: small;
+    padding-left: 7px !important;
+}*/

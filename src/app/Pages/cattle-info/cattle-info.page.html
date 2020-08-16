@@ -1,0 +1,141 @@
+<ion-header>
+  <ion-toolbar class="toolbar">
+    <ion-title>VetCare App</ion-title>
+    <ion-buttons class="setting" slot="end">
+      <ion-icon name="settings-sharp"></ion-icon>
+    </ion-buttons>
+  </ion-toolbar>
+  <ion-toolbar>
+    <ion-title>Cattle Information</ion-title>
+    <ion-buttons slot="start">
+      <ion-icon class="back" name="arrow-back-outline" routerLink="/tabs/farm-info"></ion-icon>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-card>
+    <ion-card-header></ion-card-header>
+    <ion-card-content>
+      <ion-grid class="info">
+        <ion-row>
+          <ion-col size="7">
+            <div>Breed of cattle : </div>
+          </ion-col>
+          <ion-col size="5">
+            <div>jesryx</div>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col size="7">
+            <div>Cattle ID : </div>
+          </ion-col>
+          <ion-col size="5">
+            <div>81246977075</div>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col size="7">
+            <div>Special Features : </div>
+          </ion-col>
+          <ion-col size="5">
+            <div>Brown</div>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col size="7">
+            <div>Sex : </div>
+          </ion-col>
+          <ion-col size="5">
+            <div>Female</div>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col size="7">
+            <div>No of lactation : </div>
+          </ion-col>
+          <ion-col size="5">
+            <div>1</div>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col size="7">
+            <div>Birth weight (Kg): </div>
+          </ion-col>
+          <ion-col size="5">
+            <div>25</div>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col size="7">
+            <div>Breeding weight (Kg) : </div>
+          </ion-col>
+          <ion-col size="5">
+            <div>180</div>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col size="7">
+            <div>Weaning weight : </div>
+          </ion-col>
+          <ion-col size="5">
+            <div>70</div>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col size="7">
+            <div>Avg. Pre weg.G/rate : </div>
+          </ion-col>
+          <ion-col size="5">
+            <div>0.5</div>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col size="7">
+            <div>Avg. Post weg.G/rate : </div>
+          </ion-col>
+          <ion-col size="5">
+            <div>1</div>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col size="7">
+            <div>Last calving date : </div>
+          </ion-col>
+          <ion-col size="5">
+            <div>2020-01-24</div>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+      <ion-button class="actionbutton" expand="full" shape="round">UPDATE</ion-button>
+    </ion-card-content>
+  </ion-card>
+
+  <!--ion-toolbar-->
+    <ion-grid id="details">
+      <ion-row>
+        <ion-col size="6">
+          <ion-button class="actionbutton" expand="block" fill="outline" routerLink="/tabs/vaccination-info">
+            Vaccination Information
+          </ion-button>
+        </ion-col>
+        <ion-col size="6">
+          <ion-button class="actionbutton" expand="block" fill="outline" routerLink="/tabs/disease-info">
+            Disease Information
+          </ion-button>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col>
+          <ion-button class="actionbutton" expand="block" fill="outline" routerLink="/tabs/breeding-info">Breeding Information</ion-button>
+        </ion-col>
+      </ion-row>
+      <br>
+      <ion-row>
+        <ion-col>
+          <ion-button class="actionbutton" expand="block" fill="outline">Add New Information</ion-button>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  <!--/ion-toolbar-->
+</ion-content>
