@@ -1,0 +1,101 @@
+<ion-header>
+  <ion-toolbar class="tool-one">
+    <ion-title>VetCare App</ion-title>
+    <ion-buttons class="setting" slot="end">
+      <ion-icon name="settings-sharp" routerLink="/tabs/settings"></ion-icon>
+    </ion-buttons>
+  </ion-toolbar>
+  <ion-toolbar class="tool-two">
+    <ion-title>Cattle House</ion-title>
+    <ion-buttons slot="start">
+      <ion-icon class="back" name="arrow-back-outline" routerLink="/tabs/farm"></ion-icon>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+
+<ion-content>
+  <!-- Default Searchbar -->
+  <ion-searchbar></ion-searchbar>
+
+  <ion-grid id="cattle-house">
+    <ion-row class="content">
+      <ion-col size="5" routerLink="/tabs/cattle-info">
+        <div>Farm Name</div>
+      </ion-col>
+      <ion-col size="5" routerLink="/tabs/cattle-info">
+        <div>Cattle ID</div>
+      </ion-col>
+      <ion-col size="2">
+        <div>
+          <ion-icon name="trash-outline" color="danger" (click)="presentAlertConfirm()"></ion-icon>
+        </div>
+      </ion-col>
+    </ion-row>
+    <ion-row class="content">
+      <ion-col size="5" routerLink="/tabs/cattle-info">
+        <div>S.M.Priyantha</div>
+      </ion-col>
+      <ion-col size="5" routerLink="/tabs/cattle-info">
+        <div>81246977070</div>
+      </ion-col>
+      <ion-col size="2">
+        <div>
+          <ion-icon name="trash-outline" color="danger" (click)="presentAlertConfirm()"></ion-icon>
+        </div>
+      </ion-col>
+    </ion-row>
+    <ion-row class="content">
+      <ion-col size="5" routerLink="/tabs/cattle-info">
+        <div>S.M.Priyantha</div>
+      </ion-col>
+      <ion-col size="5" routerLink="/tabs/cattle-info">
+        <div>81246977070</div>
+      </ion-col>
+      <ion-col size="2">
+        <div>
+          <ion-icon name="trash-outline" color="danger" (click)="presentAlertConfirm()"></ion-icon>
+        </div>
+      </ion-col>
+    </ion-row>
+    <ion-row class="content">
+      <ion-col size="5" routerLink="/tabs/cattle-info">
+        <div>S.M.Priyantha</div>
+      </ion-col>
+      <ion-col size="5" routerLink="/tabs/cattle-info">
+        <div>81246977070</div>
+      </ion-col>
+      <ion-col size="2">
+        <div>
+          <ion-icon name="trash-outline" color="danger" (click)="presentAlertConfirm()"></ion-icon>
+        </div>
+      </ion-col>
+    </ion-row>
+    <ion-row class="content">
+      <ion-col size="5">
+        <div>S.M.Priyantha</div>
+      </ion-col>
+      <ion-col size="5">
+        <div>81246977070</div>
+      </ion-col>
+      <ion-col size="2">
+        <div>
+          <ion-icon name="trash-outline" color="danger" (click)="presentAlertConfirm()"></ion-icon>
+        </div>
+      </ion-col>
+    </ion-row>
+    <ion-row class="content">
+      <ion-col size="5">
+        <div>S.M.Priyantha</div>
+      </ion-col>
+      <ion-col size="5">
+        <div>81246977070</div>
+      </ion-col>
+      <ion-col size="2">
+        <div>
+          <ion-icon name="trash-outline" color="danger" (click)="presentAlertConfirm()"></ion-icon>
+        </div>
+      </ion-col>
+    </ion-row>
+  </ion-grid> 
+</ion-content>

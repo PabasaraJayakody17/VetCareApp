@@ -22,6 +22,10 @@ const routes: Routes = [
   {
     path: '',
     loadChildren: () => import('./tabs/tabs.module').then( m => m.TabsPageModule)
+  },
+  {
+    path: 'addnote',
+    loadChildren: () => import('./pages/addnote/addnote.module').then( m => m.AddnotePageModule)
   }
 ];
 

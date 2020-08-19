@@ -95,6 +95,30 @@ const routes: Routes = [
       {
         path: 'help',
         loadChildren: () => import('../pages/help/help.module').then( m => m.HelpPageModule)
+      },
+      {
+        path: 'sickcattle',
+        loadChildren: () => import('../pages/sickcattle/sickcattle.module').then( m => m.SickcattlePageModule)
+      },
+      {
+        path: 'vaccinecattle',
+        loadChildren: () => import('../pages/vaccinecattle/vaccinecattle.module').then( m => m.VaccinecattlePageModule)
+      },
+      {
+        path: 'pregnantcattle',
+        loadChildren: () => import('../pages/pregnantcattle/pregnantcattle.module').then( m => m.PregnantcattlePageModule)
+      },
+      {
+        path: 'farmhouse',
+        loadChildren: () => import('../pages/farmhouse/farmhouse.module').then( m => m.FarmhousePageModule)
+      },
+      {
+        path: 'cattlehouse',
+        loadChildren: () => import('../pages/cattlehouse/cattlehouse.module').then( m => m.CattlehousePageModule)
+      },
+      {
+        path: 'notes',
+        loadChildren: () => import('../pages/notes/notes.module').then( m => m.NotesPageModule)
       }
     ]
   }

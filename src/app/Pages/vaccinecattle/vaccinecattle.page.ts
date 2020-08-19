@@ -2,18 +2,18 @@ import { Component, OnInit } from '@angular/core';
 import { AlertController } from '@ionic/angular';
 
 @Component({
-  selector: 'app-farm',
-  templateUrl: './farm.page.html',
-  styleUrls: ['./farm.page.scss'],
+  selector: 'app-vaccinecattle',
+  templateUrl: './vaccinecattle.page.html',
+  styleUrls: ['./vaccinecattle.page.scss'],
 })
-export class FarmPage implements OnInit {
+export class VaccinecattlePage implements OnInit {
 
   constructor(public alertController: AlertController) { }
 
   ngOnInit() {
   }
 
-  /*async presentAlertConfirm() {
+  async presentAlertConfirm() {
     const alert = await this.alertController.create({
       cssClass: 'my-custom-class',
       header: 'Delete',
@@ -36,6 +36,5 @@ export class FarmPage implements OnInit {
     });
 
     await alert.present();
-  }*/
-
+  }
 }
