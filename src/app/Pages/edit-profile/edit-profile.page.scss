@@ -1,23 +1,12 @@
-ion-toolbar{
+.back{
     padding-left: 30px;
-    padding-right: 30px;
-    .back{
-        font-size: 25px;
-    }
-    .setting{
-        font-size: 25px;
-    }
+    font-size: 25px;
 }
 
-.actionbutton{
-    background-color: turquoise;
-    color: black;
-    border-radius: 20px;
-    margin-left: 15px;
-    margin-right: 13px;
-    font-size: small;
-    text-transform: none;
-}
+.setting{
+    padding-right: 30px;
+    font-size: 25px;
+  }
 
 /*.content{
     //margin-top: 100px;
@@ -29,3 +18,14 @@ ion-input{
     font-size: small;
     padding-left: 7px !important;
 }*/
+
+.save{
+    --background: #007474;
+    color: black;
+    border-radius: 20px;
+    margin-left: 40px;
+    margin-right: 40px;
+    font-size: medium;
+    font-weight: bold;
+    text-transform: none;
+}

@@ -1,0 +1,40 @@
+<ion-header>
+  <ion-toolbar class="tool-one">
+    <ion-title>VetCare App</ion-title>
+    <ion-buttons class="setting" slot="end">
+      <ion-icon name="settings-sharp" routerLink="/tabs/settings"></ion-icon>
+    </ion-buttons>
+  </ion-toolbar>
+  <ion-toolbar class="tool-two">
+    <ion-title>Add Vaccination Information</ion-title>
+    <ion-buttons slot="start">
+      <ion-icon class="back" name="arrow-back-outline" routerLink="/tabs/cattle-info"></ion-icon>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="content">
+    <div class="ion-padding">
+      <ion-item>
+        <ion-datetime type="date" placeholder="Date" dispalyFormat="DD-MM-YYYY"></ion-datetime>
+      </ion-item>
+      <ion-item>
+        <ion-input type="text" placeholder="Name of vaccine"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-input type="text" placeholder="Purpose of vaccine"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-datetime type="date" placeholder="Next vaccination date" dispalyFormat="DD-MM-YYYY"></ion-datetime>
+      </ion-item>
+      <ion-item>
+        <ion-input type="text" placeholder="Reason of vaccination date"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-input type="text" placeholder="Remarks"></ion-input>
+      </ion-item>
+    </div>
+    <ion-button class="save" expand="block" shape="round" routerLink="/tabs/vaccination-info">SAVE</ion-button>
+  </div>
+</ion-content>

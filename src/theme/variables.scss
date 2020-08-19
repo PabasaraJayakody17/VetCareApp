@@ -2,6 +2,12 @@
 // http://ionicframework.com/docs/theming/
 
 /** Ionic CSS Variables **/
+:root[mode=ios] ,nunito,
+:root[mode-md] ,nunito{
+  --ion-font-family:'Nunito' !important;
+  font-family:'Nunito' !important;
+  //font-weight: bold;
+}
 :root {
   /** primary **/
   --ion-color-primary: #3880ff;
@@ -74,6 +80,175 @@
   --ion-color-light-contrast-rgb: 0, 0, 0;
   --ion-color-light-shade: #d7d8da;
   --ion-color-light-tint: #f5f6f9;
+
+  .tool-one{
+    --ion-toolbar-background: #008080;
+    --ion-text-color: #ffffff;
+    --ion-font-weight: bold;
+    --ion-font-size: 40px;
+  }
+
+  .tool-two{
+    --ion-toolbar-background: #afeeee;
+    --ion-text-color: #000000;
+    --ion-font-weight: bold;
+    --ion-font-size: 40px;
+  }
+
+  ion-button{
+    --color: #000000;
+  }
+
+  .upload{
+    --color: #000000;
+  }
+  .forgetpass{
+    --color:#000000;
+  } 
+  .acc{
+    --color:#00000;
+  } 
+  --ion-tab-bar-background: #afeeee;
+
+}
+
+:root {
+  .dark-theme {
+    --ion-color-primary: #1b10b4;
+    --ion-color-primary-rgb: 235, 75, 88;
+    --ion-color-primary-contrast: #ffffff;
+    --ion-color-primary-contrast-rgb: 255, 255, 255;
+    --ion-color-primary-shade: #4442cf;
+    --ion-color-primary-tint: #775ded;
+
+    ion-content {
+      --background: #131414;
+      --color: #fff;
+    }
+
+    ion-searchbar{
+      --background:  #242424;
+      --color: #fff;
+    }
+
+    ion-toolbar {
+      --background: #242424;
+      --color: #fff;
+    }
+
+    .tool-one{
+      --background: #000000;
+      --color: #fff;
+    }
+
+    .tool-two{
+      --background: #313131;
+      --color: #fff;
+    }
+
+    .content{
+      --background:  #242424;
+      --color: #fff;
+    }
+
+    ion-button{
+      --background: #383838;
+      --color: #fff;
+    }
+
+    .signup{
+      --background: #007474;
+      color: whitesmoke;
+    }
+
+    .signin{
+      --background: #007474;
+      color: whitesmoke;
+    }
+    .signout{
+      --background:#242424;
+      --color:#eb445a;
+    }
+    .login{
+      --background: #007474;
+      color: whitesmoke;
+    }
+    .sign-button{
+      --background: #131414;
+      color: #007474;
+    }
+
+    .update{
+      --background: #007474;
+      color: whitesmoke;
+    }
+
+    .actionbutton{
+      --background:#131414;
+    }
+    .upload{
+      --background: #242424;
+      --color: #fff;
+    }
+
+    .save{
+      --background: #007474;
+      color: whitesmoke;
+    }
+
+    .scan{
+      --background: #30ba8f;
+    }
+    
+    .create{
+        --background: #00ced1;
+    }
+    .forgetpass{
+      --background: #201d1d;
+      --color:#fff;
+    }
+    .acc{
+      --background: #201d1d;
+      --color:#fff;
+    }
+    .my-button{
+      --background:#242424;
+    }
+
+    ion-list {
+      --ion-item-background: #201d1d;
+      --ion-item-color: #fff;
+
+      ion-list-header {
+        --color: #fff;
+      }
+    }
+
+    ion-card {
+      --background: #ffffe0;
+      --color: #fff;
+
+      /*ion-card-title {
+        --color: #fff;
+      }*/
+    }
+
+    ion-tab-bar {
+      --background: #292929;
+      --color: #858585;
+      --ion-color-primary: #f7f7f7;
+    }
+
+    .dark-mode{
+      --background:  #242424;
+      --color: #fff;
+    }
+
+    ion-item{
+      --background:  #201d1d;
+      --color: #fff;
+    }
+  }
 }
 
 @media (prefers-color-scheme: dark) {
@@ -82,7 +257,7 @@
    * -------------------------------------------
    */
 
-  body {
+  body.dark {
     --ion-color-primary: #428cff;
     --ion-color-primary-rgb: 66,140,255;
     --ion-color-primary-contrast: #ffffff;
@@ -152,7 +327,7 @@
    * -------------------------------------------
    */
 
-  .ios body {
+  .ios body.dark {
     --ion-background-color: #000000;
     --ion-background-color-rgb: 0,0,0;
 
@@ -192,7 +367,7 @@
    * -------------------------------------------
    */
 
-  .md body {
+  .md body.dark {
     --ion-background-color: #121212;
     --ion-background-color-rgb: 18,18,18;
 
@@ -223,7 +398,7 @@
 
     --ion-item-background: #1e1e1e;
 
-    --ion-toolbar-background: #1f1f1f;
+    --ion-toolbar-background: #008080;
 
     --ion-tab-bar-background: #1f1f1f;
 

@@ -1,12 +1,15 @@
-ion-toolbar{
+.setting{
+  padding-right: 30px;
+  font-size: 25px;
+}
+
+.tool-two{
     padding-left: 30px;
     padding-right: 30px;
-    .back{
-        font-size: 25px;
-    }
-    .setting{
-        font-size: 25px;
-    }
+}
+
+ion-button{
+  --color: black;
 }
 
 .image{
@@ -41,4 +44,8 @@ h1{
     font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
     border-collapse: collapse;
     width: 100%;
+  }
+
+  .my-custom-class {
+    --background: #e5e5e5;
   }

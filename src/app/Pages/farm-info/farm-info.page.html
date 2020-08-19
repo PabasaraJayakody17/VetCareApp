@@ -1,11 +1,11 @@
 <ion-header>
-  <ion-toolbar>
+  <ion-toolbar class="tool-one">
     <ion-title>VetCare App</ion-title>
     <ion-buttons class="setting" slot="end">
-      <ion-icon name="settings-sharp"></ion-icon>
+      <ion-icon name="settings-sharp" routerLink="/tabs/settings"></ion-icon>
     </ion-buttons>
   </ion-toolbar>
-  <ion-toolbar>
+  <ion-toolbar class="tool-two">
     <ion-title>Farm Inormation</ion-title>
     <ion-buttons slot="start">
       <ion-icon class="back" name="arrow-back-outline" routerLink="/tabs/farm"></ion-icon>
@@ -91,14 +91,14 @@
           </ion-col>
         </ion-row>
       </ion-grid>
-      <ion-button class="actionbutton" expand="full" shape="round">UPDATE</ion-button>
+      <ion-button class="update" expand="full" shape="round">UPDATE</ion-button>
     </ion-card-content>
   </ion-card>
 
   <!--ion-item-divider></ion-item-divider-->
-  <ion-toolbar>
+  <ion-toolbar class="tool-two">
     <ion-title>Cattle Information</ion-title>
-    <ion-buttons class="add" slot="end">
+    <ion-buttons class="add" slot="end" routerLink="/tabs/add-cattle">
       <ion-icon name="add-circle-sharp"></ion-icon>
     </ion-buttons>
   </ion-toolbar>
@@ -113,7 +113,7 @@
       </ion-col>
       <ion-col size="2">
         <div>
-          <ion-icon name="trash-outline" color="danger" (click)="presentAlertCofirm()"></ion-icon>
+          <ion-icon name="trash-outline" color="danger" (click)="presentAlertConfirm()"></ion-icon>
         </div>
       </ion-col>
     </ion-row>
@@ -126,7 +126,7 @@
       </ion-col>
       <ion-col size="2">
         <div>
-          <ion-icon name="trash-outline" color="danger" (click)="presentAlertCofirm()"></ion-icon>
+          <ion-icon name="trash-outline" color="danger" (click)="presentAlertConfirm()"></ion-icon>
         </div>
       </ion-col>
     </ion-row>
@@ -139,7 +139,7 @@
       </ion-col>
       <ion-col size="2">
         <div>
-          <ion-icon name="trash-outline" color="danger" (click)="presentAlertCofirm()"></ion-icon>
+          <ion-icon name="trash-outline" color="danger" (click)="presentAlertConfirm()"></ion-icon>
         </div>
       </ion-col>
     </ion-row>
@@ -152,7 +152,7 @@
       </ion-col>
       <ion-col size="2">
         <div>
-          <ion-icon name="trash-outline" color="danger" (click)="presentAlertCofirm()"></ion-icon>
+          <ion-icon name="trash-outline" color="danger" (click)="presentAlertConfirm()"></ion-icon>
         </div>
       </ion-col>
     </ion-row>
@@ -165,7 +165,7 @@
       </ion-col>
       <ion-col size="2">
         <div>
-          <ion-icon name="trash-outline" color="danger" (click)="presentAlertCofirm()"></ion-icon>
+          <ion-icon name="trash-outline" color="danger" (click)="presentAlertConfirm()"></ion-icon>
         </div>
       </ion-col>
     </ion-row>
@@ -178,7 +178,7 @@
       </ion-col>
       <ion-col size="2">
         <div>
-          <ion-icon name="trash-outline" color="danger" (click)="presentAlertCofirm()"></ion-icon>
+          <ion-icon name="trash-outline" color="danger" (click)="presentAlertConfirm()"></ion-icon>
         </div>
       </ion-col>
     </ion-row>

@@ -1,0 +1,49 @@
+<ion-header>
+  <ion-toolbar class="tool-one">
+    <ion-title>VetCare App</ion-title>
+    <ion-buttons class="setting" slot="end">
+      <ion-icon name="settings-sharp" routerLink="/tabs/settings"></ion-icon>
+    </ion-buttons>
+  </ion-toolbar>
+  <ion-toolbar class="tool-two">
+    <ion-title>Add New Farm</ion-title>
+    <ion-buttons slot="start">
+      <ion-icon class="back" name="arrow-back-outline" routerLink="/tabs/farm"></ion-icon>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="content">
+    <div class="ion-padding">
+      <ion-item>
+        <ion-input type="text" placeholder="Farm Name"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-input type="text" placeholder="Farm Reg. No"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-input type="text" placeholder="Owner Name"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-input type="text" placeholder="Veterinarian Division"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-input type="text" placeholder="G.S Division"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-input type="text" placeholder="Address"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-input type="text" placeholder="Contact No."></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-input type="text" placeholder="Cattle count"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-input type="text" placeholder="Dairy cattle count"></ion-input>
+      </ion-item>
+    </div>
+    <ion-button class="save" expand="block" shape="round" routerLink="/tabs/farm-info">SAVE</ion-button>
+  </div>
+</ion-content>

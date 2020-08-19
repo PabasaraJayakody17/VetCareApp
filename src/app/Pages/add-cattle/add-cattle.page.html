@@ -1,0 +1,72 @@
+<ion-header>
+  <ion-toolbar class="tool-one">
+    <ion-title>VetCare App</ion-title>
+    <ion-buttons class="setting" slot="end">
+      <ion-icon name="settings-sharp" routerLink="/tabs/settings"></ion-icon>
+    </ion-buttons>
+  </ion-toolbar>
+  <ion-toolbar class="tool-two">
+    <ion-title>Add New Cattle Information</ion-title>
+    <ion-buttons slot="start">
+      <ion-icon class="back" name="arrow-back-outline" routerLink="/tabs/cattle-info"></ion-icon>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="content">
+    <div class="ion-padding">
+      <ion-item>
+        <ion-input type="text" placeholder="Cattle Breed"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-input type="text" placeholder="Cattle ID"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-datetime type="date" placeholder="Cattle Date of Birth" dispalyFormat="DD-MM-YYYY"></ion-datetime>
+      </ion-item>
+      <ion-item>
+        <ion-input type="text" placeholder="Speacial feature"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-input type="text" placeholder="Sex"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-input type="text" placeholder="No of Lactation"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-input type="text" placeholder="Birth weight"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-input type="text" placeholder="Breeding weight"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-input type="text" placeholder="Cattle weaning weight"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-input type="text" placeholder="Average Pre weaning growth rate"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-input type="text" placeholder="Average Post weaning growth rate"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-datetime type="date" placeholder="Last calving date" dispalyFormat="DD-MM-YYYY"></ion-datetime>
+      </ion-item>
+      <ion-item>
+        <ion-grid>
+          <ion-row>
+            <ion-col>
+              <ion-button class="upload" expand="block" fill="outline" (click)="showActionSheet()">Upload Cattle Image</ion-button>
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col>
+              <img src="{{ myphoto }}">
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+      </ion-item>
+    </div>
+    <ion-button class="save" expand="block" shape="round" routerLink="/tabs/farm-info">SAVE</ion-button>
+  </div>
+</ion-content>

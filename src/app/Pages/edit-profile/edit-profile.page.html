@@ -1,11 +1,11 @@
 <ion-header>
-  <ion-toolbar>
+  <ion-toolbar class="tool-one">
     <ion-title>VetCare App</ion-title>
     <ion-buttons class="setting" slot="end">
-      <ion-icon name="settings-sharp"></ion-icon>
+      <ion-icon name="settings-sharp" routerLink="/tabs/settings"></ion-icon>
     </ion-buttons>
   </ion-toolbar>
-  <ion-toolbar>
+  <ion-toolbar class="tool-two">
     <ion-title>Edit Profile</ion-title>
     <ion-buttons slot="start">
       <ion-icon class="back" name="arrow-back-outline" routerLink="/tabs/profile"></ion-icon>
@@ -29,6 +29,6 @@
         <ion-input type="text" placeholder="Pohen No."></ion-input>
       </ion-item>
     </div>
-    <ion-button class="actionbutton" expand="full" shape="round">Save Changes</ion-button>
+    <ion-button class="save" expand="full" shape="round">Save Changes</ion-button>
   </div>
 </ion-content>

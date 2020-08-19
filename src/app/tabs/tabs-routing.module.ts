@@ -55,6 +55,46 @@ const routes: Routes = [
       {
         path: 'breeding-info',
         loadChildren: () => import('../Pages/breeding-info/breeding-info.module').then( m => m.BreedingInfoPageModule)
+      },
+      {
+        path: 'add-farm',
+        loadChildren: () => import('../pages/add-farm/add-farm.module').then( m => m.AddFarmPageModule)
+      },
+      {
+        path: 'add-cattle',
+        loadChildren: () => import('../pages/add-cattle/add-cattle.module').then( m => m.AddCattlePageModule)
+      },
+      {
+        path: 'add-vaccination',
+        loadChildren: () => import('../pages/add-vaccination/add-vaccination.module').then( m => m.AddVaccinationPageModule)
+      },
+      {
+        path: 'add-disease',
+        loadChildren: () => import('../pages/add-disease/add-disease.module').then( m => m.AddDiseasePageModule)
+      },
+      {
+        path: 'add-breeding',
+        loadChildren: () => import('../pages/add-breeding/add-breeding.module').then( m => m.AddBreedingPageModule)
+      },
+      {
+        path: 'farmfinder',
+        loadChildren: () => import('../pages/farmfinder/farmfinder.module').then( m => m.FarmfinderPageModule)
+      },
+      {
+        path: 'qrscan',
+        loadChildren: () => import('../pages/qrscan/qrscan.module').then( m => m.QrscanPageModule)
+      },
+      {
+        path: 'qr',
+        loadChildren: () => import('../pages/qr/qr.module').then( m => m.QrPageModule)
+      },
+      {
+        path: 'settings',
+        loadChildren: () => import('../pages/settings/settings.module').then( m => m.SettingsPageModule)
+      },
+      {
+        path: 'help',
+        loadChildren: () => import('../pages/help/help.module').then( m => m.HelpPageModule)
       }
     ]
   }

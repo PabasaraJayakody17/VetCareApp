@@ -1,7 +1,8 @@
 {
   "name": "cattleHealth",
   "integrations": {
-    "capacitor": {}
+    "capacitor": {},
+    "cordova": {}
   },
   "type": "angular"
 }

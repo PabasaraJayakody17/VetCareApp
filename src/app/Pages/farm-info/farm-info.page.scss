@@ -1,16 +1,12 @@
-ion-toolbar{
-    /*ion-title{
-        margin-left: 5px;
-    }*/
+.back{
     padding-left: 30px;
-    padding-right: 30px;
-    .back{
-        font-size: 25px;
-    }
-    .setting{
-        font-size: 25px;
-    }
+    font-size: 25px;
 }
+
+.setting{
+    padding-right: 30px;
+    font-size: 25px;
+  }
 
 .content{
     //position:fixed;
@@ -28,6 +24,22 @@ ion-toolbar{
     width: 100%;
 }
 
+.update{
+    --background: #007474;
+    color:whitesmoke;
+    font-size: medium;
+    font-weight: bold;
+}
+
+.tool-two{
+    padding-right: 30px;
+}
+
 .add{
     font-size: 35px;
+}
+
+ion-card{
+    --background: #ffffe0;
+    color: black;
 }

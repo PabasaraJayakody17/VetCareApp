@@ -1,0 +1,44 @@
+<ion-header>
+  <ion-toolbar class="tool-one">
+    <ion-title>VetCare App</ion-title>
+    <ion-buttons class="setting" slot="end">
+      <ion-icon name="settings-sharp" routerLink="/tabs/settings"></ion-icon>
+    </ion-buttons>
+  </ion-toolbar>
+  <ion-toolbar class="tool-two">
+    <ion-title>QR Scanner</ion-title>
+    <ion-buttons slot="start">
+      <ion-icon class="back" name="arrow-back-outline" routerLink="/tabs/farm"></ion-icon>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="content">
+    <ion-button class="scan" expand="full" (click)="scanCode()">
+      <ion-icon name="scan-outline" slot="start"></ion-icon>
+      Scan Code
+    </ion-button>
+  
+    <br>
+    <ion-item>
+      <ion-input type="text" placeholder="Enter Input" [(ngModel)]="encodedData"></ion-input>
+    </ion-item>
+  
+    <ion-button class="create" expand="full" (click)="encodedText()">
+      <ion-icon name="create-outline" slot="start"></ion-icon>
+      Create QR
+    </ion-button>
+  
+    <ion-card *ngIf="scannedData">
+      <ion-card-content>
+        <p>
+          Scanned Code Text : <b>{{ scannedData["text"] }}</b>
+        </p>
+        <p>
+          Scanned Code Format : <b>{{ scannedData["format"] }}</b>
+        </p>
+      </ion-card-content>
+    </ion-card>
+  </div>
+</ion-content>
