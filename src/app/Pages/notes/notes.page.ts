@@ -1,6 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-//import { NavController } from 'ionic-angular';
+import { AlertController, NavController} from '@ionic/angular';
+import { Router } from '@angular/router';
 import { NoteService } from '../../services/note-service.service';
+import { AddnotePage } from '../addnote/addnote.page';
+import { ViewnotesPage} from '../viewnotes/viewnotes.page';
+//import { Note } from 'src/models/note.model';
+//import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-notes',
@@ -9,23 +14,29 @@ import { NoteService } from '../../services/note-service.service';
 })
 export class NotesPage implements OnInit {
 
-  notes: { title: string }[] = [];
+  //private notes: Promise<Note[]>;
+  //public note: Note
 
-  constructor(private noteService: NoteService) { }
+  constructor(public router: Router,
+    public navCtrl: NavController,
+    private alertCtrl: AlertController,
+    private noteService: NoteService) { }
 
-  ngOnInit() {
-  }
+  ngOnInit() { }
 
-  ionViewWillEnter(){
+  /*ionViewWillEnter(){
     this.notes = this.getAllNotes();
   }
 
-  /*addNote(){
-    this.navCtrl.push(AddNotePage);
-  }*/
+  getNote(createDate: number){
+    this.noteService.getNote(createDate).then((n) => {
+      this.note = n;
+      this.router.navigateByUrl('/viewnotes');
+      //this.navCtrl.push(ViewnotesPage, { note: this.note})
+    });
+  }
 
   getAllNotes(){
     return this.noteService.getAllNotes();
-  }
-
+  }*/
 }

@@ -26,7 +26,15 @@ const routes: Routes = [
   {
     path: 'addnote',
     loadChildren: () => import('./pages/addnote/addnote.module').then( m => m.AddnotePageModule)
-  }
+  },
+  {
+    path: 'viewnotes',
+    loadChildren: () => import('./pages/viewnotes/viewnotes.module').then( m => m.ViewnotesPageModule)
+  },/*
+  {
+    path: 'notes',
+    loadChildren: () => import('./pages/notes/notes.module').then( m => m.NotesPageModule)
+  }*/
 ];
 
 @NgModule({

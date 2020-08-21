@@ -7,12 +7,26 @@
   </ion-toolbar>
 </ion-header>
 
+<!--ion-content class="ion-padding">
+  <ion-textarea (input)="noteChanged()" [(ngModel)]="note.content" placeholder="...something on your mind?"></ion-textarea>
+</ion-content-->
+
 <ion-content>
-  <form (ngSubmit)="saveNote(f.value)" #f="ngForm">
+  <!--form [formGroup]="noteForm" (ngSubmit)="saveNote(formGroup.value)">
     <ion-item>
-      <ion-label>Title</ion-label>
-      <ion-textarea name="title" mgModel></ion-textarea>
+      <ion-datetime placeholder="Date" displayFormat="DD-MM-YYYY" formControlName="date"></ion-datetime>
     </ion-item>
-    <ion-button type="submit" class="save" expand="block" shape="round">Save Note</ion-button>
-  </form>
+    <ion-item>
+      <!--ion-label>Title</ion-label>
+      <ion-input type="text" name="title" placeholder="Title" formControlName="title" required></ion-input>
+      <div class="alert" *ngIf="!formGroup.controls['title'].valid && formGroup.controls['title'].touched">{{titleAlert}}</div>
+    </ion-item>
+    <ion-item>
+      <!--ion-label>Note</ion-label>
+      <ion-input type="text" name="content" placeholder="Note" formControlName="content" required></ion-input>
+      <div class="alert" *ngIf="!formGroup.controls['content'].valid && formGroup.controls['content'].touched">{{contentAlert}}</div>
+    </ion-item>
+
+    <ion-button type="submit" class="save" expand="block" shape="round" [disabled]="!formGroup.valid">Save Note</ion-button>
+  </form-->
 </ion-content>

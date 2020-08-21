@@ -13,14 +13,22 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
+<!--ion-content>
   <ion-list>
-    <button ion-item *ngFor="let note of notes">
+    <ion-item button detail *ngFor="let note of noteService.note" [routerLink]="'/tabs/note' + note.id" routerDirection="forward">
+      <ion-label>{{ note.title }}</ion-label>
+    </ion-item>
+  </ion-list>
+</ion-content-->
+
+<ion-content>
+  <!--ion-list>
+    <button ion-item *ngFor="let note of notes | async" (click)="getNote(note.createDate)">
       {{ note.title }}
     </button>
   </ion-list>
 
   <ion-buttons class="add" routerLink="/addnote">
     <ion-icon name="add-circle-sharp"></ion-icon>
-  </ion-buttons>
+  </ion-buttons-->
 </ion-content>

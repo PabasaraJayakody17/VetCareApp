@@ -15,6 +15,7 @@ import { Base64ToGallery } from '@ionic-native/base64-to-gallery';
 import { Camera } from '@ionic-native/camera/ngx';
 import { File } from '@ionic-native/file/ngx';
 import { WebView } from '@ionic-native/ionic-webview/ngx';
+import { FormControl, FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [AppComponent],
@@ -23,6 +24,8 @@ import { WebView } from '@ionic-native/ionic-webview/ngx';
     IonicModule.forRoot(), 
     AppRoutingModule,
     IonicStorageModule.forRoot(),
+    FormsModule,
+    ReactiveFormsModule,
     NgxQRCodeModule],
   providers: [
     StatusBar,

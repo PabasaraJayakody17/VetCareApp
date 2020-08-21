@@ -6,16 +6,39 @@ import { Storage } from '@ionic/storage';
 })
 export class NoteService {
 
-  private notes: { title: string }[] = []; 
+  //private notes: Note[] = []; 
+  //private note: Note;
+  //public loaded: boolean = false;
 
-  constructor() { }
+  constructor(public storage: Storage) { }
 
-  saveNote(note: {title:string}){
+
+  /*saveNote(note: Note){
+    note.createDate = Date.now();
     this.notes.push(note);
+    this.storage.set('notes', this.notes);
   }
 
   getAllNotes(){
-    return [...this.notes];
+    return this.storage.get('notes').then((notes) => {
+      this.notes = notes == null ? [] : notes;
+      return [...this.notes];
+    });
+    //return [...this.notes];
     //return this.notes.slice();
   }
+
+  getNote(createDate: number){
+    return this.storage.get('notes').then((notes) => {
+      this.note = [...notes].find(r => r.createDate === createDate);
+      return this.note;
+    });
+  }
+
+  deleteNote(createDate: number){
+    this.notes = this.notes.filter((notes) =>{
+      return this.note.createDate !== createDate
+    });
+    this.storage.set('notes', this.notes);
+  }*/
 }
