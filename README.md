@@ -6,6 +6,7 @@ Technologies
     Ionic 5
 
 Including in this project:
+
     Login page
     Signup page
     QR Scanner
@@ -14,4 +15,3 @@ Including in this project:
     Notifications
     Farm Details
     Cattle Details
-    
