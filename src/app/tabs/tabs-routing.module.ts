@@ -7,34 +7,34 @@ const routes: Routes = [
   {
     path: 'tabs',
     component: TabsPage,
-    children:[
+    children: [
       {
         path: 'farm',
-        loadChildren:() => import('../Pages/farm/farm.module').then(m => m.FarmPageModule)
+        loadChildren: () => import('../Pages/farm/farm.module').then(m => m.FarmPageModule)
       },
       {
         path: 'notifications',
-        loadChildren:() => import('../Pages/notifications/notifications.module').then(m => m.NotificationsPageModule)
+        loadChildren: () => import('../Pages/notifications/notifications.module').then(m => m.NotificationsPageModule)
       },
       {
         path: 'chat',
-        loadChildren:() => import('../Pages/chat/chat.module').then(m => m.ChatPageModule)
+        loadChildren: () => import('../Pages/chat/chat.module').then(m => m.ChatPageModule)
       },
       {
         path: 'profile',
-        loadChildren:() => import('../Pages/profile/profile.module').then(m => m.ProfilePageModule)
+        loadChildren: () => import('../Pages/profile/profile.module').then(m => m.ProfilePageModule)
       },
       {
         path: 'edit-profile',
-        loadChildren:() => import('../Pages/edit-profile/edit-profile.module').then(m => m.EditProfilePageModule)
+        loadChildren: () => import('../Pages/edit-profile/edit-profile.module').then(m => m.EditProfilePageModule)
       },
       {
         path: 'change-password',
-        loadChildren:() => import('../Pages/change-password/change-password.module').then(m => m.ChangePasswordPageModule)
+        loadChildren: () => import('../Pages/change-password/change-password.module').then(m => m.ChangePasswordPageModule)
       },
       {
         path: 'about',
-        loadChildren:() => import('../Pages/about/about.module').then(m => m.AboutPageModule)
+        loadChildren: () => import('../Pages/about/about.module').then(m => m.AboutPageModule)
       },
       {
         path: 'farm-info',

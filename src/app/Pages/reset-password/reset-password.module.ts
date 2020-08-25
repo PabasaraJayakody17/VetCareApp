@@ -1,23 +1,22 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { ReactiveFormsModule } from '@angular/forms';
 import { FormsModule } from '@angular/forms';
+
 import { IonicModule } from '@ionic/angular';
 
-import { SignupPageRoutingModule } from './signup-routing.module';
-import { Routes, RouterModule } from '@angular/router';
-import { SignupPage } from './signup.page';
+import { ResetPasswordPageRoutingModule } from './reset-password-routing.module';
 import { AuthModule } from 'src/app/shared-modules/auth.module';
+import { ResetPasswordPage } from './reset-password.page';
 
 @NgModule({
   imports: [
     CommonModule,
-    ReactiveFormsModule,
     FormsModule,
     IonicModule,
-    SignupPageRoutingModule,
+    ResetPasswordPageRoutingModule,
+    FormsModule,
     AuthModule
   ],
-  declarations: [SignupPage]
+  declarations: [ResetPasswordPage]
 })
-export class SignupPageModule {}
+export class ResetPasswordPageModule {}

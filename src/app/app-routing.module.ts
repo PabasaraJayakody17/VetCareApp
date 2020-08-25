@@ -30,7 +30,12 @@ const routes: Routes = [
   {
     path: 'viewnotes',
     loadChildren: () => import('./pages/viewnotes/viewnotes.module').then( m => m.ViewnotesPageModule)
-  },/*
+  },
+   {
+    path: 'reset-password',
+    loadChildren: () => import('./pages/reset-password/reset-password.module').then( m => m.ResetPasswordPageModule)
+  },
+  /*
   {
     path: 'notes',
     loadChildren: () => import('./pages/notes/notes.module').then( m => m.NotesPageModule)

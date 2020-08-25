@@ -1,0 +1,51 @@
+<form [formGroup]="authForm">
+<br>
+
+  <ion-item *ngIf="!isLoginPage && !isPasswordResetPage">
+    <ion-label position="stacked"></ion-label>
+    <ion-input formControlName="fullName" type="text" placeholder="Full Name">
+    </ion-input>
+  </ion-item>
+
+  <ion-item  *ngIf="!isLoginPage && !isPasswordResetPage">
+    <ion-label position="stacked"></ion-label>
+    <ion-select class="select-job" formControlName="designation" placeholder="Designation">
+      <ion-select-option value="Veterinarian">Veterinarian</ion-select-option>
+      <ion-select-option value="Livestock Development Instructor">Livestock Development Instructor</ion-select-option>
+    </ion-select>
+  </ion-item>
+
+  <br>
+
+  <ion-item>
+    <!--ion-label position="stacked"></ion-label-->
+    <ion-icon name="person-sharp" *ngIf="!isSignupPage && !isPasswordResetPage"></ion-icon>
+    <ion-input formControlName="email" type="email" placeholder=" Email address" [class.invalid]="!authForm.controls['email'].valid &&
+      authForm.controls['email'].touched">
+    </ion-input>
+  </ion-item>
+  <ion-item class="error-message" *ngIf="!authForm.controls['email'].valid &&
+       authForm.controls['email'].touched">
+    <ion-label>Please enter a valid email address.</ion-label>
+  </ion-item>
+   <br>
+
+  <ion-item *ngIf="!isPasswordResetPage">
+    <ion-icon name="key-sharp" *ngIf="!isSignupPage && !isPasswordResetPage"></ion-icon>
+    <!--ion-label position="stacked"></ion-label-->
+    <ion-input formControlName="password" [type]="showPassword ? 'text': 'password'" placeholder="Password"
+      [class.invalid]="!authForm.controls['password'].valid&& authForm.controls['password'].touched">
+    </ion-input>
+    <ion-icon [name]="passwordToggleIcon"  item-end (click)="togglePassword()"></ion-icon>
+  </ion-item>
+  
+  <ion-item class="error-message" *ngIf="!authForm.controls['password'].valid
+      && authForm.controls['password'].touched && !isPasswordResetPage">
+    <ion-label>Your password needs more than 6 characters.</ion-label><br>
+  </ion-item>
+    
+
+  <ion-button  class="signup" (click)="submitCredentials(authForm)" expand="block" [disabled]="!authForm.valid">
+    {{ actionButtonText }}
+  </ion-button>
+</form>

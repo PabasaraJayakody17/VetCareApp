@@ -1,6 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild  } from '@angular/core';
 import { Router } from '@angular/router';
 import { FormBuilder, Validators } from '@angular/forms';
+import { UserCredential } from 'src/app/models/user';
+import { AuthService } from 'src/app/services/auth.service';
+import { AuthFormComponent } from 'src/app/components/auth-form/auth-form.component';
+
 
 @Component({
   selector: 'app-login',
@@ -8,7 +12,7 @@ import { FormBuilder, Validators } from '@angular/forms';
   styleUrls: ['./login.page.scss'],
 })
 export class LoginPage implements OnInit {
-
+/*
   get email() {
     return this.loginForm.get('email');
   }
@@ -66,6 +70,27 @@ export class LoginPage implements OnInit {
     }
     else{
       this.passwordToggleIcon = 'eye';
+    }
+  }
+
+*/
+@ViewChild(AuthFormComponent) loginForm: AuthFormComponent;
+  constructor(private authService: AuthService, private router: Router) {}
+
+  ngOnInit() {}
+
+  async loginUser(credentials: UserCredential): Promise<void> {
+    try {
+      const userCredential: firebase.auth.UserCredential = await this.authService.login(
+        credentials.email,
+        credentials.password
+      );
+      this.authService.userId = userCredential.user.uid;
+      await this.loginForm.hideLoading();
+      this.router.navigateByUrl('tabs/farm');
+    } catch (error) {
+      await this.loginForm.hideLoading();
+      this.loginForm.handleError(error);
     }
   }
 

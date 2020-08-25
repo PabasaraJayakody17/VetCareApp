@@ -8,9 +8,9 @@
 </ion-header>
 
 <ion-content>
-  <div class="content">
+  <!--div class="content">
     <div class="ion-padding">
-      <form [formGroup]="registrationForm" (ngSubmit)="submit()">
+      <form [formGroup]="registrationForm" (formSubmitted)='signupUser($event)'>
         <ion-list>
           <ion-item>
             <ion-input formControlName="firstName" type="text" placeholder="First Name"></ion-input>
@@ -85,5 +85,12 @@
         </ion-list>
       </form>
     </div>
-  </div>
+  </div-->
+  <app-auth-form #signupForm (formSubmitted)=signupUser($event) [actionButtonText]="'Create Account'" [isSignupPage]="true"></app-auth-form>
+
+  <ion-button expand="block" fill="clear" routerLink="/login">
+    I already have an account
+  </ion-button>
+
+
 </ion-content>
