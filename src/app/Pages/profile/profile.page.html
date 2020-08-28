@@ -13,8 +13,8 @@
         </ion-col>
         <ion-col size="7">
           <ion-label>
-            <h2 class="name">Dr.Santh Perera</h2>
-            <h2 class="designation">Vetrinarian</h2>
+            <h2 class="name">{{userProfile?.fullName}}</h2>
+            <h2 class="designation">{{userProfile?.designation}}</h2>
           </ion-label>
         </ion-col>
       </ion-row>
@@ -29,6 +29,7 @@
   </div>
   <div>
     <ion-button class="my-button" size="medium" fill="clear" routerLink="/tabs/change-password">Change Password<ion-icon name="key-outline" slot="start" class="key"></ion-icon></ion-button>  
+    
   </div>
   <div>
     <ion-button class="my-button" size="medium" fill="clear" routerLink="/tabs/notes">My Notes<ion-icon name="document-text-outline" slot="start" class="note"></ion-icon></ion-button>  
@@ -55,7 +56,7 @@
     </ion-list>
   </ion-toolbar-->
   <div>
-    <ion-button class="signout" size="medium" fill="clear" routerLink="/login">Sign Out<ion-icon name="power-sharp" slot="start" class="exit"></ion-icon></ion-button>  
+    <ion-button class="signout" size="medium" fill="clear" (click)="logOut()">Sign Out<ion-icon name="power-sharp" slot="start" class="exit"></ion-icon></ion-button>  
   </div>
 
 </ion-content>

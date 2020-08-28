@@ -1,8 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { ThemeService } from '../../services/theme.service';
-import { Camera, CameraOptions } from '@ionic-native/camera/ngx'
+import { Camera, CameraOptions } from '@ionic-native/camera/ngx';
 import { ActionSheetController, AlertController } from '@ionic/angular';
+import { UserProfile } from 'src/app/models/user';
+import { AuthService } from 'src/app/services/auth.service';
+import { ProfileService } from 'src/app/services/profile.service';
+
 
 @Component({
   selector: 'app-profile',
@@ -13,15 +17,24 @@ export class ProfilePage implements OnInit {
 
   /*darkval: boolean = false;
   showtheme: boolean = false;*/
-  myphoto: any; 
+  myphoto: any;
+  public userProfile: UserProfile;
 
-  constructor(private router: Router,
+  constructor(
+    private authService: AuthService,
+    private router: Router,
+    private profileService: ProfileService,
     public themeService: ThemeService,
     private actionSheetCtrl: ActionSheetController,
     public alertController: AlertController,
     private camera: Camera) { }
 
   ngOnInit() {
+    this.profileService.getUserProfile().then(profile$ => {
+      profile$.subscribe(userProfile => {
+        this.userProfile = userProfile;
+      });
+    });
   }
 
   /*toggleDarkMode(){
@@ -34,33 +47,33 @@ export class ProfilePage implements OnInit {
 
   async showActionSheet(){
     await this.actionSheetCtrl.create({
-      //cssClass: "add-propic",
-      //header: 'Upload profile picture',
-      buttons:[
+      // cssClass: "add-propic",
+      // header: 'Upload profile picture',
+      buttons: [
         {
-          //text: "Take from Gallery",
-          icon: "image",
-          cssClass: "add-propic",
+          // text: "Take from Gallery",
+          icon: 'image',
+          cssClass: 'add-propic',
           handler: () => {
-            console.log("Gallery clicked")
+            console.log('Gallery clicked');
             this.getImage();
           }
         },
         {
-          //text: "Take Photo on Camera",
-          icon: "camera",
-          cssClass: "add-propic",
+          // text: "Take Photo on Camera",
+          icon: 'camera',
+          cssClass: 'add-propic',
           handler: () => {
-            console.log("Camera clikced ")
+            console.log('Camera clikced ');
             this.takePhoto();
           }
         },
         {
-          //text: "Take Photo on Camera",
-          icon: "trash",
-          cssClass: "add-propic",
+          // text: "Take Photo on Camera",
+          icon: 'trash',
+          cssClass: 'add-propic',
           handler: () => {
-            console.log("Camera clikced ")
+            console.log('Camera clikced ');
             this.presentAlertConfirm();
           }
         },
@@ -69,7 +82,7 @@ export class ProfilePage implements OnInit {
           role: "cancel"
         }*/
       ]
-    }).then(res => res.present());  
+    }).then(res => res.present());
   }
 
   getImage(){
@@ -85,7 +98,7 @@ export class ProfilePage implements OnInit {
       // If it's base64 (DATA_URL):
       this.myphoto = 'data:image/jpeg;base64,' + imageData;
     }, (err) => {
-      //Handle error
+      // Handle error
     });
   }
 
@@ -102,14 +115,14 @@ export class ProfilePage implements OnInit {
       // If it's base64 (DATA_URL):
       this.myphoto = 'data:image/jpeg;base64,' + imageData;
     }, (err) => {
-      //Handle error
+      // Handle error
     });
   }
 
   async presentAlertConfirm() {
     const alert = await this.alertController.create({
       cssClass: 'my-custom-class',
-      //header: 'Delete',
+      // header: 'Delete',
       message: '<strong>Remove profile photo</strong>',
       buttons: [
         {
@@ -130,7 +143,10 @@ export class ProfilePage implements OnInit {
 
     await alert.present();
   }
-
+  async logOut(): Promise<void> {
+    await this.authService.logout();
+    this.router.navigateByUrl('login');
+  }
   /*navigateToLogin(){
     this.router.navigate(['login'])
   }
