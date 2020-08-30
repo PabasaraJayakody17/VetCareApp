@@ -75,9 +75,12 @@ export class LoginPage implements OnInit {
 
 */
 @ViewChild(AuthFormComponent) loginForm: AuthFormComponent;
+
+
   constructor(private authService: AuthService, private router: Router) {}
 
-  ngOnInit() {}
+  ngOnInit() {
+  }
 
   async loginUser(credentials: UserCredential): Promise<void> {
     try {

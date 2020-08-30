@@ -22,7 +22,7 @@ ion-input {
 .invalid {
   border-bottom: 1px solid #ff6153;
 }
-
+/*
 .error-message {
   min-height: 2.2rem;
   ion-label {
@@ -33,7 +33,7 @@ ion-input {
   .item-inner {
     border-bottom: 0;
   }
-}
+}*/
 
 
 .signup{
@@ -46,4 +46,8 @@ ion-input {
   font-size: medium;
   font-weight: bold;
   text-transform: none;
+}
+.error-message{
+  margin-left: 20px;
+  color: red;
 }

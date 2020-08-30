@@ -91,8 +91,7 @@ export class EditProfilePage implements OnInit {
 
 
  public userProfile: UserProfile;
- showOldPassword: boolean = false;
- oldpasswordToggleIcon = 'eye';
+
 
  showNewPassword: boolean = false;
  passwordToggleIcon = 'eye';
@@ -109,7 +108,7 @@ export class EditProfilePage implements OnInit {
   ],
    email: [
     { type: 'required', message: 'email is required' },
-    { type: 'email', message: 'Not a email' },
+    { type: 'email', message: 'Please enter a valid email address' },
   ],
    password: [
      { type: 'required', message: 'Password is required' },
