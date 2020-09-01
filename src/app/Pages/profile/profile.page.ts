@@ -145,6 +145,10 @@ export class ProfilePage implements OnInit {
   }
   async logOut(): Promise<void> {
     await this.authService.logout();
+    localStorage.clear();
+   // $window.localStorage.clear();
+    // ionicHistory.clearCache();
+   // $ionicHistory.clearHistory();
     this.router.navigateByUrl('login');
   }
   /*navigateToLogin(){

@@ -1,31 +1,45 @@
-import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
-import { NavController, NavParams } from '@ionic/angular';
-import { NoteService } from 'src/app/services/note-service.service';
-//import { Note } from 'src/models/note.model';
+import { Component, OnInit, AfterViewInit } from '@angular/core';
+import {Observable} from 'rxjs';
+import { NoteService } from 'src/app/services/note.service';
+import { Note} from 'src/app/models/Note';
+import {ActivatedRoute, Router} from '@angular/router';
+import { UserProfile } from 'src/app/models/user';
+import { ProfileService } from 'src/app/services/profile.service';
+import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
   selector: 'app-viewnotes',
   templateUrl: './viewnotes.page.html',
   styleUrls: ['./viewnotes.page.scss'],
 })
-export class ViewnotesPage implements OnInit {
+export class ViewnotesPage implements OnInit, AfterViewInit {
+  note: Note = {
+    id: '',
+    userid: '',
+    title: '',
+    content: '',
+    createdAt: ''
+  };
 
-  //note: Note;
-
-  constructor(private router: Router,
-    public navCtrl: NavController,
-    public navParams: NavParams,
-    private noteService: NoteService) {
-      //this.note = this.navParams.get('note');
-  }
+  constructor(private activatedRoute: ActivatedRoute, private noteService: NoteService, private router: Router) { }
 
   ngOnInit() {
   }
 
-  /*deleteNote(createDate: number){
-    this.noteService.deleteNote(createDate);
-    this.navCtrl.pop();
-  }*/
+  ngAfterViewInit(): void {
+    const id = this.activatedRoute.snapshot.paramMap.get('id');
+    if (id) {
+      this.noteService.getNote(id).subscribe(noteData => {
+        this.note = noteData;
+      });
+    }
+  }
+
+  deleteNote() {
+    this.noteService.deleteNote(this.note.id).then(() => {
+      this.router.navigateByUrl('/tabs/notes');
+    }, err => {
+    });
+  }
 
 }

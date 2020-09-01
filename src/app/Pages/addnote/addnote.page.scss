@@ -13,7 +13,22 @@
     font-weight: bold;
     text-transform: none;
 }
+.btnAdd{
+    --background: #007474;
+    color: whitesmoke;
+    border-radius: 30px;
+    margin-left: 40px;
+    margin-right: 40px;
+    margin-top: 10px;
+    font-size: medium;
+    font-weight: bold;
+    text-transform: none;
+}
 
+.content{
+    margin-left:10px;
+    margin-right:10px;
+}
 /*ion-textarea {
     --background: #fff;
     border-radius: 20px;

@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import { AlertController, NavController} from '@ionic/angular';
-import { Router } from '@angular/router';
-import { NoteService } from '../../services/note-service.service';
-import { AddnotePage } from '../addnote/addnote.page';
-import { ViewnotesPage} from '../viewnotes/viewnotes.page';
-//import { Note } from 'src/models/note.model';
-//import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import {Observable} from 'rxjs';
+import { NoteService } from 'src/app/services/note.service';
+import { Note} from 'src/app/models/Note';
+import { UserProfile } from 'src/app/models/user';
+import { ProfileService } from 'src/app/services/profile.service';
+import { AuthService } from 'src/app/services/auth.service';
+import { Ng2SearchPipeModule } from 'ng2-search-filter';
 
 @Component({
   selector: 'app-notes',
@@ -14,29 +14,16 @@ import { ViewnotesPage} from '../viewnotes/viewnotes.page';
 })
 export class NotesPage implements OnInit {
 
-  //private notes: Promise<Note[]>;
-  //public note: Note
-
-  constructor(public router: Router,
-    public navCtrl: NavController,
-    private alertCtrl: AlertController,
-    private noteService: NoteService) { }
-
-  ngOnInit() { }
-
-  /*ionViewWillEnter(){
-    this.notes = this.getAllNotes();
+  private notes: Observable<Note[]>;
+  uid: string;
+  term = '';
+  constructor(private noteService: NoteService) {
+    this.uid = localStorage.getItem('userid');
   }
 
-  getNote(createDate: number){
-    this.noteService.getNote(createDate).then((n) => {
-      this.note = n;
-      this.router.navigateByUrl('/viewnotes');
-      //this.navCtrl.push(ViewnotesPage, { note: this.note})
-    });
+  ngOnInit(): void {
+    this.notes = this.noteService.getNotes();
   }
 
-  getAllNotes(){
-    return this.noteService.getAllNotes();
-  }*/
+ 
 }

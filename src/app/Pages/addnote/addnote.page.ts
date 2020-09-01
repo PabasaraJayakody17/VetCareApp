@@ -1,9 +1,13 @@
 import { Component, OnInit } from '@angular/core';
-import { NavController } from '@ionic/angular';
-import { ActivatedRoute } from '@angular/router';
-import { NoteService } from '../../services/note-service.service';
-//import { Note } from 'src/models/note.model';
-import { FormGroup, FormControl } from '@angular/forms';
+import {Observable} from 'rxjs';
+import { NoteService } from 'src/app/services/note.service';
+import { Note} from 'src/app/models/Note';
+import {ActivatedRoute, Router} from '@angular/router';
+import {ToastController} from '@ionic/angular';
+import { UserProfile } from 'src/app/models/user';
+import { ProfileService } from 'src/app/services/profile.service';
+import { AuthService } from 'src/app/services/auth.service';
+
 
 @Component({
   selector: 'app-addnote',
@@ -12,30 +16,35 @@ import { FormGroup, FormControl } from '@angular/forms';
 })
 export class AddnotePage implements OnInit {
 
-  //public note: Note;
+  note: Note = {
+    userid: localStorage.getItem('userid'),
+    title: '',
+    content: '',
+    createdAt: new Date().getTime()
+  };
+ public userProfile: UserProfile;
+  constructor(
+      private activatedRoute: ActivatedRoute,
+      private noteService: NoteService,
+      private toastCtrl: ToastController,
+      private router: Router,
+      private authService: AuthService,
+      private profileService: ProfileService,
+  ) { }
 
-  /*formGroup: FormGroup;
-  notes: Note;
-  date: Date = new Date();
-  title: string = '';
-  content: string = '';*/
-
-  constructor(private route: ActivatedRoute,
-    public navCtrl: NavController,
-    private noteService: NoteService) { 
-    /*this.formGroup = new FormGroup({
-      title: new FormControl(),
-      content: new FormControl(),
-      date: new FormControl(),
-    });*/
+  ngOnInit() {
+    this.profileService.getUserProfile().then(profile$ => {
+      profile$.subscribe(userProfile => {
+        this.userProfile = userProfile;
+      });
+    });
   }
 
-  ngOnInit() { }
-
-  /*saveNote(note: Note){
-    this.noteService.saveNote(note);
-    this.navCtrl.pop();
-  }*/
-  
+  addNote() {
+    this.noteService.addNote(this.note).then(() => {
+      this.router.navigateByUrl('/tabs/notes');
+    }, err => {
+    });
+  }
 
 }

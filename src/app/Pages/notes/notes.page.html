@@ -13,22 +13,34 @@
   </ion-toolbar>
 </ion-header>
 
-<!--ion-content>
-  <ion-list>
-    <ion-item button detail *ngFor="let note of noteService.note" [routerLink]="'/tabs/note' + note.id" routerDirection="forward">
-      <ion-label>{{ note.title }}</ion-label>
-    </ion-item>
-  </ion-list>
-</ion-content-->
+
 
 <ion-content>
-  <!--ion-list>
-    <button ion-item *ngFor="let note of notes | async" (click)="getNote(note.createDate)">
-      {{ note.title }}
-    </button>
+  <!--div class="title-block">
+    <div class="heading">My Notes</div>
+  </div-->
+  <ion-searchbar  [(ngModel)]="term" animated="true"></ion-searchbar>
+  <ion-list>
+    <ion-list-header>
+      <!--ion-label>Notes</ion-label-->
+    </ion-list-header>
+    <div *ngFor="let note of (notes | async | filter:term) ">
+      <ion-item  *ngIf="uid== note.userid">
+      <ion-thumbnail class="check" slot="start">      
+      </ion-thumbnail>
+     
+      <ion-label>
+        <h2>{{note.title}}</h2>
+        <p>{{note.content}}</p>
+      </ion-label>
+      <ion-button  color="success" fill="outline" slot="end" [routerLink]="'/tabs/viewnotes/'+note.id">View</ion-button>
+    </ion-item>
+   
+  </div>
   </ion-list>
-
-  <ion-buttons class="add" routerLink="/addnote">
-    <ion-icon name="add-circle-sharp"></ion-icon>
-  </ion-buttons-->
+  <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+    <ion-fab-button routerLink="/tabs/addnote">
+      <ion-icon name="add"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
 </ion-content>

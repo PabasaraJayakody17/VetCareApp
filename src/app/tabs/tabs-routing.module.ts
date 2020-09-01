@@ -119,7 +119,19 @@ const routes: Routes = [
       {
         path: 'notes',
         loadChildren: () => import('../pages/notes/notes.module').then( m => m.NotesPageModule)
-      }
+      },
+      {
+        path: 'addnote',
+        loadChildren: () => import('../pages/addnote/addnote.module').then( m => m.AddnotePageModule)
+      },
+      {
+        path: 'viewnotes/:id',
+        loadChildren: () => import('../pages/viewnotes/viewnotes.module').then( m => m.ViewnotesPageModule)
+      },
+      {
+        path: 'update-note/:id',
+        loadChildren: () => import('../pages/update-note/update-note.module').then( m => m.UpdateNotePageModule)
+      },
     ]
   }
 ];

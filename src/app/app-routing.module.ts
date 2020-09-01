@@ -23,18 +23,12 @@ const routes: Routes = [
     path: '',
     loadChildren: () => import('./tabs/tabs.module').then( m => m.TabsPageModule)
   },
-  {
-    path: 'addnote',
-    loadChildren: () => import('./pages/addnote/addnote.module').then( m => m.AddnotePageModule)
-  },
-  {
-    path: 'viewnotes',
-    loadChildren: () => import('./pages/viewnotes/viewnotes.module').then( m => m.ViewnotesPageModule)
-  },
+ 
    {
     path: 'reset-password',
     loadChildren: () => import('./pages/reset-password/reset-password.module').then( m => m.ResetPasswordPageModule)
   },
+
   /*
   {
     path: 'notes',
