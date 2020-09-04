@@ -163,6 +163,7 @@ async signupUser(credentials: UserCredential): Promise<void> {
       credentials.password,
       credentials.fullName,
       credentials.designation,
+      credentials.uid,
     );
     this.authService.userId = userCredential.user.uid;
    // localStorage.setItem('userid', this.authService.userId);

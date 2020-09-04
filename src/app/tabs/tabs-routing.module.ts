@@ -16,10 +16,7 @@ const routes: Routes = [
         path: 'notifications',
         loadChildren: () => import('../Pages/notifications/notifications.module').then(m => m.NotificationsPageModule)
       },
-      {
-        path: 'chat',
-        loadChildren: () => import('../Pages/chat/chat.module').then(m => m.ChatPageModule)
-      },
+     
       {
         path: 'profile',
         loadChildren: () => import('../Pages/profile/profile.module').then(m => m.ProfilePageModule)
@@ -159,6 +156,14 @@ const routes: Routes = [
         path: 'update-note/:id',
         loadChildren: () => import('../pages/update-note/update-note.module').then( m => m.UpdateNotePageModule)
       },
+      {
+        path: 'chatlist',
+        loadChildren: () => import('../pages/chatlist/chatlist.module').then( m => m.ChatlistPageModule)
+      },
+     /* {
+        path: 'chat',
+        loadChildren: () => import('../Pages/chat/chat.module').then(m => m.ChatPageModule)
+      },*/
     ]
   }
 ];

@@ -28,6 +28,10 @@ const routes: Routes = [
     path: 'reset-password',
     loadChildren: () => import('./pages/reset-password/reset-password.module').then( m => m.ResetPasswordPageModule)
   },
+  {
+    path: 'chat',
+    loadChildren: () => import('./Pages/chat/chat.module').then(m => m.ChatPageModule)
+  },
   /*
   {
     path: 'notes',

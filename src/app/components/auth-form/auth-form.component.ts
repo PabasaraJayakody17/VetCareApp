@@ -127,6 +127,7 @@ authForm = this.formBuilder.group({
         password: authForm.value.password,
         fullName: authForm.value.fullName,
         designation: authForm.value.designation,
+        uid: '',
       };
       this.formSubmitted.emit(credentials);
     }
