@@ -1,5 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { AlertController } from '@ionic/angular';
+import { Observable } from 'rxjs';
+import { ActivatedRoute, Router } from '@angular/router';
+import { Farm } from '../../models/Farm';
+import { FarmService } from '../../services/farm.service';
+import { Cattle } from 'src/app/models/Cattle';
+import { CattleService } from 'src/app/services/cattle.service';
 
 @Component({
   selector: 'app-farm-info',
@@ -8,12 +14,45 @@ import { AlertController } from '@ionic/angular';
 })
 export class FarmInfoPage implements OnInit {
 
-  constructor(public alertController: AlertController) { }
-
-  ngOnInit() {
+  farm: Farm = {
+    id: '',
+    farmName: '',
+    farmRegNo: '',
+    ownerName: '',
+    veterinarianDivision: '',
+    GSDivision: '',
+    address: '',
+    contactNo: '',
+    cattleCount: '',
+    dairyCattleCount: ''
   }
 
-  async presentAlertConfirm() {
+  public cattles: Observable<Cattle[]>;
+  fid: string;
+  term = '';
+
+  constructor(public alertController: AlertController,
+    private activatedRoute: ActivatedRoute,
+    private router: Router,
+    private farmService: FarmService,
+    private cattleService: CattleService) { 
+      //this.fid = localStorage.getItem('farmid'); 
+    }
+  
+  ngOnInit() {
+    this.cattles = this.cattleService.getCattles();
+  }
+
+  ngAfterViewInit(): void{
+    const id = this.activatedRoute.snapshot.paramMap.get('id');
+    if(id){
+      this.farmService.getFarm(id).subscribe(farmData => {
+        this.farm = farmData;
+      });
+    }
+  }
+
+  async deleteFarm() {
     const alert = await this.alertController.create({
       cssClass: 'my-custom-class',
       header: 'Delete',
@@ -30,6 +69,10 @@ export class FarmInfoPage implements OnInit {
           text: 'Okay',
           handler: () => {
             console.log('Confirm Okay');
+            this.farmService.deleteFarm(this.farm.id).then(() => {
+              this.router.navigateByUrl('/tabs/farmhouse');
+            }, err => {
+            });
           }
         }
       ]

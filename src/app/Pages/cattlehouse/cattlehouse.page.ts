@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { AlertController } from '@ionic/angular';
+import { Observable } from 'rxjs';
+import { CattleService } from '../../services/cattle.service';
+import { Cattle } from '../../models/Cattle';
 
 @Component({
   selector: 'app-cattlehouse',
@@ -8,33 +10,15 @@ import { AlertController } from '@ionic/angular';
 })
 export class CattlehousePage implements OnInit {
 
-  constructor(public alertController: AlertController) { }
+  public cattles: Observable<Cattle[]>;
+  fid: string;
+
+  constructor(private cattleService: CattleService) { 
+    //this.fid = localStorage.getItem('farmid');
+  }
 
   ngOnInit() {
+    this.cattles = this.cattleService.getCattles();
   }
 
-  async presentAlertConfirm() {
-    const alert = await this.alertController.create({
-      cssClass: 'my-custom-class',
-      header: 'Delete',
-      message: '<strong>Do you want to delete?</strong>',
-      buttons: [
-        {
-          text: 'Cancel',
-          role: 'cancel',
-          cssClass: 'secondary',
-          handler: (blah) => {
-            console.log('Confirm Cancel: blah');
-          }
-        }, {
-          text: 'Okay',
-          handler: () => {
-            console.log('Confirm Okay');
-          }
-        }
-      ]
-    });
-
-    await alert.present();
-  }
 }

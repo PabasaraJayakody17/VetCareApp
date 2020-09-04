@@ -1,0 +1,46 @@
+<ion-header>
+  <ion-toolbar class="tool-one">
+    <ion-title>VetCare App</ion-title>
+    <ion-buttons class="setting" slot="end">
+      <ion-icon name="settings-sharp" routerLink="/tabs/settings"></ion-icon>
+    </ion-buttons>
+  </ion-toolbar>
+  <ion-toolbar class="tool-two">
+    <ion-title>Update Breeding Details</ion-title>
+    <ion-buttons slot="start">
+      <ion-icon class="back" name="arrow-back-outline" routerLink="/tabs/view-cattle/:cattle.id"></ion-icon>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>>
+
+<ion-content>
+  <div class="content">
+    <div class="ion-padding">
+      <ion-item>
+        <ion-datetime type="date" placeholder="Date of heat sign observed" dispalyFormat="DD-MM-YYYY" [(ngModel)]="breeding.dateOfHeatObserved"></ion-datetime>
+      </ion-item>
+      <ion-item>
+        <ion-datetime type="date" placeholder="Date of first AI" dispalyFormat="DD-MM-YYYY" [(ngModel)]="breeding.dateOfFirstAI"></ion-datetime>
+      </ion-item>
+      <ion-item>
+        <ion-datetime type="date" placeholder="Date of second AI" dispalyFormat="DD-MM-YYYY" [(ngModel)]="breeding.dateOfSecondAI"></ion-datetime>
+      </ion-item>
+      <ion-item>
+        <ion-input type="text" placeholder="Seman ID" [(ngModel)]="breeding.semanId"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-datetime type="date" placeholder="Date of PD" dispalyFormat="DD-MM-YYYY" [(ngModel)]="breeding.dateOfPD"></ion-datetime>
+      </ion-item>
+      <ion-item>
+        <ion-datetime type="date" placeholder="Date of last calving" dispalyFormat="DD-MM-YYYY" [(ngModel)]="breeding.dateOfLastCalving"></ion-datetime>
+      </ion-item>
+      <ion-item>
+        <ion-input type="text" placeholder="Number of calving" [(ngModel)]="breeding.noOfCalving"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-input type="text" placeholder="AI receipt no." [(ngModel)]="breeding.AIReceiptNo"></ion-input>
+      </ion-item>
+    </div>
+    <ion-button class="update" expand="block" shape="round" (click)="updateBreeding()">UPDATE</ion-button>
+  </div>
+</ion-content>

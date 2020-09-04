@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { AlertController } from '@ionic/angular';
+import { Observable } from 'rxjs';
+import { BreedingService } from '../../services/breeding.service';
+import { Breeding } from '../../models/breeding';
 
 @Component({
   selector: 'app-pregnantcattle',
@@ -8,34 +10,13 @@ import { AlertController } from '@ionic/angular';
 })
 export class PregnantcattlePage implements OnInit {
 
-  constructor(public alertController: AlertController) { }
+  public breedings: Observable<Breeding[]>;
+
+  constructor(private breedingService: BreedingService) { }
 
   ngOnInit() {
-  }
-
-  async presentAlertConfirm() {
-    const alert = await this.alertController.create({
-      cssClass: 'my-custom-class',
-      header: 'Delete',
-      message: '<strong>Do you want to delete?</strong>',
-      buttons: [
-        {
-          text: 'Cancel',
-          role: 'cancel',
-          cssClass: 'secondary',
-          handler: (blah) => {
-            console.log('Confirm Cancel: blah');
-          }
-        }, {
-          text: 'Okay',
-          handler: () => {
-            console.log('Confirm Okay');
-          }
-        }
-      ]
-    });
-
-    await alert.present();
+    this.breedings = this.breedingService.getBreedings();
   }
 
 }
+ 

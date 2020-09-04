@@ -8,7 +8,7 @@
   <ion-toolbar class="tool-two">
     <ion-title>Disease Inormation</ion-title>
     <ion-buttons slot="start">
-      <ion-icon class="back" name="arrow-back-outline" routerLink="/tabs/cattle-info"></ion-icon>
+      <ion-icon class="back" name="arrow-back-outline" routerLink='/tabs/view-cattle/:cattle.id'></ion-icon>
     </ion-buttons>
   </ion-toolbar>
 </ion-header>
@@ -18,20 +18,20 @@
     <ion-card-header></ion-card-header>
     <ion-card-content>
       <ion-grid class="info">
-        <ion-row>
+        <!--ion-row>
           <ion-col size="7">
             <div>Disease Info. ID : </div>
           </ion-col>
           <ion-col size="5">
             <div>001</div>
           </ion-col>
-        </ion-row>
+        </ion-row-->
         <ion-row>
           <ion-col size="7">
             <div>Date : </div>
           </ion-col>
           <ion-col size="5">
-            <div>2020-2-3</div>
+            <div>{{ disease.date }}</div>
           </ion-col>
         </ion-row>
         <ion-row>
@@ -39,7 +39,7 @@
             <div>Clinical signs : </div>
           </ion-col>
           <ion-col size="5">
-            <div>Depression, Appetite, hypersalivation</div>
+            <div>{{ disease.clinicalSigns }}</div>
           </ion-col>
         </ion-row>
         <ion-row>
@@ -47,7 +47,7 @@
             <div>Type of clinical signs : </div>
           </ion-col>
           <ion-col size="5">
-            <div>Chronic</div>
+            <div>{{ disease.typeOfClinicalSigns }}</div>
           </ion-col>
         </ion-row>
         <ion-row>
@@ -55,7 +55,7 @@
             <div>Diagnosis : </div>
           </ion-col>
           <ion-col size="5">
-            <div>FMD</div>
+            <div>{{ disease.diagnosis }}</div>
           </ion-col>
         </ion-row>
         <ion-row>
@@ -63,7 +63,7 @@
             <div>Treatments : </div>
           </ion-col>
           <ion-col size="5">
-            <div>FMD Vaccine</div>
+            <div>{{ disease.treatments }}</div>
           </ion-col>
         </ion-row>
         <ion-row>
@@ -71,87 +71,15 @@
             <div>Remarks : </div>
           </ion-col>
           <ion-col size="5">
-            <div>No</div>
+            <div>{{ disease.remarks }}</div>
           </ion-col>
         </ion-row>
         <ion-row>
           <ion-col size="6">
-            <ion-button class="update" expand="block">UPDATE</ion-button>
+            <ion-button class="update" expand="block" [routerLink]="'/tabs/update-disease/'+disease.id">UPDATE</ion-button>
           </ion-col>
           <ion-col size="6">
-            <ion-button class="actionbutton" expand="block" color="danger" (click)="presentAlertConfirm()">DELETE</ion-button>
-          </ion-col>
-        </ion-row>
-      </ion-grid>
-    </ion-card-content>
-  </ion-card>
-
-  <ion-card>
-    <ion-card-header></ion-card-header>
-    <ion-card-content>
-      <ion-grid class="info">
-        <ion-row>
-          <ion-col size="7">
-            <div>Disease Info. ID : </div>
-          </ion-col>
-          <ion-col size="5">
-            <div>002</div>
-          </ion-col>
-        </ion-row>
-        <ion-row>
-          <ion-col size="7">
-            <div>Date : </div>
-          </ion-col>
-          <ion-col size="5">
-            <div>2020-2-3</div>
-          </ion-col>
-        </ion-row>
-        <ion-row>
-          <ion-col size="7">
-            <div>Clinical signs : </div>
-          </ion-col>
-          <ion-col size="5">
-            <div>Depression, Appetite, hypersalivation</div>
-          </ion-col>
-        </ion-row>
-        <ion-row>
-          <ion-col size="7">
-            <div>Type of clinical signs : </div>
-          </ion-col>
-          <ion-col size="5">
-            <div>Chronic</div>
-          </ion-col>
-        </ion-row>
-        <ion-row>
-          <ion-col size="7">
-            <div>Diagnosis : </div>
-          </ion-col>
-          <ion-col size="5">
-            <div>FMD</div>
-          </ion-col>
-        </ion-row>
-        <ion-row>
-          <ion-col size="7">
-            <div>Treatments : </div>
-          </ion-col>
-          <ion-col size="5">
-            <div>FMD Vaccine</div>
-          </ion-col>
-        </ion-row>
-        <ion-row>
-          <ion-col size="7">
-            <div>Remarks : </div>
-          </ion-col>
-          <ion-col size="5">
-            <div>No</div>
-          </ion-col>
-        </ion-row>
-        <ion-row>
-          <ion-col size="6">
-            <ion-button class="update" expand="block">UPDATE</ion-button>
-          </ion-col>
-          <ion-col size="6">
-            <ion-button class="actionbutton" expand="block" color="danger" (click)="presentAlertConfirm()">DELETE</ion-button>
+            <ion-button class="delete" expand="block" color="danger" (click)="deleteDisease()">DELETE</ion-button>
           </ion-col>
         </ion-row>
       </ion-grid>

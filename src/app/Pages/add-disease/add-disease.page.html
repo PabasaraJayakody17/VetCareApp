@@ -8,7 +8,7 @@
   <ion-toolbar class="tool-two">
     <ion-title>Add Disease Information</ion-title>
     <ion-buttons slot="start">
-      <ion-icon class="back" name="arrow-back-outline" routerLink="/tabs/cattle-info"></ion-icon>
+      <ion-icon class="back" name="arrow-back-outline" routerLink="/tabs/view-cattle/:cattle.id"></ion-icon>
     </ion-buttons>
   </ion-toolbar>
 </ion-header>
@@ -17,24 +17,24 @@
   <div class="content">
     <div class="ion-padding">
       <ion-item>
-        <ion-datetime type="date" placeholder="Date" dispalyFormat="DD-MM-YYYY"></ion-datetime>
+        <ion-datetime type="date" placeholder="Date" dispalyFormat="DD-MM-YYYY" [(ngModel)]="disease.date"></ion-datetime>
       </ion-item>
       <ion-item>
-        <ion-input type="text" placeholder="Clinical signs"></ion-input>
+        <ion-input type="text" placeholder="Clinical signs" [(ngModel)]="disease.clinicalSigns"></ion-input>
       </ion-item>
       <ion-item>
-        <ion-input type="text" placeholder="Type of clinical signs"></ion-input>
+        <ion-input type="text" placeholder="Type of clinical signs" [(ngModel)]="disease.typeOfClinicalSigns"></ion-input>
       </ion-item>
       <ion-item>
-        <ion-input type="text" placeholder="Diagnosis" dispalyFormat="DD-MM-YYYY"></ion-input>
+        <ion-input type="text" placeholder="Diagnosis" [(ngModel)]="disease.diagnosis"></ion-input>
       </ion-item>
       <ion-item>
-        <ion-input type="text" placeholder="Treatment"></ion-input>
+        <ion-input type="text" placeholder="Treatment" [(ngModel)]="disease.treatment"></ion-input>
       </ion-item>
       <ion-item>
-        <ion-input type="text" placeholder="Remarks"></ion-input>
+        <ion-input type="text" placeholder="Remarks" [(ngModel)]="disease.remarks"></ion-input>
       </ion-item>
     </div>
-    <ion-button class="save" expand="block" shape="round" routerLink="/tabs/disease-info">SAVE</ion-button>
+    <ion-button class="save" expand="block" shape="round" (click)="addDisease()">SAVE</ion-button>
   </div>
 </ion-content>

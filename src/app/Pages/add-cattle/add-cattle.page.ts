@@ -1,6 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { ActionSheetController } from '@ionic/angular';
-import { Camera, CameraOptions } from '@ionic-native/camera/ngx'
+import { Camera, CameraOptions } from '@ionic-native/camera/ngx';
+import { ActivatedRoute, Router } from '@angular/router';
+import { Cattle } from 'src/app/models/Cattle';
+import { CattleService } from '../../services/cattle.service';
+import { FarmService } from '../../services/farm.service';
+import { Farm } from 'src/app/models/Farm';
+import * as firebase from 'firebase';
+
 @Component({
   selector: 'app-add-cattle',
   templateUrl: './add-cattle.page.html',
@@ -8,12 +15,46 @@ import { Camera, CameraOptions } from '@ionic-native/camera/ngx'
 })
 export class AddCattlePage implements OnInit {
 
-  myphoto: any;
+  cattle: Cattle = {
+    farmid: localStorage.getItem('farmid'),
+    cattleTagId: '',
+    cattleBreed: '',
+    cattleDOB: '',
+    specialFeature: '',
+    sex: '',
+    noLactation: '',
+    birthWeg: '',
+    breedingWeg: '', 
+    cattleWeaningWeg: '',
+    avgPreWeg: '',
+    avgPostWeg: '',
+    lastCalvingDate: '',
+    cattleImg: ''
+  }
+
+  public farm: Farm;
 
   constructor(private actionSheetCtrl: ActionSheetController,
-    private camera: Camera) { }
+    private activateRoute: ActivatedRoute,
+    private router: Router,
+    private camera: Camera,
+    private cattleService: CattleService,
+    private farmService: FarmService) { }
 
   ngOnInit() {
+    /*this.farmService.getFarms().then(farm$ => {
+      farm$.subscribe(farm => {
+        this.farm = farm;
+      });
+    });*/
+  }
+
+  addCattle(){
+    this.cattleService.addCattle(this.cattle).then(() => {
+      this.router.navigateByUrl('/tabs/view-farm/:farm.id');
+    }, err => {
+
+    });
   }
 
   async showActionSheet(){
@@ -52,16 +93,19 @@ export class AddCattlePage implements OnInit {
     }
 
     this.camera.getPicture(options).then((imageData) => {
-       // imageData is either a base64 encoded string or a file URI
-      // If it's base64 (DATA_URL):
-      this.myphoto = 'data:image/jpeg;base64,' + imageData;
-    }, (err) => {
-      //Handle error
-    });
+      var base64Str = 'data:image/jpeg;base64,'+imageData;
+      var storageRef = firebase.storage().ref();
+      var childRef = storageRef.child('firebasestorage.jpg');
+      childRef.putString(base64Str, 'data_url').then(function(snapshot){
+        alert("Successfully uploaded...");
+      });
+    }, (Err) => {
+      alert(JSON.stringify(Err));
+    })
   }
 
   takePhoto(){
-    const options: CameraOptions = {
+    var options: CameraOptions = {
       quality: 100,
       destinationType: this.camera.DestinationType.DATA_URL,
       encodingType: this.camera.EncodingType.JPEG,
@@ -69,11 +113,14 @@ export class AddCattlePage implements OnInit {
     }
 
     this.camera.getPicture(options).then((imageData) => {
-       // imageData is either a base64 encoded string or a file URI
-      // If it's base64 (DATA_URL):
-      this.myphoto = 'data:image/jpeg;base64,' + imageData;
-    }, (err) => {
-      //Handle error
-    });
+      var base64Str = 'data:image/jpeg;base64,'+imageData;
+      var storageRef = firebase.storage().ref();
+      var childRef = storageRef.child('firebasestorage.jpg');
+      childRef.putString(base64Str, 'data_url').then(function(snapshot){
+        alert("Successfully uploaded...");
+      });
+    }, (Err) => {
+      alert(JSON.stringify(Err));
+    })
   }
 }

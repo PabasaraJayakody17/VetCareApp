@@ -21,84 +21,18 @@
   <!-- Default Searchbar -->
   <ion-searchbar></ion-searchbar>
 
-  <ion-grid id="farmers">
-    <ion-row class="content">
-      <ion-col size="5" routerLink="/tabs/farm-info">
-        <div>Farm Name</div>
-      </ion-col>
-      <ion-col size="5" routerLink="/tabs/farm-info">
-        <div>Farm Reg</div>
-      </ion-col>
-      <ion-col size="2">
-        <div>
-          <ion-icon name="trash-outline" color="danger" (click)="presentAlertConfirm()"></ion-icon>
-        </div>
-      </ion-col>
-    </ion-row>
-    <ion-row class="content">
-      <ion-col size="5" routerLink="/tabs/farm-info">
-        <div>S.M.Priyantha</div>
-      </ion-col>
-      <ion-col size="5" routerLink="/tabs/farm-info">
-        <div>81246977070</div>
-      </ion-col>
-      <ion-col size="2">
-        <div>
-          <ion-icon name="trash-outline" color="danger" (click)="presentAlertConfirm()"></ion-icon>
-        </div>
-      </ion-col>
-    </ion-row>
-    <ion-row class="content">
-      <ion-col size="5" routerLink="/tabs/farm-info">
-        <div>S.M.Priyantha</div>
-      </ion-col>
-      <ion-col size="5" routerLink="/tabs/farm-info">
-        <div>81246977070</div>
-      </ion-col>
-      <ion-col size="2">
-        <div>
-          <ion-icon name="trash-outline" color="danger" (click)="presentAlertConfirm()"></ion-icon>
-        </div>
-      </ion-col>
-    </ion-row>
-    <ion-row class="content">
-      <ion-col size="5" routerLink="/tabs/farm-info">
-        <div>S.M.Priyantha</div>
-      </ion-col>
-      <ion-col size="5" routerLink="/tabs/farm-info">
-        <div>81246977070</div>
-      </ion-col>
-      <ion-col size="2">
-        <div>
-          <ion-icon name="trash-outline" color="danger" (click)="presentAlertConfirm()"></ion-icon>
-        </div>
-      </ion-col>
-    </ion-row>
-    <ion-row class="content">
-      <ion-col size="5">
-        <div>S.M.Priyantha</div>
-      </ion-col>
-      <ion-col size="5">
-        <div>81246977070</div>
-      </ion-col>
-      <ion-col size="2">
-        <div>
-          <ion-icon name="trash-outline" color="danger" (click)="presentAlertConfirm()"></ion-icon>
-        </div>
-      </ion-col>
-    </ion-row>
-    <ion-row class="content">
-      <ion-col size="5">
-        <div>S.M.Priyantha</div>
-      </ion-col>
-      <ion-col size="5">
-        <div>81246977070</div>
-      </ion-col>
-      <ion-col size="2">
-        <div>
-          <ion-icon name="trash-outline" color="danger" (click)="presentAlertConfirm()"></ion-icon>
-        </div>
-      </ion-col>
-    </ion-row>
-  </ion-grid> 
+  <ion-list>
+    <!--ion-item *ngFor="let farm of (farms | async)"-->
+      <ion-grid id="farmers" *ngFor="let farm of (farms | async)">
+        <ion-row class="content">
+          <ion-col size="6" [routerLink]="'/tabs/view-farm/'+farm.id">
+            <div>{{ farm.farmName }}</div>
+          </ion-col>
+          <ion-col size="6">
+            <div>{{ farm.farmRegNo }}</div>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    <!--/ion-item--> 
+  </ion-list>
 </ion-content>

@@ -17,33 +17,33 @@
   <div class="content">
     <div class="ion-padding">
       <ion-item>
-        <ion-input type="text" placeholder="Farm Name"></ion-input>
+        <ion-input type="text" placeholder="Farm Name" [(ngModel)]="farm.farmName"></ion-input>
       </ion-item>
       <ion-item>
-        <ion-input type="text" placeholder="Farm Reg. No"></ion-input>
+        <ion-input type="text" placeholder="Farm Reg. No" [(ngModel)]="farm.farmRegNo"></ion-input>
       </ion-item>
       <ion-item>
-        <ion-input type="text" placeholder="Owner Name"></ion-input>
+        <ion-input type="text" placeholder="Owner Name" [(ngModel)]="farm.ownerName"></ion-input>
       </ion-item>
       <ion-item>
-        <ion-input type="text" placeholder="Veterinarian Division"></ion-input>
+        <ion-input type="text" placeholder="Veterinarian Division" [(ngModel)]="farm.veterinarianDivision"></ion-input>
       </ion-item>
       <ion-item>
-        <ion-input type="text" placeholder="G.S Division"></ion-input>
+        <ion-input type="text" placeholder="G.S Division" [(ngModel)]="farm.GSDivision"></ion-input>
       </ion-item>
       <ion-item>
-        <ion-input type="text" placeholder="Address"></ion-input>
+        <ion-input type="text" placeholder="Address" [(ngModel)]="farm.address"></ion-input>
       </ion-item>
       <ion-item>
-        <ion-input type="text" placeholder="Contact No."></ion-input>
+        <ion-input type="text" placeholder="Contact No." [(ngModel)]="farm.contactNo"></ion-input>
       </ion-item>
       <ion-item>
-        <ion-input type="text" placeholder="Cattle count"></ion-input>
+        <ion-input type="text" placeholder="Cattle count" [(ngModel)]="farm.cattleCount"></ion-input>
       </ion-item>
       <ion-item>
-        <ion-input type="text" placeholder="Dairy cattle count"></ion-input>
+        <ion-input type="text" placeholder="Dairy cattle count" [(ngModel)]="farm.dairyCattleCount"></ion-input>
       </ion-item>
     </div>
-    <ion-button class="save" expand="block" shape="round" routerLink="/tabs/farm-info">SAVE</ion-button>
+    <ion-button class="save" expand="block" shape="round" (click)="addFarm()">SAVE</ion-button>
   </div>
 </ion-content>

@@ -17,102 +17,19 @@
   <!-- Default Searchbar -->
   <ion-searchbar></ion-searchbar>
 
-  <ion-grid id="vaccinate-cattle">
-    <ion-row class="content">
-      <ion-col size="4" routerLink="/tabs/vaccination-info">
-        <div>Farm Name</div>
-      </ion-col>
-      <ion-col size="4" routerLink="/tabs/vaccination-info">
-        <div>Cattle ID</div>
-      </ion-col>
-      <ion-col size="3">
-        <div>Vaccinate Date</div>
-      </ion-col>
-      <ion-col size="1">
-        <div>
-          <ion-icon name="trash-outline" color="danger" (click)="presentAlertConfirm()"></ion-icon>
-        </div>
-      </ion-col>
-    </ion-row>
-    <ion-row class="content">
-      <ion-col size="4">
-        <div>S.M.Priyantha</div>
-      </ion-col>
-      <ion-col size="4">
-        <div>81246977070</div>
-      </ion-col>
-      <ion-col size="3">
-        <div>04-09-2020</div>
-      </ion-col>
-      <ion-col size="1">
-        <div>
-          <ion-icon name="trash-outline" color="danger" (click)="presentAlertConfirm()"></ion-icon>
-        </div>
-      </ion-col>
-    </ion-row>
-    <ion-row class="content">
-      <ion-col size="4">
-        <div>S.M.Priyantha</div>
-      </ion-col>
-      <ion-col size="4">
-        <div>81246977070</div>
-      </ion-col>
-      <ion-col size="3">
-        <div>04-09-2020</div>
-      </ion-col>
-      <ion-col size="1">
-        <div>
-          <ion-icon name="trash-outline" color="danger" (click)="presentAlertConfirm()"></ion-icon>
-        </div>
-      </ion-col>
-    </ion-row>
-    <ion-row class="content">
-      <ion-col size="4">
-        <div>S.M.Priyantha</div>
-      </ion-col>
-      <ion-col size="4">
-        <div>81246977070</div>
-      </ion-col>
-      <ion-col size="3">
-        <div>04-09-2020</div>
-      </ion-col>
-      <ion-col size="1">
-        <div>
-          <ion-icon name="trash-outline" color="danger" (click)="presentAlertConfirm()"></ion-icon>
-        </div>
-      </ion-col>
-    </ion-row>
-    <ion-row class="content">
-      <ion-col size="4">
-        <div>S.M.Priyantha</div>
-      </ion-col>
-      <ion-col size="4">
-        <div>81246977070</div>
-      </ion-col>
-      <ion-col size="3">
-        <div>04-09-2020</div>
-      </ion-col>
-      <ion-col size="1">
-        <div>
-          <ion-icon name="trash-outline" color="danger" (click)="presentAlertConfirm()"></ion-icon>
-        </div>
-      </ion-col>
-    </ion-row>
-    <ion-row class="content">
-      <ion-col size="4">
-        <div>S.M.Priyantha</div>
-      </ion-col>
-      <ion-col size="4">
-        <div>81246977070</div>
-      </ion-col>
-      <ion-col size="3">
-        <div>04-09-2020</div>
-      </ion-col>
-      <ion-col size="1">
-        <div>
-          <ion-icon name="trash-outline" color="danger" (click)="presentAlertConfirm()"></ion-icon>
-        </div>
-      </ion-col>
-    </ion-row>
-  </ion-grid> 
+  <ion-list>
+    <ion-grid id="vaccine" *ngFor="let vaccine of (vaccines | async)">
+      <ion-row class="content">
+        <ion-col size="4" [routerLink]="'tabs/view-cattle/'+cattle.id">
+          <div>{{ farm.farmName }}</div>
+        </ion-col>
+        <ion-col size="4">
+          <div>{{ cattle.cattleTagId }}</div>
+        </ion-col>
+        <ion-col size="4">
+          <div>{{ vaccine.nextVaccineDate }}</div>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </ion-list>
 </ion-content>

@@ -18,84 +18,16 @@
   <!-- Default Searchbar -->
   <ion-searchbar></ion-searchbar>
 
-  <ion-grid id="cattle-house">
-    <ion-row class="content">
-      <ion-col size="5" routerLink="/tabs/cattle-info">
-        <div>Farm Name</div>
-      </ion-col>
-      <ion-col size="5" routerLink="/tabs/cattle-info">
-        <div>Cattle ID</div>
-      </ion-col>
-      <ion-col size="2">
-        <div>
-          <ion-icon name="trash-outline" color="danger" (click)="presentAlertConfirm()"></ion-icon>
-        </div>
-      </ion-col>
-    </ion-row>
-    <ion-row class="content">
-      <ion-col size="5" routerLink="/tabs/cattle-info">
-        <div>S.M.Priyantha</div>
-      </ion-col>
-      <ion-col size="5" routerLink="/tabs/cattle-info">
-        <div>81246977070</div>
-      </ion-col>
-      <ion-col size="2">
-        <div>
-          <ion-icon name="trash-outline" color="danger" (click)="presentAlertConfirm()"></ion-icon>
-        </div>
-      </ion-col>
-    </ion-row>
-    <ion-row class="content">
-      <ion-col size="5" routerLink="/tabs/cattle-info">
-        <div>S.M.Priyantha</div>
-      </ion-col>
-      <ion-col size="5" routerLink="/tabs/cattle-info">
-        <div>81246977070</div>
-      </ion-col>
-      <ion-col size="2">
-        <div>
-          <ion-icon name="trash-outline" color="danger" (click)="presentAlertConfirm()"></ion-icon>
-        </div>
-      </ion-col>
-    </ion-row>
-    <ion-row class="content">
-      <ion-col size="5" routerLink="/tabs/cattle-info">
-        <div>S.M.Priyantha</div>
-      </ion-col>
-      <ion-col size="5" routerLink="/tabs/cattle-info">
-        <div>81246977070</div>
-      </ion-col>
-      <ion-col size="2">
-        <div>
-          <ion-icon name="trash-outline" color="danger" (click)="presentAlertConfirm()"></ion-icon>
-        </div>
-      </ion-col>
-    </ion-row>
-    <ion-row class="content">
-      <ion-col size="5">
-        <div>S.M.Priyantha</div>
-      </ion-col>
-      <ion-col size="5">
-        <div>81246977070</div>
-      </ion-col>
-      <ion-col size="2">
-        <div>
-          <ion-icon name="trash-outline" color="danger" (click)="presentAlertConfirm()"></ion-icon>
-        </div>
-      </ion-col>
-    </ion-row>
-    <ion-row class="content">
-      <ion-col size="5">
-        <div>S.M.Priyantha</div>
-      </ion-col>
-      <ion-col size="5">
-        <div>81246977070</div>
-      </ion-col>
-      <ion-col size="2">
-        <div>
-          <ion-icon name="trash-outline" color="danger" (click)="presentAlertConfirm()"></ion-icon>
-        </div>
-      </ion-col>
-    </ion-row>
-  </ion-grid> 
+    <ion-list>
+      <ion-grid id="cattle" *ngFor="let cattle of (cattles | async)">
+        <ion-row class="content">
+          <ion-col size="6" [routerLink]="'tabs/view-cattle/'+cattle.id">
+            <div>{{ farm.farmRegNo }}</div>
+          </ion-col>
+          <ion-col size="6">
+            <div>{{ cattle.cattleTagId }}</div>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </ion-list>
 </ion-content>

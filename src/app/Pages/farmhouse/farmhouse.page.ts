@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { AlertController } from '@ionic/angular';
+import { Observable } from 'rxjs';
+import { FarmService } from '../../services/farm.service';
+import { Farm } from '../../models/Farm';
 
 @Component({
   selector: 'app-farmhouse',
@@ -8,34 +10,14 @@ import { AlertController } from '@ionic/angular';
 })
 export class FarmhousePage implements OnInit {
 
-  constructor(public alertController: AlertController) { }
+  private farms: Observable<Farm[]>
+  fid: string;
+  term: '';
 
-  ngOnInit() {
-  }
+  constructor(private farmService: FarmService) { }
 
-  async presentAlertConfirm() {
-    const alert = await this.alertController.create({
-      cssClass: 'my-custom-class',
-      header: 'Delete',
-      message: '<strong>Do you want to delete?</strong>',
-      buttons: [
-        {
-          text: 'Cancel',
-          role: 'cancel',
-          cssClass: 'secondary',
-          handler: (blah) => {
-            console.log('Confirm Cancel: blah');
-          }
-        }, {
-          text: 'Okay',
-          handler: () => {
-            console.log('Confirm Okay');
-          }
-        }
-      ]
-    });
-
-    await alert.present();
+  ngOnInit(): void {
+    this.farms = this.farmService.getFarms();
   }
 
 }

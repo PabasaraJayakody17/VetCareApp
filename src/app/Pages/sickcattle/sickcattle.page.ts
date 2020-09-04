@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { AlertController } from '@ionic/angular';
+import { Observable } from 'rxjs';
+import { DiseaseService } from '../../services/disease.service';
+import { Disease } from '../../models/disease'; 
 
 @Component({
   selector: 'app-sickcattle',
@@ -8,34 +10,12 @@ import { AlertController } from '@ionic/angular';
 })
 export class SickcattlePage implements OnInit {
 
-  constructor(public alertController: AlertController) { }
+  public diseases: Observable<Disease[]>;
+
+  constructor(private  diseaseService: DiseaseService) { }
 
   ngOnInit() {
-  }
-
-  async presentAlertConfirm() {
-    const alert = await this.alertController.create({
-      cssClass: 'my-custom-class',
-      header: 'Delete',
-      message: '<strong>Do you want to delete?</strong>',
-      buttons: [
-        {
-          text: 'Cancel',
-          role: 'cancel',
-          cssClass: 'secondary',
-          handler: (blah) => {
-            console.log('Confirm Cancel: blah');
-          }
-        }, {
-          text: 'Okay',
-          handler: () => {
-            console.log('Confirm Okay');
-          }
-        }
-      ]
-    });
-
-    await alert.present();
+    this.diseases = this.diseaseService.getDiseases();
   }
 
 }

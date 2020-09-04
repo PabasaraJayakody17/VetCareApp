@@ -8,7 +8,7 @@
   <ion-toolbar class="tool-two">
     <ion-title>Vaccination Inormation</ion-title>
     <ion-buttons slot="start">
-      <ion-icon class="back" name="arrow-back-outline" routerLink="/tabs/cattle-info"></ion-icon>
+      <ion-icon class="back" name="arrow-back-outline" routerLink='/tabs/view-cattle/:cattle.id'></ion-icon>
     </ion-buttons>
   </ion-toolbar>
 </ion-header>
@@ -17,21 +17,21 @@
   <ion-card>
     <ion-card-header></ion-card-header>
     <ion-card-content>
-      <ion-grid class="info">
-        <ion-row>
+      <ion-grid class="info"> 
+        <!--ion-row>
           <ion-col size="7">
             <div>Vaccination Info. ID : </div>
           </ion-col>
           <ion-col size="5">
             <div>001</div>
           </ion-col>
-        </ion-row>
+        </ion-row-->
         <ion-row>
           <ion-col size="7">
             <div>Date : </div>
           </ion-col>
           <ion-col size="5">
-            <div>2020-2-3</div>
+            <div>{{vaccine.date}}</div>
           </ion-col>
         </ion-row>
         <ion-row>
@@ -39,7 +39,7 @@
             <div>Name of vaccine : </div>
           </ion-col>
           <ion-col size="5">
-            <div>Biobos IBR</div>
+            <div>{{vaccine.nameOfVaccine}}</div>
           </ion-col>
         </ion-row>
         <ion-row>
@@ -47,7 +47,7 @@
             <div>Purpose of Vaccine : </div>
           </ion-col>
           <ion-col size="5">
-            <div>Inactivated bovine herpessvirus</div>
+            <div>{{vaccine.purposeOfVaccine}}</div>
           </ion-col>
         </ion-row>
         <ion-row>
@@ -55,7 +55,7 @@
             <div>Next vacciantion date: </div>
           </ion-col>
           <ion-col size="5">
-            <div>2020-0-15</div>
+            <div>{{vaccine.nextVaccineDate}}</div>
           </ion-col>
         </ion-row>
         <ion-row>
@@ -63,23 +63,23 @@
             <div>Reason of Next Vaccination : </div>
           </ion-col>
           <ion-col size="5">
-            <div>Mannheimia Heamolytica</div>
+            <div>{{vaccine.resoneOfNextVaccine}}</div>
           </ion-col>
         </ion-row>
         <ion-row>
-          <ion-col size="7">
+          <ion-col size="7"> 
             <div>Remarks : </div>
           </ion-col>
           <ion-col size="5">
-            <div>No</div>
+            <div>{{vaccine.remarks}}</div>
           </ion-col>
         </ion-row>
         <ion-row>
           <ion-col size="6">
-            <ion-button class="update" expand="block">UPDATE</ion-button>
+            <ion-button class="update" expand="block" [routerLink]="'/tabs/update-vaccine/'+vaccine.id">UPDATE</ion-button>
           </ion-col>
           <ion-col size="6">
-            <ion-button class="actionbutton" expand="block" color="danger" (click)="presentAlertConfirm()">DELETE</ion-button>
+            <ion-button class="delete" expand="block" color="danger" (click)="deleteVaccine()">DELETE</ion-button>
           </ion-col>
         </ion-row>
       </ion-grid>

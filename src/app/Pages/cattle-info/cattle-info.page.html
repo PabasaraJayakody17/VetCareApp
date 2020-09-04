@@ -8,7 +8,7 @@
   <ion-toolbar class="tool-two">
     <ion-title>Cattle Information</ion-title>
     <ion-buttons slot="start">
-      <ion-icon class="back" name="arrow-back-outline" routerLink="/tabs/farm-info"></ion-icon>
+      <ion-icon class="back" name="arrow-back-outline" routerLink='/tabs/view-farm/:farm.id'></ion-icon>
     </ion-buttons>
   </ion-toolbar>
 </ion-header>
@@ -23,7 +23,7 @@
             <div>Breed of cattle : </div>
           </ion-col>
           <ion-col size="5">
-            <div>jesryx</div>
+            <div>{{ cattle.cattleBreed }}</div>
           </ion-col>
         </ion-row>
         <ion-row>
@@ -31,7 +31,15 @@
             <div>Cattle ID : </div>
           </ion-col>
           <ion-col size="5">
-            <div>81246977075</div>
+            <div>{{ cattle.cattleTagId }}</div>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col size="7">
+            <div>Cattle Date of Birth : </div>
+          </ion-col>
+          <ion-col size="5">
+            <div>{{ cattle.cattleDOB }}</div>
           </ion-col>
         </ion-row>
         <ion-row>
@@ -39,7 +47,7 @@
             <div>Special Features : </div>
           </ion-col>
           <ion-col size="5">
-            <div>Brown</div>
+            <div>{{ cattle.specialFeature }}</div>
           </ion-col>
         </ion-row>
         <ion-row>
@@ -47,7 +55,7 @@
             <div>Sex : </div>
           </ion-col>
           <ion-col size="5">
-            <div>Female</div>
+            <div>{{ cattle.sex}}</div>
           </ion-col>
         </ion-row>
         <ion-row>
@@ -55,7 +63,7 @@
             <div>No of lactation : </div>
           </ion-col>
           <ion-col size="5">
-            <div>1</div>
+            <div>{{ cattle.noLactation}}</div>
           </ion-col>
         </ion-row>
         <ion-row>
@@ -63,7 +71,7 @@
             <div>Birth weight (Kg): </div>
           </ion-col>
           <ion-col size="5">
-            <div>25</div>
+            <div>{{ cattle.birthWeg }}</div>
           </ion-col>
         </ion-row>
         <ion-row>
@@ -71,7 +79,7 @@
             <div>Breeding weight (Kg) : </div>
           </ion-col>
           <ion-col size="5">
-            <div>180</div>
+            <div>{{ cattle.breedingWeg}}</div>
           </ion-col>
         </ion-row>
         <ion-row>
@@ -79,7 +87,7 @@
             <div>Weaning weight : </div>
           </ion-col>
           <ion-col size="5">
-            <div>70</div>
+            <div>{{ cattle.cattleWeaningWeg}}</div>
           </ion-col>
         </ion-row>
         <ion-row>
@@ -87,7 +95,7 @@
             <div>Avg. Pre weg.G/rate : </div>
           </ion-col>
           <ion-col size="5">
-            <div>0.5</div>
+            <div>{{ cattle.avgPreWeg}}</div>
           </ion-col>
         </ion-row>
         <ion-row>
@@ -95,7 +103,7 @@
             <div>Avg. Post weg.G/rate : </div>
           </ion-col>
           <ion-col size="5">
-            <div>1</div>
+            <div>{{ cattle.avgPostWeg}}</div>
           </ion-col>
         </ion-row>
         <ion-row>
@@ -103,7 +111,7 @@
             <div>Last calving date : </div>
           </ion-col>
           <ion-col size="5">
-            <div>2020-01-24</div>
+            <div>{{ cattle.lastCalvingDate}}</div>
           </ion-col>
         </ion-row>
         <ion-row>
@@ -113,36 +121,46 @@
         </ion-row>
         <ion-row>
           <ion-col>
-            <div><img src="assets/images/cattle.jpg"></div>
+            <div><!--img src="assets/images/cattle.jpg"--></div>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col size="6">
+            <ion-button class="update" expand="block" [routerLink]="'/tabs/update-cattle/'+cattle.id">UPDATE</ion-button>
+          </ion-col>
+          <ion-col size="6">
+            <ion-button class="delete" expand="block" color="danger" (click)="deleteCattle()">DELETE</ion-button>
           </ion-col>
         </ion-row>
       </ion-grid>
-      <ion-button class="update" expand="full" shape="round">UPDATE</ion-button>
     </ion-card-content>
   </ion-card>
-
   <!--ion-toolbar-->
     <ion-grid id="details">
       <ion-row>
-        <ion-col size>
-          <ion-button class="actionbutton" expand="block" fill="outline" routerLink="/tabs/vaccination-info">
+        <ion-col>
+          <ion-button class="actionbutton" expand="block" fill="outline" (click)="vaccine()">
             Vaccination Information
           </ion-button>
         </ion-col>
       </ion-row>
       <ion-row>
-        <ion-col size>
-          <ion-button class="actionbutton" expand="block" fill="outline" routerLink="/tabs/disease-info">
+        <ion-col>
+          <ion-button class="actionbutton" expand="block" fill="outline" (click)="disease()">
             Disease Information
           </ion-button>
         </ion-col>  
       </ion-row>
       <ion-row>
         <ion-col>
-          <ion-button class="actionbutton" expand="block" fill="outline" routerLink="/tabs/breeding-info">Breeding Information</ion-button>
+          <ion-button class="actionbutton" expand="block" fill="outline" (click)="breeding()">
+            Breeding Information
+          </ion-button>
         </ion-col>
       </ion-row>
-      <br>
+    </ion-grid>
+    
+    <ion-grid>
       <ion-row class="container">
         <ion-col>
           <ion-button class="actionbutton" expand="block" fill="outline" (click)="showActionSheet()">Add New Information</ion-button>

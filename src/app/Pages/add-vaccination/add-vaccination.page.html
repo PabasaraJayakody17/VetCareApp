@@ -8,7 +8,7 @@
   <ion-toolbar class="tool-two">
     <ion-title>Add Vaccination Information</ion-title>
     <ion-buttons slot="start">
-      <ion-icon class="back" name="arrow-back-outline" routerLink="/tabs/cattle-info"></ion-icon>
+      <ion-icon class="back" name="arrow-back-outline" routerLink="/tabs/view-cattle/:cattle.id"></ion-icon>
     </ion-buttons>
   </ion-toolbar>
 </ion-header>
@@ -17,24 +17,24 @@
   <div class="content">
     <div class="ion-padding">
       <ion-item>
-        <ion-datetime type="date" placeholder="Date" dispalyFormat="DD-MM-YYYY"></ion-datetime>
+        <ion-datetime type="date" placeholder="Date" dispalyFormat="DD-MM-YYYY" [(ngModel)]="vaccine.date"></ion-datetime>
       </ion-item>
       <ion-item>
-        <ion-input type="text" placeholder="Name of vaccine"></ion-input>
+        <ion-input type="text" placeholder="Name of vaccine" [(ngModel)]="vaccine.nameOfVaccine"></ion-input>
       </ion-item>
       <ion-item>
-        <ion-input type="text" placeholder="Purpose of vaccine"></ion-input>
+        <ion-input type="text" placeholder="Purpose of vaccine" [(ngModel)]="vaccine.purposeOfVaccine"></ion-input>
       </ion-item>
       <ion-item>
-        <ion-datetime type="date" placeholder="Next vaccination date" dispalyFormat="DD-MM-YYYY"></ion-datetime>
+        <ion-datetime type="date" placeholder="Next vaccination date" dispalyFormat="DD-MM-YYYY" [(ngModel)]="vaccine.nextVaccineDate"></ion-datetime>
       </ion-item>
       <ion-item>
-        <ion-input type="text" placeholder="Reason of vaccination date"></ion-input>
+        <ion-input type="text" placeholder="Reason of vaccination" [(ngModel)]="vaccine.reasonOfNextVaccine"></ion-input>
       </ion-item>
       <ion-item>
-        <ion-input type="text" placeholder="Remarks"></ion-input>
+        <ion-input type="text" placeholder="Remarks" [(ngModel)]="vaccine.remarks"></ion-input>
       </ion-item>
     </div>
-    <ion-button class="save" expand="block" shape="round" routerLink="/tabs/vaccination-info">SAVE</ion-button>
+    <ion-button class="save" expand="block" shape="round" (click)="addVaccine()">SAVE</ion-button>
   </div>
 </ion-content>

@@ -8,7 +8,7 @@
   <ion-toolbar class="tool-two">
     <ion-title>Add Breeding Information</ion-title>
     <ion-buttons slot="start">
-      <ion-icon class="back" name="arrow-back-outline" routerLink="/tabs/cattle-info"></ion-icon>
+      <ion-icon class="back" name="arrow-back-outline" routerLink="/tabs/view-cattle/:cattle.id"></ion-icon>
     </ion-buttons>
   </ion-toolbar>
 </ion-header>
@@ -17,30 +17,30 @@
   <div class="content">
     <div class="ion-padding">
       <ion-item>
-        <ion-datetime type="date" placeholder="Date of heat sign observed" dispalyFormat="DD-MM-YYYY"></ion-datetime>
+        <ion-datetime type="date" placeholder="Date of heat sign observed" dispalyFormat="DD-MM-YYYY" [(ngModel)]="breeding.dateOfHeatObserved"></ion-datetime>
       </ion-item>
       <ion-item>
-        <ion-datetime type="date" placeholder="Date of first AI" dispalyFormat="DD-MM-YYYY"></ion-datetime>
+        <ion-datetime type="date" placeholder="Date of first AI" dispalyFormat="DD-MM-YYYY" [(ngModel)]="breeding.dateOfFirstAI"></ion-datetime>
       </ion-item>
       <ion-item>
-        <ion-datetime type="date" placeholder="Date of second AI" dispalyFormat="DD-MM-YYYY"></ion-datetime>
+        <ion-datetime type="date" placeholder="Date of second AI" dispalyFormat="DD-MM-YYYY" [(ngModel)]="breeding.dateOfSecondAI"></ion-datetime>
       </ion-item>
       <ion-item>
-        <ion-input type="text" placeholder="Seman ID"></ion-input>
+        <ion-input type="text" placeholder="Seman ID" [(ngModel)]="breeding.semanId"></ion-input>
       </ion-item>
       <ion-item>
-        <ion-datetime type="date" placeholder="Date of PD" dispalyFormat="DD-MM-YYYY"></ion-datetime>
+        <ion-datetime type="date" placeholder="Date of PD" dispalyFormat="DD-MM-YYYY" [(ngModel)]="breeding.dateOfPD"></ion-datetime>
       </ion-item>
       <ion-item>
-        <ion-datetime type="date" placeholder="Date of last calving" dispalyFormat="DD-MM-YYYY"></ion-datetime>
+        <ion-datetime type="date" placeholder="Date of last calving" dispalyFormat="DD-MM-YYYY" [(ngModel)]="breeding.dateOfLastCalving"></ion-datetime>
       </ion-item>
       <ion-item>
-        <ion-input type="text" placeholder="Number of calving"></ion-input>
+        <ion-input type="text" placeholder="Number of calving" [(ngModel)]="breeding.noOfCalving"></ion-input>
       </ion-item>
       <ion-item>
-        <ion-input type="text" placeholder="AI receipt no."></ion-input>
+        <ion-input type="text" placeholder="AI receipt no." [(ngModel)]="breeding.AIReceiptNo"></ion-input>
       </ion-item>
     </div>
-    <ion-button class="save" expand="block" shape="round" routerLink="/tabs/breeding-info">SAVE</ion-button>
+    <ion-button class="save" expand="block" shape="round" (click)="addBreeding()">SAVE</ion-button>
   </div>
 </ion-content>

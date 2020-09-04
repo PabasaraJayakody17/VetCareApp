@@ -1,5 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { AlertController } from '@ionic/angular';
+import { ActivatedRoute, Router } from '@angular/router';
+import { VaccinationService } from '../../services/vaccination.service';
+import { Vaccination } from 'src/app/models/Vaccine';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-vaccination-info',
@@ -8,12 +12,40 @@ import { AlertController } from '@ionic/angular';
 })
 export class VaccinationInfoPage implements OnInit {
 
-  constructor(public alertController: AlertController) { }
-
-  ngOnInit() {
+  vaccine: Vaccination = {
+    id: '',
+    cattleid: '',
+    //veterinarianid: '', 
+    userid:'',
+    date: '',
+    nameOfVaccine: '',
+    purposeOfVaccine: '',
+    nextVaccineDate: '',
+    reasonOfNextVaccine: '',
+    remarks: ''
   }
 
-  async presentAlertConfirm() {
+  //private vaccines: Observable<Vaccination[]>;
+
+  constructor(public alertController: AlertController,
+    private activatedRoute: ActivatedRoute,
+    private router: Router,
+    private vaccinationService: VaccinationService) { }
+
+  ngOnInit() {
+    //this.vaccines = this.vaccinationService.getVaccines();
+  }
+
+  ngAfterViewInit(): void{
+    const id = this.activatedRoute.snapshot.paramMap.get('id');
+    if(id){
+      this.vaccinationService.getVaccine(id).subscribe(vaccineData => {
+        this.vaccine = vaccineData;
+      });
+    }
+  }
+
+  async deleteVaccine() {
     const alert = await this.alertController.create({
       cssClass: 'my-custom-class',
       header: 'Delete',
@@ -30,6 +62,10 @@ export class VaccinationInfoPage implements OnInit {
           text: 'Okay',
           handler: () => {
             console.log('Confirm Okay');
+            this.vaccinationService.deleteVaccine(this.vaccine.id).then(() => {
+              this.router.navigateByUrl('/tabs/view-vaccine/:vaccine.id');
+            }, err => {
+            });
           }
         }
       ]

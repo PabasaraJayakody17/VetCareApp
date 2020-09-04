@@ -8,7 +8,7 @@
   <ion-toolbar class="tool-two">
     <ion-title>Breeding Inormation</ion-title>
     <ion-buttons slot="start">
-      <ion-icon class="back" name="arrow-back-outline" routerLink="/tabs/cattle-info"></ion-icon>
+      <ion-icon class="back" name="arrow-back-outline" routerLink='/tabs/view-cattle/:cattle.id'></ion-icon>
     </ion-buttons>
   </ion-toolbar>
 </ion-header>
@@ -18,20 +18,20 @@
     <ion-card-header></ion-card-header>
     <ion-card-content>
       <ion-grid class="info">
-        <ion-row>
+        <!--ion-row>
           <ion-col size="7">
             <div>Breeding Info. ID : </div>
           </ion-col>
           <ion-col size="5">
             <div>001</div>
           </ion-col>
-        </ion-row>
+        </ion-row-->
         <ion-row>
           <ion-col size="7">
             <div>Date of heat sign observed : </div>
           </ion-col>
           <ion-col size="5">
-            <div>2020-2-3</div>
+            <div>{{ breeding.dateOfHeatObserved }}</div>
           </ion-col>
         </ion-row>
         <ion-row>
@@ -39,7 +39,7 @@
             <div>Date of first AI : </div>
           </ion-col>
           <ion-col size="5">
-            <div>2020-2-24</div>
+            <div>{{ breeding.dateOfFirstAI }}</div>
           </ion-col>
         </ion-row>
         <ion-row>
@@ -47,7 +47,7 @@
             <div>Date of second AI : </div>
           </ion-col>
           <ion-col size="5">
-            <div>2020-3-3</div>
+            <div>{{ breeding.dateOfSecondAI }}</div>
           </ion-col>
         </ion-row>
         <ion-row>
@@ -55,7 +55,7 @@
             <div>Seman ID : </div>
           </ion-col>
           <ion-col size="5">
-            <div>434343</div>
+            <div>{{ breeding.semanId }}</div>
           </ion-col>
         </ion-row>
         <ion-row>
@@ -63,7 +63,7 @@
             <div>Date of PD : </div>
           </ion-col>
           <ion-col size="5">
-            <div>2020-3-19</div>
+            <div>{{ breeding.dateOfPD }}</div>
           </ion-col>
         </ion-row>
         <ion-row>
@@ -71,7 +71,7 @@
             <div>Date of last calving: </div>
           </ion-col>
           <ion-col size="5">
-            <div>2020-3-20</div>
+            <div>{{ breeding.dateOfLastCalving }}</div>
           </ion-col>
         </ion-row>
         <ion-row>
@@ -79,7 +79,7 @@
             <div>Number of calving : </div>
           </ion-col>
           <ion-col size="5">
-            <div>5</div>
+            <div>{{ breeding.NoOfCalving }}</div>
           </ion-col>
         </ion-row>
         <ion-row>
@@ -87,15 +87,15 @@
             <div>AI receipt : </div>
           </ion-col>
           <ion-col size="5">
-            <div>4545</div>
+            <div>{{ breeding.AIReceiptNo }}</div>
           </ion-col>
         </ion-row>
         <ion-row>
           <ion-col size="6">
-            <ion-button class="update" expand="block">UPDATE</ion-button>
+            <ion-button class="update" expand="block" [routerLink]="'/tabs/update-breeding/'+breeding.id">UPDATE</ion-button>
           </ion-col>
           <ion-col size="6">
-            <ion-button class="actionbutton" expand="block" color="danger" (click)="presentAlertConfirm()">DELETE</ion-button>
+            <ion-button class="delete" expand="block" color="danger" (click)="deleteBreeding()">DELETE</ion-button>
           </ion-col>
         </ion-row>
       </ion-grid>

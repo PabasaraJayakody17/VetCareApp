@@ -8,7 +8,7 @@
   <ion-toolbar class="tool-two">
     <ion-title>Add New Cattle Information</ion-title>
     <ion-buttons slot="start">
-      <ion-icon class="back" name="arrow-back-outline" routerLink="/tabs/cattle-info"></ion-icon>
+      <ion-icon class="back" name="arrow-back-outline" routerLink="/tabs/view-farm/:farm.id"></ion-icon>
     </ion-buttons>
   </ion-toolbar>
 </ion-header>
@@ -17,40 +17,40 @@
   <div class="content">
     <div class="ion-padding">
       <ion-item>
-        <ion-input type="text" placeholder="Cattle Breed"></ion-input>
+        <ion-input type="text" placeholder="Cattle Breed" [(ngModel)]="cattle.cattleBreed"></ion-input>
       </ion-item>
       <ion-item>
-        <ion-input type="text" placeholder="Cattle ID"></ion-input>
+        <ion-input type="text" placeholder="Cattle ID" [(ngModel)]="cattle.cattleTagId"></ion-input>
       </ion-item>
       <ion-item>
-        <ion-datetime type="date" placeholder="Cattle Date of Birth" dispalyFormat="DD-MM-YYYY"></ion-datetime>
+        <ion-datetime type="date" placeholder="Cattle Date of Birth" dispalyFormat="DD-MM-YYYY" [(ngModel)]="cattle.cattleDOB"></ion-datetime>
       </ion-item>
       <ion-item>
-        <ion-input type="text" placeholder="Speacial feature"></ion-input>
+        <ion-input type="text" placeholder="Special feature" [(ngModel)]="cattle.specialFeature"></ion-input>
       </ion-item>
       <ion-item>
-        <ion-input type="text" placeholder="Sex"></ion-input>
+        <ion-input type="text" placeholder="Sex" [(ngModel)]="cattle.sex"></ion-input>
       </ion-item>
       <ion-item>
-        <ion-input type="text" placeholder="No of Lactation"></ion-input>
+        <ion-input type="text" placeholder="No of Lactation" [(ngModel)]="cattle.noLactation"></ion-input>
       </ion-item>
       <ion-item>
-        <ion-input type="text" placeholder="Birth weight"></ion-input>
+        <ion-input type="text" placeholder="Birth weight" [(ngModel)]="cattle.birthWeg"></ion-input>
       </ion-item>
       <ion-item>
-        <ion-input type="text" placeholder="Breeding weight"></ion-input>
+        <ion-input type="text" placeholder="Breeding weight" [(ngModel)]="cattle.breedingWeg"></ion-input>
       </ion-item>
       <ion-item>
-        <ion-input type="text" placeholder="Cattle weaning weight"></ion-input>
+        <ion-input type="text" placeholder="Cattle weaning weight" [(ngModel)]="cattle.cattleWeaningWeg"></ion-input>
       </ion-item>
       <ion-item>
-        <ion-input type="text" placeholder="Average Pre weaning growth rate"></ion-input>
+        <ion-input type="text" placeholder="Average Pre weaning growth rate" [(ngModel)]="cattle.avgPreWeg"></ion-input>
       </ion-item>
       <ion-item>
-        <ion-input type="text" placeholder="Average Post weaning growth rate"></ion-input>
+        <ion-input type="text" placeholder="Average Post weaning growth rate" [(ngModel)]="cattle.avgPostWeg"></ion-input>
       </ion-item>
       <ion-item>
-        <ion-datetime type="date" placeholder="Last calving date" dispalyFormat="DD-MM-YYYY"></ion-datetime>
+        <ion-datetime type="date" placeholder="Last calving date" dispalyFormat="DD-MM-YYYY" [(ngModel)]="cattle.lastCalvingDate"></ion-datetime>
       </ion-item>
       <ion-item>
         <ion-grid>
@@ -61,12 +61,12 @@
           </ion-row>
           <ion-row>
             <ion-col>
-              <img src="{{ myphoto }}">
+              <img src="data:image/jpeg;base64">
             </ion-col>
           </ion-row>
         </ion-grid>
       </ion-item>
     </div>
-    <ion-button class="save" expand="block" shape="round" routerLink="/tabs/cattle-info">SAVE</ion-button>
+    <ion-button class="save" expand="block" shape="round" (click)="addCattle()">SAVE</ion-button>
   </div>
 </ion-content>
