@@ -13,9 +13,9 @@ export class FarmService {
   private farmCollection: AngularFirestoreCollection<Farm>;
 
   constructor(private afs: AngularFirestore) {
-    //define collection
+    // define collection
     this.farmCollection = this.afs.collection<Farm>('farms');
-    //Get collection data
+    // Get collection data
     this.farms = this.farmCollection.snapshotChanges().pipe(
       map(actions => {
         return actions.map(a => {
@@ -24,31 +24,32 @@ export class FarmService {
           return { id, ...data };
         });
       })
-    );    
+    );
   }
 
-  //getting all farms
+  // getting all farms
   getFarms(): Observable<Farm[]>{
     return this.farms;
   }
 
-  //getting single farm
+  // getting single farm
   getFarm(id: string): Observable<Farm>{
     return this.farmCollection.doc<Farm>(id).valueChanges().pipe(
       take(1),
       map(farm => {
         farm.id = id;
-        return farm
+        return farm;
       })
     );
   }
 
-  //add farm
-  addFarm(farm: Farm): Promise<DocumentReference>{
-    return this.farmCollection.add(farm);
+  // add farm
+  addFarm(farm: Farm){
+  //  return this.farmCollection.add(farm);
+  return this.farmCollection.doc(farm.farmRegNo).set(farm);
   }
 
-  //update farm
+  // update farm
   updateFarm(farm: Farm): Promise<void>{
     return this.farmCollection.doc(farm.id).update({
       farmName: farm.farmName,
@@ -60,7 +61,7 @@ export class FarmService {
       dairyCattleCount: farm.dairyCattleCount});
   }
 
-  //delete farm
+  // delete farm
   deleteFarm(id: string): Promise<void>{
     return this.farmCollection.doc(id).delete();
   }

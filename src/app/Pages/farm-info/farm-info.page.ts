@@ -32,11 +32,12 @@ export class FarmInfoPage implements OnInit {
   term = '';
 
   constructor(public alertController: AlertController,
-    private activatedRoute: ActivatedRoute,
-    private router: Router,
-    private farmService: FarmService,
-    private cattleService: CattleService) { 
-      //this.fid = localStorage.getItem('farmid'); 
+              private activatedRoute: ActivatedRoute,
+              private router: Router,
+              private farmService: FarmService,
+              private cattleService: CattleService) {
+      // this.fid = localStorage.getItem('farmid'); 
+      this.fid = sessionStorage.getItem('farmId');
     }
   
   ngOnInit() {

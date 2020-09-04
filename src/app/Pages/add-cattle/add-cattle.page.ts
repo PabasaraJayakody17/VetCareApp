@@ -16,7 +16,7 @@ import * as firebase from 'firebase';
 export class AddCattlePage implements OnInit {
 
   cattle: Cattle = {
-    farmid: localStorage.getItem('farmid'),
+    farmid: sessionStorage.getItem('farmId'),
     cattleTagId: '',
     cattleBreed: '',
     cattleDOB: '',
