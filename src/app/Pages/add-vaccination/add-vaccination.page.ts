@@ -10,8 +10,9 @@ import { VaccinationService } from '../../services/vaccination.service';
 })
 export class AddVaccinationPage implements OnInit {
 
+  ctid;
   vaccine: Vaccination = {
-    cattleid: localStorage.getItem('cattleid'),
+    cattleid: sessionStorage.getItem('cattleTagId'),
     //veterinarianId: '',
     userid: '',
     date: '',
@@ -36,4 +37,9 @@ export class AddVaccinationPage implements OnInit {
     });
   }
 
+
+  goback(){
+    this.ctid =  sessionStorage.getItem('cattleTagId');
+    this.router.navigateByUrl('/tabs/view-cattle/' + this.ctid);
+   }
 }

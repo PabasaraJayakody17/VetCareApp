@@ -113,10 +113,10 @@
   <ion-searchbar></ion-searchbar>
 
   <ion-list>
-    <ion-grid id="cattle" *ngFor="let cattle of (cattles | async)">
+    <ion-grid id="cattle" *ngFor="let cattle of (cattles | async)" (click)="gotomore(cattle.cattleTagId)">
       <div *ngIf="fid== cattle.farmid">
         <ion-row class="content">
-          <ion-col size="6" [routerLink]="'/tabs/view-cattle/'+cattle.id">
+          <ion-col size="6" [routerLink]="'/tabs/view-cattle/' + cattle.id">
             <div>{{ cattle.cattleTagId}}</div>
           </ion-col>
           <ion-col size="6">

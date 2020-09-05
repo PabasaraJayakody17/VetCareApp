@@ -3,6 +3,7 @@ import { AlertController } from '@ionic/angular';
 import { ActivatedRoute, Router } from '@angular/router';
 import { BreedingService } from '../../services/breeding.service'; 
 import { Breeding } from 'src/app/models/breeding';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-breeding-info',
@@ -10,7 +11,7 @@ import { Breeding } from 'src/app/models/breeding';
   styleUrls: ['./breeding-info.page.scss'],
 })
 export class BreedingInfoPage implements OnInit {
-
+  ctid;
   breeding: Breeding = {
     cattleid: '',
     dateOfHeatObserved: '',
@@ -23,12 +24,15 @@ export class BreedingInfoPage implements OnInit {
     AIReceiptNo: ''
   }
 
+  private breedings: Observable<Breeding[]>;
+
   constructor(public alertController: AlertController,
-    private router: Router,
-    private activatedRoute: ActivatedRoute,
-    private breedingService: BreedingService) { }
+              private router: Router,
+              private activatedRoute: ActivatedRoute,
+              private breedingService: BreedingService) { }
 
   ngOnInit() {
+    this.breedings = this.breedingService.getBreedings();
   }
 
   ngAfterViewInit(): void{
@@ -53,7 +57,7 @@ export class BreedingInfoPage implements OnInit {
           handler: (blah) => {
             console.log('Confirm Cancel: blah');
           }
-        }, { 
+        }, {
           text: 'Okay',
           handler: () => {
             console.log('Confirm Okay');
@@ -94,5 +98,8 @@ export class BreedingInfoPage implements OnInit {
     await alert.present();
   }
 
-
+  goback(){
+    this.ctid =  sessionStorage.getItem('cattleTagId');
+    this.router.navigateByUrl('/tabs/view-cattle/' + this.ctid);
+   }
 }

@@ -9,9 +9,9 @@ import { Breeding } from 'src/app/models/breeding';
   styleUrls: ['./add-breeding.page.scss'],
 })
 export class AddBreedingPage implements OnInit {
-
+  ctid;
   breeding: Breeding = {
-    cattleid: '',
+    cattleid: sessionStorage.getItem('cattleTagId'),
     dateOfHeatObserved: '',
     dateOfFirstAI: '',
     dateOfSecondAI: '',
@@ -34,5 +34,9 @@ export class AddBreedingPage implements OnInit {
     }, err => {
     });
   }
+  goback(){
+    this.ctid =  sessionStorage.getItem('cattleTagId');
+    this.router.navigateByUrl('/tabs/view-cattle/' + this.ctid);
+   }
 }
  

@@ -13,9 +13,9 @@ export class BreedingService {
   private breedingCollection: AngularFirestoreCollection<Breeding>;
 
   constructor(private afs: AngularFirestore) {
-    //define collection
+    // define collection
     this.breedingCollection = this.afs.collection<Breeding>('breedings');
-    //Get collection data
+    // Get collection data
     this.breedings = this.breedingCollection.snapshotChanges().pipe(
       map(actions => {
         return actions.map(a => {
@@ -27,28 +27,28 @@ export class BreedingService {
     );
   }
 
-  //getting all breeding
+  // getting all breeding
   getBreedings(): Observable<Breeding[]>{
     return this.breedings;
   }
-  
-  //getting single breeding
+
+  // getting single breeding
   getBreeding(id: string): Observable<Breeding>{
     return this.breedingCollection.doc<Breeding>(id).valueChanges().pipe(
       take(1),
       map(breeding => {
         breeding.id = id;
-        return breeding
+        return breeding;
       })
     );
   }
 
-  //add breeding
+  // add breeding
   addBreeding(breeding: Breeding): Promise<DocumentReference>{
     return this.breedingCollection.add(breeding);
   }
-  
-  //update breeding
+
+  // update breeding
   updateBreeding(breeding: Breeding): Promise<void>{
     return this.breedingCollection.doc(breeding.id).update({
       dateOfHeatObserved: breeding.dateOfHeatObserved,
@@ -60,8 +60,8 @@ export class BreedingService {
       noOfCalving: breeding.noOfCalving,
       AIReceiptNo: breeding.AIReceiptNo});
   }
-  
-  //delete breeding
+
+  // delete breeding
   deleteBreeding(id: string): Promise<void>{
     return this.breedingCollection.doc(id).delete();
   }

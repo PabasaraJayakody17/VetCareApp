@@ -9,9 +9,9 @@ import { VaccinationService} from '../../services/vaccination.service';
   styleUrls: ['./update-vaccine.page.scss'],
 })
 export class UpdateVaccinePage implements OnInit {
-
+  ctid;
   vaccine: Vaccination = {
-    cattleid: localStorage.getItem('cattleid'),
+    cattleid: sessionStorage.getItem('cattleTagId'),
     //veterinarianId: '',
     userid: '',
     date: '',
@@ -24,7 +24,9 @@ export class UpdateVaccinePage implements OnInit {
 
   constructor(private activatedRoute: ActivatedRoute,
     private router: Router,
-    private vaccinationService: VaccinationService) { }
+    private vaccinationService: VaccinationService) {
+      this.ctid =  sessionStorage.getItem('cattleTagId');
+     }
 
   ngOnInit() {
   } 
@@ -40,10 +42,14 @@ export class UpdateVaccinePage implements OnInit {
 
   updateVaccine(){
     this.vaccinationService.updateVaccine(this.vaccine).then(() => {
-      this.router.navigateByUrl('/tabs/view-vaccine/:id');
+      this.router.navigateByUrl('/tabs/view-vaccine/' + this.ctid);
     }, err =>{
     });
   }
+
+  goback(){    
+    this.router.navigateByUrl('/tabs/view-vaccine/' + this.ctid);
+   }
 
 }
  

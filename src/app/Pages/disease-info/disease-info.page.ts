@@ -3,6 +3,7 @@ import { AlertController } from '@ionic/angular';
 import { ActivatedRoute, Router } from '@angular/router';
 import { DiseaseService } from '../../services/disease.service';
 import { Disease } from 'src/app/models/disease';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-disease-info',
@@ -10,10 +11,10 @@ import { Disease } from 'src/app/models/disease';
   styleUrls: ['./disease-info.page.scss'],
 })
 export class DiseaseInfoPage implements OnInit {
-
+  ctid;
   disease: Disease = {
     cattleid: '',
-    //veterinarianId: '',
+    // veterinarianId: '',
     userid: '',
     date: '',
     clinicalSigns: '',
@@ -23,12 +24,15 @@ export class DiseaseInfoPage implements OnInit {
     remarks: ''
   }
 
+  private diseases: Observable<Disease[]>;
+
   constructor(public alertController: AlertController,
-    private router: Router,
-    private activatedRoute: ActivatedRoute,
-    private diseaseService: DiseaseService) { }
+              private router: Router,
+              private activatedRoute: ActivatedRoute,
+              private diseaseService: DiseaseService) { }
 
   ngOnInit() {
+    this.diseases = this.diseaseService.getDiseases();
   }
 
   ngAfterViewInit(): void{
@@ -68,5 +72,8 @@ export class DiseaseInfoPage implements OnInit {
 
     await alert.present();
   }
-
+  goback(){
+    this.ctid =  sessionStorage.getItem('cattleTagId');
+    this.router.navigateByUrl('/tabs/view-cattle/' + this.ctid);
+   }
 }

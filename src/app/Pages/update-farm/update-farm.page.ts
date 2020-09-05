@@ -9,7 +9,7 @@ import { FarmService } from '../../services/farm.service';
   styleUrls: ['./update-farm.page.scss'],
 })
 export class UpdateFarmPage implements OnInit {
-
+  fid;
   farm: Farm = {
     id: '',
     farmName: '',
@@ -46,5 +46,8 @@ export class UpdateFarmPage implements OnInit {
     });
   }
 
-
+  goback(){
+    this.fid =  sessionStorage.getItem('farmId');
+    this.router.navigateByUrl('/tabs/view-farm/' + this.fid);
+   }
 }

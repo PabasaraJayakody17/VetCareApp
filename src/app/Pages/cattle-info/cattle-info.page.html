@@ -8,7 +8,7 @@
   <ion-toolbar class="tool-two">
     <ion-title>Cattle Information</ion-title>
     <ion-buttons slot="start">
-      <ion-icon class="back" name="arrow-back-outline" routerLink='/tabs/view-farm/:farm.id'></ion-icon>
+      <ion-icon class="back" name="arrow-back-outline" (click)="goback()"></ion-icon>
     </ion-buttons>
   </ion-toolbar>
 </ion-header>
@@ -163,7 +163,7 @@
     <ion-grid>
       <ion-row class="container">
         <ion-col>
-          <ion-button class="actionbutton" expand="block" fill="outline" (click)="showActionSheet()">Add New Information</ion-button>
+          <ion-button class="actionbutton" expand="block"  (click)="showActionSheet()">Add New Information</ion-button>
         </ion-col>
       </ion-row>
     </ion-grid>

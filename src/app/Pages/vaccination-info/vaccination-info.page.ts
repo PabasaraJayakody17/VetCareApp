@@ -11,11 +11,11 @@ import { Observable } from 'rxjs';
   styleUrls: ['./vaccination-info.page.scss'],
 })
 export class VaccinationInfoPage implements OnInit {
-
+  ctid;
   vaccine: Vaccination = {
     id: '',
     cattleid: '',
-    //veterinarianid: '', 
+    // veterinarianid: '',
     userid:'',
     date: '',
     nameOfVaccine: '',
@@ -25,15 +25,15 @@ export class VaccinationInfoPage implements OnInit {
     remarks: ''
   }
 
-  //private vaccines: Observable<Vaccination[]>;
+   private vaccines: Observable<Vaccination[]>;
 
   constructor(public alertController: AlertController,
-    private activatedRoute: ActivatedRoute,
-    private router: Router,
-    private vaccinationService: VaccinationService) { }
+              private activatedRoute: ActivatedRoute,
+              private router: Router,
+              private vaccinationService: VaccinationService) { }
 
   ngOnInit() {
-    //this.vaccines = this.vaccinationService.getVaccines();
+    this.vaccines = this.vaccinationService.getVaccines();
   }
 
   ngAfterViewInit(): void{
@@ -73,4 +73,9 @@ export class VaccinationInfoPage implements OnInit {
 
     await alert.present();
   }
+
+  goback(){
+    this.ctid =  sessionStorage.getItem('cattleTagId');
+    this.router.navigateByUrl('/tabs/view-cattle/' + this.ctid);
+   }
 }

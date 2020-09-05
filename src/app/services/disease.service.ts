@@ -12,10 +12,10 @@ export class DiseaseService {
   private diseases: Observable<Disease[]>;
   private diseaseCollection: AngularFirestoreCollection<Disease>;
 
-  constructor(private afs: AngularFirestore) { 
-    //define collection
+  constructor(private afs: AngularFirestore) {
+    // define collection
     this.diseaseCollection = this.afs.collection<Disease>('diseases');
-    //Get collection data
+    // Get collection data
     this.diseases = this.diseaseCollection.snapshotChanges().pipe(
       map(actions => {
         return actions.map(a => {
@@ -27,28 +27,28 @@ export class DiseaseService {
     );
   }
 
-  //getting all diseases
+  // getting all diseases
   getDiseases(): Observable<Disease[]>{
     return this.diseases;
   }
 
-  //getting single disease
+  // getting single disease
   getDisease(id: string): Observable<Disease>{
     return this.diseaseCollection.doc<Disease>(id).valueChanges().pipe(
       take(1),
       map(disease => {
         disease.id = id;
-        return disease
+        return disease;
       })
     );
   }
 
-  //add disease
+  // add disease
   addDisease(disease: Disease): Promise<DocumentReference>{
     return this.diseaseCollection.add(disease);
   }
-  
-  //update disease
+
+  // update disease
   updateDisease(disease: Disease): Promise<void>{
     return this.diseaseCollection.doc(disease.id).update({
       date: disease.date,
@@ -58,8 +58,8 @@ export class DiseaseService {
       treatment: disease.treatment,
       remarks: disease.remarks});
   }
-  
-  //delete disease
+
+  // delete disease
   deleteDisease(id: string): Promise<void>{
     return this.diseaseCollection.doc(id).delete();
   }

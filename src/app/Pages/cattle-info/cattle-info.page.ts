@@ -12,6 +12,8 @@ import { Cattle } from '../../models/Cattle';
 })
 export class CattleInfoPage implements OnInit {
 
+  fid;
+  ctid;
   cattle: Cattle = {
     id: '',
     farmid: '',
@@ -22,7 +24,7 @@ export class CattleInfoPage implements OnInit {
     sex: '',
     noLactation: '',
     birthWeg: '',
-    breedingWeg: '', 
+    breedingWeg: '',
     cattleWeaningWeg: '',
     avgPreWeg: '',
     avgPostWeg: '',
@@ -31,17 +33,17 @@ export class CattleInfoPage implements OnInit {
   }
 
   constructor(private actionSheetCtrl: ActionSheetController,
-    public alertController: AlertController,
-    private activatedRoute: ActivatedRoute,
-    private router: Router,
-    private cattleService: CattleService) { }
+              public alertController: AlertController,
+              private activatedRoute: ActivatedRoute,
+              private router: Router,
+              private cattleService: CattleService) { }
 
   ngOnInit() {
   }
 
   ngAfterViewInit(): void{
     const id = this.activatedRoute.snapshot.paramMap.get('id');
-    if(id){
+    if (id){
       this.cattleService.getCattle(id).subscribe(cattleData => {
         this.cattle = cattleData;
       });
@@ -77,62 +79,70 @@ export class CattleInfoPage implements OnInit {
     await alert.present();
   }
 
+
   vaccine(){
-    this.router.navigateByUrl('/tabs/view-vaccine/:vaccine.id');
+    this.ctid =  sessionStorage.getItem('cattleTagId');
+    this.router.navigateByUrl('/tabs/view-vaccine/' + this.ctid);
   }
 
   disease(){
-    this.router.navigateByUrl('/tabs/view-disease/:disease.id');
+    this.ctid =  sessionStorage.getItem('cattleTagId');
+    this.router.navigateByUrl('/tabs/view-disease/' + this.ctid);
   }
 
   breeding(){
-    this.router.navigateByUrl('/tabs/view-breeding/:breeding.id');
+    this.ctid =  sessionStorage.getItem('cattleTagId');
+    this.router.navigateByUrl('/tabs/view-breeding/' + this.ctid);
   }
 
   async showActionSheet(){
     await this.actionSheetCtrl.create({
       cssClass: 'add',
-      //header: 'Add New Informations',
-      buttons:[
+      // header: 'Add New Informations',
+      buttons: [
         {
-          text: "Add New Vaccination Information",
-          //cssClass: 'add',
+          text: 'Add New Vaccination Information',
+          // cssClass: 'add',
           handler: () => {
-            console.log("Add Vaccination info clicked")
+            console.log('Add Vaccination info clicked');
             this.navigateToAddVaccination();
           }
         },
         {
-          text: "Add New Disease Information",
-          //cssClass: 'add',
+          text: 'Add New Disease Information',
+          // cssClass: 'add',
           handler: () => {
-            console.log("Add Disease info clicked")
+            console.log('Add Disease info clicked');
             this.navigateToAddDisease();
           }
         },
         {
-          text: "Add New Breeding Information",
-          //cssClass: 'add',
+          text: 'Add New Breeding Information',
+          // cssClass: 'add',
           handler: () => {
-            console.log("Add Breeding info clicked")
+            console.log('Add Breeding info clicked');
             this.navigateToAddBreeding();
-          } 
+          }
         },
         {
-          text: "Cancel",
-          role: "cancel"
+          text: 'Cancel',
+          role: 'cancel'
         }
       ]
-    }).then(res => res.present());  
+    }).then(res => res.present());
   }
 
   navigateToAddVaccination(){
-    this.router.navigate(['tabs/add-vaccination'])
+    this.router.navigate(['tabs/add-vaccination']);
   }
   navigateToAddDisease(){
-    this.router.navigate(['tabs/add-disease'])
+    this.router.navigate(['tabs/add-disease']);
   }
   navigateToAddBreeding(){
-    this.router.navigate(['tabs/add-breeding'])
+    this.router.navigate(['tabs/add-breeding']);
+  }
+  goback(){
+   this.fid =  sessionStorage.getItem('farmId');
+   this.router.navigateByUrl('/tabs/view-farm/' + this.fid);
   }
 }

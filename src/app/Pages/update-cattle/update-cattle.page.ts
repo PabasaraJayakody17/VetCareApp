@@ -10,6 +10,7 @@ import { Cattle } from '../../models/Cattle';
 })
 export class UpdateCattlePage implements OnInit {
 
+  ctid;
   cattle: Cattle = {
     id:'',
     farmid: '', 
@@ -50,5 +51,8 @@ export class UpdateCattlePage implements OnInit {
     }, err =>{
     });
   }
-
+  goback(){
+    this.ctid =  sessionStorage.getItem('cattleTagId');
+    this.router.navigateByUrl('/tabs/view-cattle/' + this.ctid);
+   }
 }

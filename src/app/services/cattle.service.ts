@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { AngularFirestore, AngularFirestoreCollection, DocumentReference } from '@angular/fire/firestore';
-import { map, take } from 'rxjs/operators'; 
+import { map, take } from 'rxjs/operators';
 import { Cattle } from '../models/Cattle';
 
 @Injectable({
@@ -12,10 +12,10 @@ export class CattleService {
   private cattles: Observable<Cattle[]>;
   private cattleCollection: AngularFirestoreCollection<Cattle>;
 
-  constructor(private afs: AngularFirestore) { 
-    //define collection
+  constructor(private afs: AngularFirestore) {
+    // define collection
     this.cattleCollection = this.afs.collection<Cattle>('cattles');
-    //Get collection data
+    // Get collection data
     this.cattles = this.cattleCollection.snapshotChanges().pipe(
       map(actions => {
         return actions.map(a => {
@@ -27,38 +27,39 @@ export class CattleService {
     );
   }
 
-  //getting all cattle
+  // getting all cattle
   getCattles(): Observable<Cattle[]>{
     return this.cattles;
   }
 
-  //getting single cattle
+  // getting single cattle
   getCattle(id: string): Observable<Cattle>{
     return this.cattleCollection.doc<Cattle>(id).valueChanges().pipe(
       take(1),
       map(cattle => {
         cattle.id = id;
-        return cattle
+        return cattle;
       })
     );
   }
 
-  //add cattle
-  addCattle(cattle: Cattle): Promise<DocumentReference>{
-    return this.cattleCollection.add(cattle);
+
+  // add cattle
+  addCattle(cattle: Cattle){
+    return this.cattleCollection.doc(cattle.cattleTagId).set(cattle);
   }
 
-  //update cattle
+  // update cattle
   updateCattle(cattle: Cattle): Promise<void>{
     return this.cattleCollection.doc(cattle.id).update({noLactation: cattle.noLactation,
-    breedingWeg: cattle.breedingWeg, 
+    breedingWeg: cattle.breedingWeg,
     cattleWeaningWeg: cattle.cattleWeaningWeg,
     avgPreWeg: cattle.avgPreWeg,
     avgPostWeg: cattle.avgPostWeg,
     lastCalvingDate: cattle.lastCalvingDate});
   }
 
-  //delete cattle
+  // delete cattle
   deleteCattle(id: string): Promise<void>{
     return this.cattleCollection.doc(id).delete();
   }

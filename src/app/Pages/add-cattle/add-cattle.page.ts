@@ -14,7 +14,7 @@ import * as firebase from 'firebase';
   styleUrls: ['./add-cattle.page.scss'],
 })
 export class AddCattlePage implements OnInit {
-
+  fid;
   cattle: Cattle = {
     farmid: sessionStorage.getItem('farmId'),
     cattleTagId: '',
@@ -123,4 +123,10 @@ export class AddCattlePage implements OnInit {
       alert(JSON.stringify(Err));
     })
   }
+
+
+  goback(){
+    this.fid =  sessionStorage.getItem('farmId');
+    this.router.navigateByUrl('/tabs/view-farm/' + this.fid);
+   }
 }

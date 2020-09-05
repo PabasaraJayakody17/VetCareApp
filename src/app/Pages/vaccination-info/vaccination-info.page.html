@@ -8,13 +8,13 @@
   <ion-toolbar class="tool-two">
     <ion-title>Vaccination Inormation</ion-title>
     <ion-buttons slot="start">
-      <ion-icon class="back" name="arrow-back-outline" routerLink='/tabs/view-cattle/:cattle.id'></ion-icon>
+      <ion-icon class="back" name="arrow-back-outline" (click)="goback()"></ion-icon>
     </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
-  <ion-card>
+  <ion-card *ngFor="let vaccine of (vaccines | async)">
     <ion-card-header></ion-card-header>
     <ion-card-content>
       <ion-grid class="info"> 

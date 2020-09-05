@@ -39,14 +39,14 @@ export class FarmInfoPage implements OnInit {
       // this.fid = localStorage.getItem('farmid'); 
       this.fid = sessionStorage.getItem('farmId');
     }
-  
+
   ngOnInit() {
     this.cattles = this.cattleService.getCattles();
   }
 
   ngAfterViewInit(): void{
     const id = this.activatedRoute.snapshot.paramMap.get('id');
-    if(id){
+    if (id){
       this.farmService.getFarm(id).subscribe(farmData => {
         this.farm = farmData;
       });
@@ -80,6 +80,12 @@ export class FarmInfoPage implements OnInit {
     });
 
     await alert.present();
+  }
+
+  gotomore(cattleTagId){
+    sessionStorage.setItem('cattleTagId', cattleTagId);
+   // this.nav.navigateForward('tabs/chat');
+   // this.router.navigateByUrl('/chat');
   }
 
 }

@@ -10,8 +10,9 @@ import { Disease } from 'src/app/models/disease';
 })
 export class UpdateDiseasePage implements OnInit {
 
+  ctid;
   disease: Disease = {
-    cattleid: '',
+    cattleid:  sessionStorage.getItem('cattleTagId'),
     //veterinarianId: '',
     userid: '',
     date: '',
@@ -24,7 +25,9 @@ export class UpdateDiseasePage implements OnInit {
 
   constructor(private activatedRoute: ActivatedRoute,
     private diseaseService: DiseaseService,
-    private router: Router) { }
+    private router: Router) { 
+      this.ctid =  sessionStorage.getItem('cattleTagId');
+    }
 
   ngOnInit() {
   }
@@ -37,5 +40,9 @@ export class UpdateDiseasePage implements OnInit {
       });
     }
   }
+
+  goback(){    
+    this.router.navigateByUrl('/tabs/view-disease/' + this.ctid);
+   }
 }
  

@@ -10,8 +10,9 @@ import { Breeding } from 'src/app/models/breeding';
 })
 export class UpdateBreedingPage implements OnInit {
 
+  ctid;
   breeding: Breeding = {
-    cattleid: '',
+    cattleid: sessionStorage.getItem('cattleTagId'),
     dateOfHeatObserved: '',
     dateOfFirstAI: '',
     dateOfSecondAI: '',
@@ -24,7 +25,9 @@ export class UpdateBreedingPage implements OnInit {
 
   constructor(private activatedRoute: ActivatedRoute,
     private router: Router,
-    private breedingService: BreedingService) { }
+    private breedingService: BreedingService) {
+      this.ctid =  sessionStorage.getItem('cattleTagId');
+     }
 
   ngOnInit() {
   }
@@ -37,5 +40,7 @@ export class UpdateBreedingPage implements OnInit {
       });
     }
   }
-
+  goback(){    
+    this.router.navigateByUrl('/tabs/view-breeding/' + this.ctid);
+   }
 }

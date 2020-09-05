@@ -10,8 +10,9 @@ import { Disease } from 'src/app/models/disease';
 })
 export class AddDiseasePage implements OnInit {
 
+  ctid;
   disease: Disease = {
-    cattleid: '',
+    cattleid: sessionStorage.getItem('cattleTagId'),
     //veterinarianId: '',
     userid: '',
     date: '',
@@ -36,5 +37,8 @@ export class AddDiseasePage implements OnInit {
     });
   }
 
-
+  goback(){
+    this.ctid =  sessionStorage.getItem('cattleTagId');
+    this.router.navigateByUrl('/tabs/view-cattle/' + this.ctid);
+   }
 }
