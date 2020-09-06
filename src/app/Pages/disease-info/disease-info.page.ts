@@ -29,7 +29,9 @@ export class DiseaseInfoPage implements OnInit {
   constructor(public alertController: AlertController,
               private router: Router,
               private activatedRoute: ActivatedRoute,
-              private diseaseService: DiseaseService) { }
+              private diseaseService: DiseaseService) {
+                this.ctid =  sessionStorage.getItem('cattleTagId');
+               }
 
   ngOnInit() {
     this.diseases = this.diseaseService.getDiseases();
@@ -44,7 +46,7 @@ export class DiseaseInfoPage implements OnInit {
     }
   }
 
-  async deleteDisease() {
+  async deleteDisease(diseaseid) {
     const alert = await this.alertController.create({
       cssClass: 'my-custom-class',
       header: 'Delete',
@@ -61,8 +63,8 @@ export class DiseaseInfoPage implements OnInit {
           text: 'Okay',
           handler: () => {
             console.log('Confirm Okay');
-            this.diseaseService.deleteDisease(this.disease.id).then(() => {
-              this.router.navigateByUrl('/tabs/view-disease/:disease.id');
+            this.diseaseService.deleteDisease(diseaseid).then(() => {
+              this.router.navigateByUrl('/tabs/view-disease/' + this.ctid);
             }, err => {
             });
           }
@@ -72,8 +74,7 @@ export class DiseaseInfoPage implements OnInit {
 
     await alert.present();
   }
-  goback(){
-    this.ctid =  sessionStorage.getItem('cattleTagId');
+  goback(){ 
     this.router.navigateByUrl('/tabs/view-cattle/' + this.ctid);
    }
 }

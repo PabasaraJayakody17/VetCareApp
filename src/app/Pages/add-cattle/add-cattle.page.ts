@@ -39,7 +39,9 @@ export class AddCattlePage implements OnInit {
     private router: Router,
     private camera: Camera,
     private cattleService: CattleService,
-    private farmService: FarmService) { }
+    private farmService: FarmService) { 
+      this.fid =  sessionStorage.getItem('farmId');
+    }
 
   ngOnInit() {
     /*this.farmService.getFarms().then(farm$ => {
@@ -51,7 +53,7 @@ export class AddCattlePage implements OnInit {
 
   addCattle(){
     this.cattleService.addCattle(this.cattle).then(() => {
-      this.router.navigateByUrl('/tabs/view-farm/:farm.id');
+      this.router.navigateByUrl('/tabs/view-farm/' + this.fid);
     }, err => {
 
     });
@@ -126,7 +128,7 @@ export class AddCattlePage implements OnInit {
 
 
   goback(){
-    this.fid =  sessionStorage.getItem('farmId');
+    
     this.router.navigateByUrl('/tabs/view-farm/' + this.fid);
    }
 }

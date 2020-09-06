@@ -15,9 +15,10 @@
 
 <ion-content>
   <ion-card *ngFor="let breeding of (breedings | async)">
-    <ion-card-header></ion-card-header>
-    <ion-card-content>
-      <ion-grid class="info">
+    <div  *ngIf="ctid== breeding.cattleid">
+      <ion-card-header></ion-card-header>
+        <ion-card-content>
+         <ion-grid class="info">
         <!--ion-row>
           <ion-col size="7">
             <div>Breeding Info. ID : </div>
@@ -79,12 +80,12 @@
             <div>Number of calving : </div>
           </ion-col>
           <ion-col size="5">
-            <div>{{ breeding.NoOfCalving }}</div>
+            <div>{{ breeding.noOfCalving }}</div>
           </ion-col>
         </ion-row>
         <ion-row>
           <ion-col size="7">
-            <div>AI receipt : </div>
+            <div>AI receipt No: </div>
           </ion-col>
           <ion-col size="5">
             <div>{{ breeding.AIReceiptNo }}</div>
@@ -95,10 +96,11 @@
             <ion-button class="update" expand="block" [routerLink]="'/tabs/update-breeding/'+breeding.id">UPDATE</ion-button>
           </ion-col>
           <ion-col size="6">
-            <ion-button class="delete" expand="block" color="danger" (click)="deleteBreeding()">DELETE</ion-button>
+            <ion-button class="delete" expand="block" color="danger" (click)="deleteBreeding(breeding.id)">DELETE</ion-button>
           </ion-col>
         </ion-row>
       </ion-grid>
-    </ion-card-content>
+     </ion-card-content>
+    </div>
   </ion-card>
 </ion-content>

@@ -41,6 +41,12 @@ export class UpdateDiseasePage implements OnInit {
     }
   }
 
+  updateDisease(){
+    this.diseaseService.updateDisease(this.disease).then(() => {
+      this.router.navigateByUrl('/tabs/view-disease/' + this.ctid);
+    }, err =>{
+    });
+  }
   goback(){    
     this.router.navigateByUrl('/tabs/view-disease/' + this.ctid);
    }

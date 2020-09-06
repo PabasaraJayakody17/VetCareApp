@@ -51,12 +51,21 @@ export class CattleService {
 
   // update cattle
   updateCattle(cattle: Cattle): Promise<void>{
-    return this.cattleCollection.doc(cattle.id).update({noLactation: cattle.noLactation,
-    breedingWeg: cattle.breedingWeg,
-    cattleWeaningWeg: cattle.cattleWeaningWeg,
-    avgPreWeg: cattle.avgPreWeg,
-    avgPostWeg: cattle.avgPostWeg,
-    lastCalvingDate: cattle.lastCalvingDate});
+    return this.cattleCollection.doc(cattle.id).update({
+      cattleTagId: cattle.cattleTagId,
+      cattleBreed: cattle.cattleBreed,
+      cattleDOB: cattle.cattleDOB,
+      specialFeature: cattle.specialFeature,
+      sex: cattle.sex,
+      noLactation: cattle.noLactation,
+      birthWeg: cattle.birthWeg,
+      breedingWeg: cattle.breedingWeg,
+      cattleWeaningWeg: cattle.cattleWeaningWeg,
+      avgPreWeg: cattle.avgPreWeg,
+      avgPostWeg: cattle.avgPostWeg,
+      lastCalvingDate: cattle.lastCalvingDate,
+      cattleImg: cattle.cattleImg
+  });
   }
 
   // delete cattle

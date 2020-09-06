@@ -4,6 +4,7 @@ import { AlertController } from '@ionic/angular';
 import { ActivatedRoute, Router } from '@angular/router';
 import { CattleService } from '../../services/cattle.service';
 import { Cattle } from '../../models/Cattle';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-cattle-info',
@@ -31,14 +32,19 @@ export class CattleInfoPage implements OnInit {
     lastCalvingDate: '',
     cattleImg: '',
   }
+  private cattles: Observable<Cattle[]>;
 
   constructor(private actionSheetCtrl: ActionSheetController,
               public alertController: AlertController,
               private activatedRoute: ActivatedRoute,
               private router: Router,
-              private cattleService: CattleService) { }
+              private cattleService: CattleService) {
+              this.ctid =  sessionStorage.getItem('cattleTagId');
+              this.fid =  sessionStorage.getItem('farmId');
+               }
 
   ngOnInit() {
+   this.cattles =  this.cattleService.getCattles();
   }
 
   ngAfterViewInit(): void{
@@ -68,7 +74,7 @@ export class CattleInfoPage implements OnInit {
           handler: () => {
             console.log('Confirm Okay');
             this.cattleService.deleteCattle(this.cattle.id).then(() => {
-              this.router.navigateByUrl('/tabs/view-farm/:farm.id');
+              this.router.navigateByUrl('/tabs/view-farm/' + this.fid);
             }, err => {
             });
           }
@@ -81,17 +87,14 @@ export class CattleInfoPage implements OnInit {
 
 
   vaccine(){
-    this.ctid =  sessionStorage.getItem('cattleTagId');
     this.router.navigateByUrl('/tabs/view-vaccine/' + this.ctid);
   }
 
   disease(){
-    this.ctid =  sessionStorage.getItem('cattleTagId');
     this.router.navigateByUrl('/tabs/view-disease/' + this.ctid);
   }
 
   breeding(){
-    this.ctid =  sessionStorage.getItem('cattleTagId');
     this.router.navigateByUrl('/tabs/view-breeding/' + this.ctid);
   }
 
@@ -142,7 +145,6 @@ export class CattleInfoPage implements OnInit {
     this.router.navigate(['tabs/add-breeding']);
   }
   goback(){
-   this.fid =  sessionStorage.getItem('farmId');
    this.router.navigateByUrl('/tabs/view-farm/' + this.fid);
   }
 }

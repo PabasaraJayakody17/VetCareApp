@@ -15,6 +15,7 @@
 
 <ion-content>
   <ion-card *ngFor="let vaccine of (vaccines | async)">
+    <div  *ngIf="ctid== vaccine.cattleid">
     <ion-card-header></ion-card-header>
     <ion-card-content>
       <ion-grid class="info"> 
@@ -63,7 +64,7 @@
             <div>Reason of Next Vaccination : </div>
           </ion-col>
           <ion-col size="5">
-            <div>{{vaccine.resoneOfNextVaccine}}</div>
+            <div>{{vaccine.reasonOfNextVaccine}}</div>
           </ion-col>
         </ion-row>
         <ion-row>
@@ -79,10 +80,11 @@
             <ion-button class="update" expand="block" [routerLink]="'/tabs/update-vaccine/'+vaccine.id">UPDATE</ion-button>
           </ion-col>
           <ion-col size="6">
-            <ion-button class="delete" expand="block" color="danger" (click)="deleteVaccine()">DELETE</ion-button>
+            <ion-button class="delete" expand="block" color="danger" (click)="deleteVaccine(vaccine.id)">DELETE</ion-button>
           </ion-col>
         </ion-row>
       </ion-grid>
     </ion-card-content>
+    </div>
   </ion-card>
 </ion-content>

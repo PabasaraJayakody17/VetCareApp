@@ -14,7 +14,7 @@ export class AddDiseasePage implements OnInit {
   disease: Disease = {
     cattleid: sessionStorage.getItem('cattleTagId'),
     //veterinarianId: '',
-    userid: '',
+    userid: localStorage.getItem('userid'),
     date: '',
     clinicalSigns: '',
     typeOfClinicalSigns: '',

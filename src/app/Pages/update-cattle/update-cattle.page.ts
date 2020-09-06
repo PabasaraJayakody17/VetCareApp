@@ -12,7 +12,7 @@ export class UpdateCattlePage implements OnInit {
 
   ctid;
   cattle: Cattle = {
-    id:'',
+    id:sessionStorage.getItem('cattleTagId'),
     farmid: '', 
     cattleTagId: '',
     cattleBreed: '',
@@ -31,7 +31,9 @@ export class UpdateCattlePage implements OnInit {
 
   constructor(private activatedRoute: ActivatedRoute,
     private router: Router,
-    private cattleService: CattleService) { }
+    private cattleService: CattleService) { 
+      this.ctid =  sessionStorage.getItem('cattleTagId');
+    }
 
   ngOnInit() {
   }
@@ -47,12 +49,12 @@ export class UpdateCattlePage implements OnInit {
 
   updateCattle(){
     this.cattleService.updateCattle(this.cattle).then(() => {
-      this.router.navigateByUrl('/tabs/view-farm/:id');
+      this.router.navigateByUrl('/tabs/view-cattle/' + this.ctid);
     }, err =>{
     });
   }
   goback(){
-    this.ctid =  sessionStorage.getItem('cattleTagId');
+    
     this.router.navigateByUrl('/tabs/view-cattle/' + this.ctid);
    }
 }

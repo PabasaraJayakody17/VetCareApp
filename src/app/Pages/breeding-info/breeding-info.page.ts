@@ -29,7 +29,9 @@ export class BreedingInfoPage implements OnInit {
   constructor(public alertController: AlertController,
               private router: Router,
               private activatedRoute: ActivatedRoute,
-              private breedingService: BreedingService) { }
+              private breedingService: BreedingService) {
+                this.ctid =  sessionStorage.getItem('cattleTagId');
+               }
 
   ngOnInit() {
     this.breedings = this.breedingService.getBreedings();
@@ -44,7 +46,7 @@ export class BreedingInfoPage implements OnInit {
     }
   }
 
-  async deleteBreeding() {
+  async deleteBreeding(breedingid) {
     const alert = await this.alertController.create({
       cssClass: 'my-custom-class',
       header: 'Delete',
@@ -61,8 +63,8 @@ export class BreedingInfoPage implements OnInit {
           text: 'Okay',
           handler: () => {
             console.log('Confirm Okay');
-            this.breedingService.deleteBreeding(this.breeding.id).then(() => {
-              this.router.navigateByUrl('/tabs/view-breeding/:breeding.id');
+            this.breedingService.deleteBreeding(breedingid).then(() => {
+              this.router.navigateByUrl('/tabs/view-breeding/' + this.ctid);
             }, err => {
             });
           }
@@ -98,8 +100,7 @@ export class BreedingInfoPage implements OnInit {
     await alert.present();
   }
 
-  goback(){
-    this.ctid =  sessionStorage.getItem('cattleTagId');
+  goback(){ 
     this.router.navigateByUrl('/tabs/view-cattle/' + this.ctid);
    }
 }

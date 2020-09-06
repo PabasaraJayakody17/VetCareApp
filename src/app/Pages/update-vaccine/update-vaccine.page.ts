@@ -11,7 +11,7 @@ import { VaccinationService} from '../../services/vaccination.service';
 export class UpdateVaccinePage implements OnInit {
   ctid;
   vaccine: Vaccination = {
-    cattleid: sessionStorage.getItem('cattleTagId'),
+    cattleid:'',
     //veterinarianId: '',
     userid: '',
     date: '',

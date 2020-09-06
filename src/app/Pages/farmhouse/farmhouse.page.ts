@@ -6,6 +6,7 @@ import * as firebase from 'firebase/app';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { AngularFirestore, AngularFirestoreDocument} from '@angular/fire/firestore';
 import { Router } from '@angular/router';
+import { Ng2SearchPipeModule } from 'ng2-search-filter';
 
 @Component({
   selector: 'app-farmhouse',
@@ -17,6 +18,7 @@ export class FarmhousePage implements OnInit {
   private farms: Observable<Farm[]>
   fid: string;
   term: '';
+
  // farms = [];
   constructor(private farmService: FarmService, private router: Router) { 
    /* firebase.firestore().collection('farms').get().then(farmData => {

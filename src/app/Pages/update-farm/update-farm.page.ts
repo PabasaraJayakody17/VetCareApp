@@ -11,7 +11,7 @@ import { FarmService } from '../../services/farm.service';
 export class UpdateFarmPage implements OnInit {
   fid;
   farm: Farm = {
-    id: '',
+    id: sessionStorage.getItem('farmId'),
     farmName: '',
     farmRegNo: '',
     ownerName: '',
@@ -25,7 +25,9 @@ export class UpdateFarmPage implements OnInit {
 
   constructor(private activatedRoute: ActivatedRoute,
     private farmService: FarmService,
-    private router: Router) { }
+    private router: Router) {
+      this.fid =  sessionStorage.getItem('farmId');
+     }
 
   ngOnInit() {
   }
@@ -41,13 +43,13 @@ export class UpdateFarmPage implements OnInit {
 
   updateFarm(){
     this.farmService.updateFarm(this.farm).then(() => {
-      this.router.navigateByUrl('/tabs/farmhouse');
+      this.router.navigateByUrl('/tabs/view-farm/' + this.fid);
     }, err =>{
     });
   }
 
   goback(){
-    this.fid =  sessionStorage.getItem('farmId');
+   
     this.router.navigateByUrl('/tabs/view-farm/' + this.fid);
    }
 }

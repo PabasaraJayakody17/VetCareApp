@@ -40,6 +40,13 @@ export class UpdateBreedingPage implements OnInit {
       });
     }
   }
+
+  updateBreeding(){
+    this.breedingService.updateBreeding(this.breeding).then(() => {
+      this.router.navigateByUrl('/tabs/view-breeding/' + this.ctid);
+    }, err =>{
+    });
+  }
   goback(){    
     this.router.navigateByUrl('/tabs/view-breeding/' + this.ctid);
    }

@@ -30,7 +30,9 @@ export class VaccinationInfoPage implements OnInit {
   constructor(public alertController: AlertController,
               private activatedRoute: ActivatedRoute,
               private router: Router,
-              private vaccinationService: VaccinationService) { }
+              private vaccinationService: VaccinationService) {
+                this.ctid =  sessionStorage.getItem('cattleTagId');
+              }
 
   ngOnInit() {
     this.vaccines = this.vaccinationService.getVaccines();
@@ -38,14 +40,14 @@ export class VaccinationInfoPage implements OnInit {
 
   ngAfterViewInit(): void{
     const id = this.activatedRoute.snapshot.paramMap.get('id');
-    if(id){
+    if (id){
       this.vaccinationService.getVaccine(id).subscribe(vaccineData => {
         this.vaccine = vaccineData;
       });
     }
   }
 
-  async deleteVaccine() {
+  async deleteVaccine(vaccineid) {
     const alert = await this.alertController.create({
       cssClass: 'my-custom-class',
       header: 'Delete',
@@ -62,8 +64,8 @@ export class VaccinationInfoPage implements OnInit {
           text: 'Okay',
           handler: () => {
             console.log('Confirm Okay');
-            this.vaccinationService.deleteVaccine(this.vaccine.id).then(() => {
-              this.router.navigateByUrl('/tabs/view-vaccine/:vaccine.id');
+            this.vaccinationService.deleteVaccine(vaccineid).then(() => {
+              this.router.navigateByUrl('/tabs/view-vaccine/' + this.ctid);
             }, err => {
             });
           }
@@ -75,7 +77,6 @@ export class VaccinationInfoPage implements OnInit {
   }
 
   goback(){
-    this.ctid =  sessionStorage.getItem('cattleTagId');
     this.router.navigateByUrl('/tabs/view-cattle/' + this.ctid);
    }
 }
