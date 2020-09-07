@@ -1,0 +1,36 @@
+{
+    "items": [
+        {
+            "name": "Conditions Summary",
+            "children": [
+                {
+                    "information": "You can click the options in Condition Summary to view the summary of all sick cattle, cattle who is to be vaccianted and pregnant cattle.The little summary which is included farm name, cattle id in each mentioned pages will  be directed you to a fully discription of that relevant cattle's condition."
+                }
+            ]
+        },
+        {
+            "name": "Cattle",
+            "children":[
+                {
+                    "information": "You can click the option Cattle in home page to view the summary of each and every cattle in your division. By clicking on one summary detail you can view fully description of that cattle."
+                }
+            ]
+        },
+        {
+            "name": "Farm",
+            "children": [
+                {
+                    "information": "You can click the option Farm in home page to view the summary of each and every farm in your division. By clicking on one summary detail you can view fully description of that farm. Also you can view fully description about each and every cattle that farm owns. You can add a cattle if there is a new cattle in that farm."
+                }
+            ]
+        },
+        {
+            "name": "Chat Option",
+            "children": [
+                {
+                    "information": ""
+                }
+            ]
+        }
+    ]
+}
