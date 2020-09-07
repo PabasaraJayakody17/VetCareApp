@@ -25,7 +25,7 @@ export class VaccinationInfoPage implements OnInit {
     remarks: ''
   }
 
-   private vaccines: Observable<Vaccination[]>;
+  public vaccines: Observable<Vaccination[]>;
 
   constructor(public alertController: AlertController,
               private activatedRoute: ActivatedRoute,

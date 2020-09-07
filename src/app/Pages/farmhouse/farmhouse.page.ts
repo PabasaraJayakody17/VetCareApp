@@ -15,7 +15,7 @@ import { Ng2SearchPipeModule } from 'ng2-search-filter';
 })
 export class FarmhousePage implements OnInit {
 
-  private farms: Observable<Farm[]>
+  public farms: Observable<Farm[]>
   fid: string;
   term: '';
 

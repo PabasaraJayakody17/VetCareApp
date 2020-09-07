@@ -14,7 +14,7 @@ import { Ng2SearchPipeModule } from 'ng2-search-filter';
 })
 export class NotesPage implements OnInit {
 
-  private notes: Observable<Note[]>;
+  public notes: Observable<Note[]>;
   uid: string;
   term = '';
   constructor(private noteService: NoteService) {

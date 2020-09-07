@@ -18,13 +18,13 @@
     <ion-item tappable (click)="toggleSection(i)" detail-none [ngClass]="{'section-active': item.open, 'section': !item.open}">
       <ion-icon name="chevron-forward-outline" *ngIf="!item.open"></ion-icon>  
       <ion-icon name="chevron-down-outline" *ngIf="item.open"></ion-icon>
-      <ion-lable>{{ item.name }}</ion-lable>
+      <ion-label>{{ item.name }}</ion-label>
     </ion-item>
       
     <div *ngIf="item.children && item.open" no-lines>
       <ion-list *ngFor="let child of item.children; let j = index" no-padding>
         <ion-item *ngIf="!child.children" detail-none class="child-item" text-wrap>
-            <ion-lable>{{ child.information }}</ion-lable>  
+            <ion-label>{{ child.information }}</ion-label>  
         </ion-item>
       </ion-list>
     </div>

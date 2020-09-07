@@ -24,7 +24,7 @@ export class DiseaseInfoPage implements OnInit {
     remarks: ''
   }
 
-  private diseases: Observable<Disease[]>;
+  public diseases: Observable<Disease[]>;
 
   constructor(public alertController: AlertController,
               private router: Router,

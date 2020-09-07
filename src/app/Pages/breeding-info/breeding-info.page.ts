@@ -24,7 +24,7 @@ export class BreedingInfoPage implements OnInit {
     AIReceiptNo: ''
   }
 
-  private breedings: Observable<Breeding[]>;
+  public breedings: Observable<Breeding[]>;
 
   constructor(public alertController: AlertController,
               private router: Router,
