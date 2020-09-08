@@ -7,12 +7,14 @@ import { IonicModule } from '@ionic/angular';
 import { VaccinecattlePageRoutingModule } from './vaccinecattle-routing.module';
 
 import { VaccinecattlePage } from './vaccinecattle.page';
+import { Ng2SearchPipeModule } from 'ng2-search-filter';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
+    Ng2SearchPipeModule,
     VaccinecattlePageRoutingModule
   ],
   declarations: [VaccinecattlePage]

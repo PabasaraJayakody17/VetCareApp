@@ -90,6 +90,8 @@ export class LoginPage implements OnInit {
       );
       this.authService.userId = userCredential.user.uid;
       localStorage.setItem('userid', this.authService.userId);
+  
+
       await this.loginForm.hideLoading();
       this.router.navigateByUrl('tabs/farm');
     } catch (error) {

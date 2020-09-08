@@ -17,7 +17,7 @@
   <div class="content">
     <div class="ion-padding">
       <ion-item>
-        <ion-datetime type="date" placeholder="Date" dispalyFormat="DD-MM-YYYY" [(ngModel)]="disease.date"></ion-datetime>
+        <ion-datetime #myPicker type="date" placeholder="Date" max="2050-12-31" dispalyFormat="DD-MM-YYYY" [(ngModel)]="disease.date" (ionChange)="updateMyDate(myPicker.value)"></ion-datetime>
       </ion-item>
       <ion-item>
         <ion-input type="text" placeholder="Clinical signs" [(ngModel)]="disease.clinicalSigns"></ion-input>

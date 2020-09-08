@@ -11,7 +11,7 @@ import { Vaccination } from '../../models/Vaccine';
 export class VaccinecattlePage implements OnInit {
 
   public vaccines: Observable<Vaccination[]>;
-
+  term: '';
   constructor(private vaccinationService: VaccinationService) { }
 
   ngOnInit() {

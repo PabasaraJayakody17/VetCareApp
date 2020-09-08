@@ -11,7 +11,7 @@ import { Disease } from '../../models/disease';
 export class SickcattlePage implements OnInit {
 
   public diseases: Observable<Disease[]>;
-
+  term: '';
   constructor(private  diseaseService: DiseaseService) { }
 
   ngOnInit() {

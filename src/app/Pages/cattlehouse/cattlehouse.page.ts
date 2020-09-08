@@ -12,7 +12,7 @@ export class CattlehousePage implements OnInit {
 
   public cattles: Observable<Cattle[]>;
   fid: string;
-
+  term: '';
   constructor(private cattleService: CattleService) { 
     //this.fid = localStorage.getItem('farmid');
   }

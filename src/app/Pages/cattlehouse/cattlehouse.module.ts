@@ -5,7 +5,7 @@ import { FormsModule } from '@angular/forms';
 import { IonicModule } from '@ionic/angular';
 
 import { CattlehousePageRoutingModule } from './cattlehouse-routing.module';
-
+import { Ng2SearchPipeModule } from 'ng2-search-filter';
 import { CattlehousePage } from './cattlehouse.page';
 
 @NgModule({
@@ -13,6 +13,7 @@ import { CattlehousePage } from './cattlehouse.page';
     CommonModule,
     FormsModule,
     IonicModule,
+    Ng2SearchPipeModule,
     CattlehousePageRoutingModule
   ],
   declarations: [CattlehousePage]

@@ -18,10 +18,9 @@
 
 <ion-content>
   <!-- Default Searchbar -->
-  <ion-searchbar></ion-searchbar>
-
+  <ion-searchbar  [(ngModel)]="term" animated="true"></ion-searchbar>
   <ion-list>
-    <ion-grid id="vaccine" *ngFor="let vaccine of (vaccines | async)">
+    <ion-grid id="vaccine" *ngFor="let vaccine of (vaccines | async | filter:term)">
       <ion-row class="content">
         <ion-col size="4" [routerLink]="">
           <div></div>

@@ -18,10 +18,10 @@
 
 <ion-content>
     <!-- Default Searchbar -->
-    <ion-searchbar></ion-searchbar>
+    <ion-searchbar  [(ngModel)]="term" animated="true"></ion-searchbar>
 
     <ion-list>
-      <ion-grid id="pregnant" *ngFor="let breeding of (breedings | async)">
+      <ion-grid id="pregnant" *ngFor="let breeding of (breedings | async  | filter:term)">
         <ion-row class="content">
           <ion-col size="6" [routerLink]="">
             <div></div>

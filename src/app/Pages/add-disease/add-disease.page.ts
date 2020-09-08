@@ -25,20 +25,26 @@ export class AddDiseasePage implements OnInit {
 
   constructor(private activatedRoute: ActivatedRoute,
     private router: Router,
-    private diseaseService: DiseaseService) { }
+    private diseaseService: DiseaseService) {
+      this.ctid =  sessionStorage.getItem('cattleTagId');
+     }
 
   ngOnInit() {
   }
 
+  updateMyDate($event) {
+    // console.log($event); // --> wil contains $event.day.value, $event.month.value and $event.year.value
+     this.disease.date =  this.disease.date.split('T')[0]; 
+   }
+   
   addDisease(){
     this.diseaseService.addDisease(this.disease).then(() => {
-      this.router.navigateByUrl('/tabs/view-disease/:disease.id');
+      this.router.navigateByUrl('/tabs/view-disease/' + this.ctid);
     }, err => {
     });
   }
 
   goback(){
-    this.ctid =  sessionStorage.getItem('cattleTagId');
     this.router.navigateByUrl('/tabs/view-cattle/' + this.ctid);
    }
 }

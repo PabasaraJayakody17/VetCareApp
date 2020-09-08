@@ -23,7 +23,7 @@
         <ion-input type="text" placeholder="Cattle ID" [(ngModel)]="cattle.cattleTagId"></ion-input>
       </ion-item>
       <ion-item>
-        <ion-datetime type="date" placeholder="Cattle Date of Birth" dispalyFormat="DD-MM-YYYY" [(ngModel)]="cattle.cattleDOB"></ion-datetime>
+        <ion-datetime #myPicker1 type="date" placeholder="Cattle Date of Birth"  max="2050-12-31" dispalyFormat="DD-MM-YYYY" (ionChange)="updateMyDate(myPicker1.value)" [(ngModel)]="cattle.cattleDOB"></ion-datetime>
       </ion-item>
       <ion-item>
         <ion-input type="text" placeholder="Special feature" [(ngModel)]="cattle.specialFeature"></ion-input>
@@ -50,7 +50,7 @@
         <ion-input type="text" placeholder="Average Post weaning growth rate" [(ngModel)]="cattle.avgPostWeg"></ion-input>
       </ion-item>
       <ion-item>
-        <ion-datetime type="date" placeholder="Last calving date" dispalyFormat="DD-MM-YYYY" [(ngModel)]="cattle.lastCalvingDate"></ion-datetime>
+        <ion-datetime #myPicker type="date" placeholder="Last calving date" max="2050-12-31" dispalyFormat="DD-MM-YYYY" (ionChange)="updateMyDate(myPicker.value)" [(ngModel)]="cattle.lastCalvingDate"></ion-datetime>
       </ion-item>
       <ion-item>
         <ion-grid>

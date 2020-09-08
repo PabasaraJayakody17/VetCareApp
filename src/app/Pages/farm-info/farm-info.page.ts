@@ -6,6 +6,7 @@ import { Farm } from '../../models/Farm';
 import { FarmService } from '../../services/farm.service';
 import { Cattle } from 'src/app/models/Cattle';
 import { CattleService } from 'src/app/services/cattle.service';
+import { Ng2SearchPipeModule } from 'ng2-search-filter';
 
 @Component({
   selector: 'app-farm-info',
@@ -14,6 +15,7 @@ import { CattleService } from 'src/app/services/cattle.service';
 })
 export class FarmInfoPage implements OnInit {
 
+  term = '';
   farm: Farm = {
     id: '',
     farmName: '',
@@ -29,7 +31,7 @@ export class FarmInfoPage implements OnInit {
 
   public cattles: Observable<Cattle[]>;
   fid: string;
-  term = '';
+
 
   constructor(public alertController: AlertController,
               private activatedRoute: ActivatedRoute,

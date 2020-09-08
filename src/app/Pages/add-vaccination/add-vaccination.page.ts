@@ -32,9 +32,14 @@ export class AddVaccinationPage implements OnInit {
   ngOnInit() {
   } 
 
+  updateMyDate($event) {
+    // console.log($event); // --> wil contains $event.day.value, $event.month.value and $event.year.value
+     this.vaccine.date =  this.vaccine.date.split('T')[0]; 
+     this.vaccine.nextVaccineDate =  this.vaccine.nextVaccineDate.split('T')[0];   
+   }
   addVaccine(){
     this.vaccinationService.addVaccine(this.vaccine).then(() => {
-      this.router.navigateByUrl('/tabs/view-cattle/' + this.ctid);
+      this.router.navigateByUrl('/tabs/view-vaccine/' + this.ctid);
     }, err => {
     });
   }

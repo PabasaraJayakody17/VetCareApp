@@ -2,26 +2,25 @@ import { Injectable, Renderer2, RendererFactory2, Inject } from '@angular/core';
 import {Platform} from '@ionic/angular';
 import { DOCUMENT } from '@angular/common';
 import {Storage} from '@ionic/storage';
-//const THEME_KEY = "selected-app-theme";
+// const THEME_KEY = "selected-app-theme";
 
 @Injectable({
   providedIn: 'root'
 })
 export class ThemeService {
- 
   darkMode: any;
   renderer: Renderer2;
-  
-  constructor(private plt:Platform, 
-    private rendererFactory: RendererFactory2,
-    private storage:Storage,
-    @Inject(DOCUMENT) private document: Document) {
+
+  constructor(private plt: Platform,
+              private rendererFactory: RendererFactory2,
+              private storage: Storage,
+              @Inject(DOCUMENT) private document: Document) {
       this.renderer = this.rendererFactory.createRenderer(null, null);
       /*this.plt.ready().then(()=>{
         this.storage.get(THEME_KEY).then(theme =>{
           this.setAppTheme(theme);
         });
-        
+
         const prefersDark = window.matchMedia("(prefers-color-scheme: dark)");
         prefersDark.addListener(e =>{
             console.log('matches: ',e);
@@ -32,7 +31,7 @@ export class ThemeService {
 
   enableDark(){
     this.renderer.addClass(this.document.body, 'dark-theme');
-    this.storage.set('dark-theme',true);
+    this.storage.set('dark-theme', true);
     this.darkMode = true;
   }
 
@@ -43,7 +42,7 @@ export class ThemeService {
   }
 
   themeMode(){
-    if(this.darkMode) {
+    if (this.darkMode) {
       this.enableLight();
       console.log('darl Mode', this.darkMode);
     } else{

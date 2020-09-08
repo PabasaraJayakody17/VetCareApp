@@ -113,10 +113,10 @@
     </ion-buttons>
   </ion-toolbar>
   <!-- Default Searchbar -->
-  <ion-searchbar></ion-searchbar>
+  <ion-searchbar  [(ngModel)]="term" animated="true"></ion-searchbar>
 
   <ion-list>
-    <ion-grid id="cattle" *ngFor="let cattle of (cattles | async)" (click)="gotomore(cattle.cattleTagId)">
+    <ion-grid id="cattle" *ngFor="let cattle of (cattles | async | filter:term)" (click)="gotomore(cattle.cattleTagId)">
       <div *ngIf="fid== cattle.farmid">
         <ion-row class="content">
           <ion-col size="6" [routerLink]="'/tabs/view-cattle/' + cattle.id">

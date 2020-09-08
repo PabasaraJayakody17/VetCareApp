@@ -19,10 +19,10 @@
 
 <ion-content>
   <!-- Default Searchbar -->
-  <ion-searchbar></ion-searchbar>
+  <ion-searchbar  [(ngModel)]="term" animated="true"></ion-searchbar>
 
     <ion-list>
-      <ion-grid id="cattle" *ngFor="let cattle of (cattles | async)">
+      <ion-grid id="cattle" *ngFor="let cattle of (cattles | async | filter:term)">
         <ion-row class="content">
           <ion-col size="6" [routerLink]="'/tabs/view-cattle/'+cattle.id">
             <div>{{ cattle.farmid}}</div>

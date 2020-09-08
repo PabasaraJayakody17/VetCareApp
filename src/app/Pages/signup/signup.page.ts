@@ -167,8 +167,10 @@ async signupUser(credentials: UserCredential): Promise<void> {
     );
     this.authService.userId = userCredential.user.uid;
    // localStorage.setItem('userid', this.authService.userId);
+
+
     await this.signupForm.hideLoading();
-    this.router.navigateByUrl('home');
+    this.router.navigateByUrl('tabs/farm');
   } catch (error) {
     await this.signupForm.hideLoading();
     this.signupForm.handleError(error);

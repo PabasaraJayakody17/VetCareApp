@@ -23,19 +23,29 @@ export class AddBreedingPage implements OnInit {
   }
 
   constructor(private breedingService: BreedingService,
-    private router: Router) { }
+    private router: Router) {
+      this.ctid =  sessionStorage.getItem('cattleTagId');
+     }
 
   ngOnInit() {
   }
+  updateMyDate($event) {
+    // console.log($event); // --> wil contains $event.day.value, $event.month.value and $event.year.value
+     this.breeding.dateOfHeatObserved =  this.breeding.dateOfHeatObserved.split('T')[0]; 
+     this.breeding.dateOfFirstAI =  this.breeding.dateOfFirstAI.split('T')[0]; 
+     this.breeding.dateOfSecondAI =  this.breeding.dateOfSecondAI.split('T')[0]; 
+     this.breeding.dateOfPD =  this.breeding.dateOfPD.split('T')[0]; 
+     this.breeding.dateOfLastCalving =  this.breeding.dateOfLastCalving.split('T')[0]; 
 
+   }
   addBreeding(){
     this.breedingService.addBreeding(this.breeding).then(() => {
-      this.router.navigateByUrl('/tabs/view-breeding/:breeding.id');
+      this.router.navigateByUrl('/tabs/view-breeding/' + this.ctid);
     }, err => {
     });
   }
   goback(){
-    this.ctid =  sessionStorage.getItem('cattleTagId');
+    
     this.router.navigateByUrl('/tabs/view-cattle/' + this.ctid);
    }
 }

@@ -15,6 +15,7 @@ import * as firebase from 'firebase';
 })
 export class AddCattlePage implements OnInit {
   fid;
+  // this.lastCalvingDate.toLocaleFormat('%Y-%m-%d');
   cattle: Cattle = {
     farmid: sessionStorage.getItem('farmId'),
     cattleTagId: '',
@@ -41,6 +42,9 @@ export class AddCattlePage implements OnInit {
     private cattleService: CattleService,
     private farmService: FarmService) { 
       this.fid =  sessionStorage.getItem('farmId');
+      this.cattle.lastCalvingDate =  this.cattle.lastCalvingDate.split('T')[0]; 
+     // console.log(dateFormat);
+     // this.cattle.lastCalvingDate.toLocaleFormat('%Y-%m-%d');
     }
 
   ngOnInit() {
@@ -51,6 +55,12 @@ export class AddCattlePage implements OnInit {
     });*/
   }
 
+  updateMyDate($event) {
+   // console.log($event); // --> wil contains $event.day.value, $event.month.value and $event.year.value
+    this.cattle.lastCalvingDate =  this.cattle.lastCalvingDate.split('T')[0]; 
+    this.cattle.cattleDOB =  this.cattle.cattleDOB.split('T')[0];   
+  }
+  
   addCattle(){
     this.cattleService.addCattle(this.cattle).then(() => {
       this.router.navigateByUrl('/tabs/view-farm/' + this.fid);

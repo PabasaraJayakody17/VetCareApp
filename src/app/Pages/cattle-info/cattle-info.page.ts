@@ -5,6 +5,9 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { CattleService } from '../../services/cattle.service';
 import { Cattle } from '../../models/Cattle';
 import { Observable } from 'rxjs';
+import { AuthService } from 'src/app/services/auth.service';
+import { UserProfile } from 'src/app/models/user';
+import { ProfileService } from 'src/app/services/profile.service';
 
 @Component({
   selector: 'app-cattle-info',
@@ -15,6 +18,7 @@ export class CattleInfoPage implements OnInit {
 
   fid;
   ctid;
+  designation;
   cattle: Cattle = {
     id: '',
     farmid: '',
@@ -31,20 +35,43 @@ export class CattleInfoPage implements OnInit {
     avgPostWeg: '',
     lastCalvingDate: '',
     cattleImg: '',
-  }
+  };
   private cattles: Observable<Cattle[]>;
+  public userProfile: UserProfile;
 
+  isVetHidden = false;
+  isInsHidden = false;
   constructor(private actionSheetCtrl: ActionSheetController,
               public alertController: AlertController,
               private activatedRoute: ActivatedRoute,
               private router: Router,
+              private authService: AuthService,
+              private profileService: ProfileService,
               private cattleService: CattleService) {
               this.ctid =  sessionStorage.getItem('cattleTagId');
               this.fid =  sessionStorage.getItem('farmId');
+              this.designation = localStorage.getItem('designation');
                }
 
   ngOnInit() {
    this.cattles =  this.cattleService.getCattles();
+
+    /*this.profileService.getUserProfile().then(profile$ => {
+    profile$.subscribe(userProfile => {
+      this.userProfile = userProfile;
+     console.log(this.userProfile?.designation);
+      if (this.userProfile?.designation === 'Instructor'){
+            this.ishidden = true;
+      }
+    });
+  });*/
+ //  console.log(localStorage.getItem('designation'));
+   if (this.designation === 'Instructor'){
+    this.isVetHidden = true;
+  }else{
+    this.isInsHidden = true;
+  }
+
   }
 
   ngAfterViewInit(): void{
@@ -98,7 +125,7 @@ export class CattleInfoPage implements OnInit {
     this.router.navigateByUrl('/tabs/view-breeding/' + this.ctid);
   }
 
-  async showActionSheet(){
+  async showVetActionSheet(){
     await this.actionSheetCtrl.create({
       cssClass: 'add',
       // header: 'Add New Informations',
@@ -135,6 +162,26 @@ export class CattleInfoPage implements OnInit {
     }).then(res => res.present());
   }
 
+  async showInsActionSheet(){
+    await this.actionSheetCtrl.create({
+      cssClass: 'add',
+      // header: 'Add New Informations',
+      buttons: [
+        {
+          text: 'Add New Breeding Information',
+          // cssClass: 'add',
+          handler: () => {
+            console.log('Add Breeding info clicked');
+            this.navigateToAddBreeding();
+          }
+        },
+        {
+          text: 'Cancel',
+          role: 'cancel'
+        }
+      ]
+    }).then(res => res.present());
+  }
   navigateToAddVaccination(){
     this.router.navigate(['tabs/add-vaccination']);
   }

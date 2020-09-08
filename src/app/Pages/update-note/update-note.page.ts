@@ -9,6 +9,7 @@ import {ActivatedRoute, Router} from '@angular/router';
   styleUrls: ['./update-note.page.scss'],
 })
 export class UpdateNotePage implements OnInit, AfterViewInit {
+  noteId;
   note: Note = {
     id: '',
     userid: '',
@@ -18,6 +19,7 @@ export class UpdateNotePage implements OnInit, AfterViewInit {
   };
 
   constructor(private activatedRoute: ActivatedRoute, private noteService: NoteService, private router: Router) {
+    this.noteId =  sessionStorage.getItem('noteId');
   }
 
   ngOnInit() {
@@ -38,4 +40,7 @@ export class UpdateNotePage implements OnInit, AfterViewInit {
     }, err => {
     });
   }
+  goback(){    
+    this.router.navigateByUrl('/tabs/viewnotes/' + this.noteId);
+   }
 }

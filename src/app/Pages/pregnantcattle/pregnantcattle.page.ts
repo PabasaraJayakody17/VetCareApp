@@ -11,7 +11,7 @@ import { Breeding } from '../../models/breeding';
 export class PregnantcattlePage implements OnInit {
 
   public breedings: Observable<Breeding[]>;
-
+  term: '';
   constructor(private breedingService: BreedingService) { }
 
   ngOnInit() {
