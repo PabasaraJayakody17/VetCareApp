@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
-import { Routes, RouterModule } from '@angular/router';
-
+// import { Routes, RouterModule } from '@angular/router';
+import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 import { TabsPage } from './tabs.page';
 
 const routes: Routes = [
@@ -160,16 +160,28 @@ const routes: Routes = [
         path: 'chatlist',
         loadChildren: () => import('../pages/chatlist/chatlist.module').then( m => m.ChatlistPageModule)
       },
-     /* {
+      {
         path: 'chat',
         loadChildren: () => import('../Pages/chat/chat.module').then(m => m.ChatPageModule)
-      },*/
+      },
+      {
+        path: 'notification',
+        loadChildren: () => import('../pages/notification/notification.module').then( m => m.NotificationPageModule)
+      },
+      {
+        path: 'chatroom',
+        loadChildren: () => import('../pages/chatroom/chatroom.module').then( m => m.ChatroomPageModule)
+      },
     ]
   }
 ];
 
 @NgModule({
-  imports: [RouterModule.forChild(routes)],
+   imports: [
+    RouterModule.forChild(routes)
+ //  RouterModule.forRoot(routes, { preloadingStrategy: PreloadAllModules })
+  ],
+ 
   exports: [RouterModule],
 })
 export class TabsPageRoutingModule {}

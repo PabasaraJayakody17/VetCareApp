@@ -10,11 +10,11 @@ import { UserProfile } from 'src/app/models/user';
 import { ProfileService } from 'src/app/services/profile.service';
 
 @Component({
-  selector: 'app-chat',
-  templateUrl: './chat.page.html',
-  styleUrls: ['./chat.page.scss'],
+  selector: 'app-chatroom',
+  templateUrl: './chatroom.page.html',
+  styleUrls: ['./chatroom.page.scss'],
 })
-export class ChatPage implements OnInit {
+export class ChatroomPage implements OnInit {
 
   fullName;
   text: string;
@@ -38,7 +38,7 @@ export class ChatPage implements OnInit {
     });
   //  this.jstoday = Date.now();
     this.fullName = sessionStorage.getItem('fullName');
-    this.ReceiverId = sessionStorage.getItem('othrUid');
+ //   this.ReceiverId = sessionStorage.getItem('othrUid');
 
   }
   ngOnInit() {
@@ -67,7 +67,7 @@ export class ChatPage implements OnInit {
           Name: this.userProfile.fullName,
           message: this.text,
           UserID: this.currentUserId,
-          ReceiverId: sessionStorage.getItem('othrUid'),
+       //   ReceiverId: sessionStorage.getItem('othrUid'),
           time: new Date().getTime(),
         });
         this.text = '';

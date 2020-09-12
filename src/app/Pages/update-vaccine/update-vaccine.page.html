@@ -17,7 +17,7 @@
   <div class="content">
     <div class="ion-padding">
       <ion-item>
-        <ion-datetime type="date" placeholder="Date" dispalyFormat="DD-MM-YYYY" [(ngModel)]="vaccine.date"></ion-datetime>
+        <ion-datetime type="date" placeholder="Date"  max="2050-12-31" dispalyFormat="DD-MM-YYYY" [(ngModel)]="vaccine.date"></ion-datetime>
       </ion-item>
       <ion-item>
         <ion-input type="text" placeholder="Name of vaccine" [(ngModel)]="vaccine.nameOfVaccine"></ion-input>
@@ -26,7 +26,7 @@
         <ion-input type="text" placeholder="Purpose of vaccine" [(ngModel)]="vaccine.purposeOfVaccine"></ion-input>
       </ion-item>
       <ion-item>
-        <ion-datetime type="date" placeholder="Next vaccination date" dispalyFormat="DD-MM-YYYY" [(ngModel)]="vaccine.nextVaccineDate"></ion-datetime>
+        <ion-datetime type="date" placeholder="Next vaccination date"  max="2050-12-31" dispalyFormat="DD-MM-YYYY" [(ngModel)]="vaccine.nextVaccineDate"></ion-datetime>
       </ion-item>
       <ion-item>
         <ion-input type="text" placeholder="Reason of vaccination" [(ngModel)]="vaccine.reasonOfNextVaccine"></ion-input>

@@ -38,7 +38,8 @@
   <ion-list-header>
     Users
   </ion-list-header>
-  <ion-item lines="none" *ngFor="let user of users" (click)="gotoChat(user.uid,user.fullName)"  button>
+  <ion-searchbar  [(ngModel)]="term" animated="true"></ion-searchbar>
+  <ion-item lines="none" *ngFor="let user of  (users  | filter:term)" (click)="gotoChat(user.uid,user.fullName)"  button>
     <ion-thumbnail class="user" slot="start">      
     </ion-thumbnail> 
         {{user.fullName}}      

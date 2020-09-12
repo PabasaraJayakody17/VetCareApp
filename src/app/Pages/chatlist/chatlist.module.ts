@@ -6,6 +6,8 @@ import { IonicModule } from '@ionic/angular';
 
 import { ChatlistPageRoutingModule } from './chatlist-routing.module';
 
+import { Ng2SearchPipeModule } from 'ng2-search-filter';
+
 import { ChatlistPage } from './chatlist.page';
 
 @NgModule({
@@ -13,7 +15,8 @@ import { ChatlistPage } from './chatlist.page';
     CommonModule,
     FormsModule,
     IonicModule,
-    ChatlistPageRoutingModule
+    ChatlistPageRoutingModule,
+    Ng2SearchPipeModule
   ],
   declarations: [ChatlistPage]
 })

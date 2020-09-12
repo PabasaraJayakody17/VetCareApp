@@ -17,6 +17,7 @@ fullName;
 dp;
 name;
 users = [];
+term = '';
   constructor(public nav: NavController, public fs: AngularFirestore, private router: Router) {
     this.uid = localStorage.getItem('userid');
 
@@ -40,8 +41,8 @@ users = [];
   gotoChat(othrUid, fullName){
     sessionStorage.setItem('othrUid', othrUid);
     sessionStorage.setItem('fullName', fullName);
-   // this.nav.navigateForward('tabs/chat');
-    this.router.navigateByUrl('/chat');
+  //  this.nav.navigateForward('/tabs/chat');
+    this.router.navigateByUrl('/tabs/chat');
   }
 
 

@@ -8,7 +8,7 @@
   <ion-toolbar class="tool-two">
     <ion-title>Help</ion-title>
     <ion-buttons slot="start">
-      <ion-icon class="back" name="arrow-back-outline" routerLink="/tabs/settings"></ion-icon>
+      <ion-icon class="back" name="arrow-back-outline" routerLink="/tabs/farm"></ion-icon>
     </ion-buttons>
   </ion-toolbar>
 </ion-header>
@@ -24,7 +24,9 @@
     <div *ngIf="item.children && item.open" no-lines>
       <ion-list *ngFor="let child of item.children; let j = index" no-padding>
         <ion-item *ngIf="!child.children" detail-none class="child-item" text-wrap>
-            <ion-label>{{ child.information }}</ion-label>  
+          <ul>
+            <li><p>{{ child.information }}</p></li>
+          </ul>       
         </ion-item>
       </ion-list>
     </div>

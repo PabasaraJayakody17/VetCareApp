@@ -22,15 +22,25 @@
   <ion-searchbar  [(ngModel)]="term" animated="true"></ion-searchbar>
 
     <ion-list>
+      <ion-grid id="cattle">
+        <ion-col size="6">
+          Farm Name
+        </ion-col>
+        <ion-col size="6">
+          Cattle Id
+        </ion-col>
+      </ion-grid>
       <ion-grid id="cattle" *ngFor="let cattle of (cattles | async | filter:term)">
-        <ion-row class="content">
-          <ion-col size="6" [routerLink]="'/tabs/view-cattle/'+cattle.id">
-            <div>{{ cattle.farmid}}</div>
-          </ion-col>
-          <ion-col size="6">
-            <div>{{ cattle.cattleTagId }}</div>
-          </ion-col>
-        </ion-row>
+        <div *ngFor="let farm of (farms | async | filter:term)">
+          <ion-row class="content" *ngIf="cattle.farmid===farm.farmRegNo">
+            <ion-col size="6" [routerLink]="'/tabs/view-cattle/'+cattle.id">
+              <div>{{ farm.farmName}}</div>
+            </ion-col>
+            <ion-col size="6">
+              <div>{{ cattle.cattleTagId }}</div>
+            </ion-col>
+          </ion-row>
+        </div>      
       </ion-grid>
     </ion-list>
 </ion-content>
