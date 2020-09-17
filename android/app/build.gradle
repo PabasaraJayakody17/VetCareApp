@@ -1,23 +1,9 @@
 apply plugin: 'com.android.application'
 
 android {
-    signingConfigs {
-        myApp {
-            storeFile file('C:\\Users\\A\\Desktop\\VetCareApp\\cattleHealth\\android\\app')
-            keyAlias 'key0'
-            keyPassword 'PBSR123'
-            storePassword 'PBSR123'
-        }
-        debug {
-            storeFile file('C:\\Users\\A\\Desktop\\VetCareApp\\cattleHealth')
-            storePassword 'PBSR123'
-            keyAlias 'key0'
-            keyPassword 'PBSR123'
-        }
-    }
     compileSdkVersion rootProject.ext.compileSdkVersion
     defaultConfig {
-        applicationId "io.ionic.starter"
+        applicationId "com.newapp.test"
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
         versionCode 1
@@ -40,9 +26,9 @@ repositories {
 
 dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
-    implementation "androidx.appcompat:appcompat:1.2.0"
+    implementation "androidx.appcompat:appcompat:$androidxAppCompatVersion"
     implementation project(':capacitor-android')
-    testImplementation "junit:junit:4.13"
+    testImplementation "junit:junit:$junitVersion"
     androidTestImplementation "androidx.test.ext:junit:$androidxJunitVersion"
     androidTestImplementation "androidx.test.espresso:espresso-core:$androidxEspressoCoreVersion"
     implementation project(':capacitor-cordova-android-plugins')

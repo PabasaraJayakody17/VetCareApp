@@ -119,12 +119,15 @@
         </ion-row>
         <ion-row>
           <ion-col>
-            <div>Cattle Image :</div>
+            <div>Cattle Image :</div>           
           </ion-col>
         </ion-row>
         <ion-row>
           <ion-col>
-            <div><!--img src="assets/images/cattle.jpg"--></div>
+            <div>
+              <img [src]="cattle.cattleImg" />            
+            </div>
+            <a [href]="cattle.cattleImg" target="_blank" rel="noopener">Download</a>         
           </ion-col>
         </ion-row>
         <ion-row>

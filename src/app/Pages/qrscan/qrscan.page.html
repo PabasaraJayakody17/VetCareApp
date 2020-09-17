@@ -22,26 +22,26 @@
       <ion-icon name="scan-outline" slot="start"></ion-icon>
       Scan Code
     </ion-button>
-  
     <br>
-    <ion-item>
+    <ion-card *ngIf="scannedData">
+      <ion-card-content>
+        <p>
+          Scanned Code Text : <b>{{ scannedData["text"] }}</b>
+        </p>
+        
+      </ion-card-content>
+    </ion-card>
+    <br>
+
+    <!--ion-item>
       <ion-input type="text" placeholder="Enter Input" [(ngModel)]="encodedData"></ion-input>
     </ion-item>
   
     <ion-button class="create" expand="full" (click)="encodedText()">
       <ion-icon name="create-outline" slot="start"></ion-icon>
       Create QR
-    </ion-button>
+    </ion-button-->
   
-    <ion-card *ngIf="scannedData">
-      <ion-card-content>
-        <p>
-          Scanned Code Text : <b>{{ scannedData["text"] }}</b>
-        </p>
-        <p>
-          Scanned Code Format : <b>{{ scannedData["format"] }}</b>
-        </p>
-      </ion-card-content>
-    </ion-card>
+   
   </div>
 </ion-content>

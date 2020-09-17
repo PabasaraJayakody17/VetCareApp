@@ -40,6 +40,11 @@ export class UpdateVaccinePage implements OnInit {
     }
   }
 
+  updateMyDate($event) {
+    // console.log($event); // --> wil contains $event.day.value, $event.month.value and $event.year.value
+     this.vaccine.date =  this.vaccine.date.split('T')[0]; 
+     this.vaccine.nextVaccineDate =  this.vaccine.nextVaccineDate.split('T')[0];   
+   }
   updateVaccine(){
     this.vaccinationService.updateVaccine(this.vaccine).then(() => {
       this.router.navigateByUrl('/tabs/view-vaccine/' + this.ctid);

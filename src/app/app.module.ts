@@ -23,7 +23,7 @@ import { AngularFireAuthGuard } from '@angular/fire/auth-guard';
 import { environment } from 'src/environments/environment';
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
 import { HttpModule } from '@angular/http';
-import { LocalNotifications } from '@ionic-native/local-notifications/ngx';
+// import { LocalNotifications } from '@ionic-native/local-notifications/ngx';
 
 @NgModule({
   declarations: [AppComponent],
@@ -49,7 +49,7 @@ import { LocalNotifications } from '@ionic-native/local-notifications/ngx';
     BarcodeScanner,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
     AngularFireAuthGuard,
-    LocalNotifications
+   // LocalNotifications
   ],
   bootstrap: [AppComponent]
 })

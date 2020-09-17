@@ -9,7 +9,7 @@
     </ion-buttons>
   </ion-toolbar>
   <ion-toolbar class="tool-two">
-    <ion-title>Farm Inormation</ion-title>
+    <ion-title>Farm Information</ion-title>
     <ion-buttons slot="start">
       <ion-icon class="back" name="arrow-back-outline" routerLink="/tabs/farmhouse"></ion-icon>
     </ion-buttons>
@@ -118,16 +118,16 @@
   <ion-list>
     <ion-grid id="cattle" *ngFor="let cattle of (cattles | async | filter:term)" (click)="gotomore(cattle.cattleTagId)">
       <div *ngIf="fid== cattle.farmid">
-        <ion-row class="content">
-          <ion-col size="6" [routerLink]="'/tabs/view-cattle/' + cattle.id">
+        <ion-row class="content" [routerLink]="'/tabs/view-cattle/' + cattle.id">
+          <ion-col size="6" >
             <div>{{ cattle.cattleTagId}}</div>
           </ion-col>
           <ion-col size="6">
             <div>{{ cattle.sex}}</div>
           </ion-col>
         </ion-row>
-      </div>
-     
+      </div>   
     </ion-grid> 
   </ion-list>
+  
 </ion-content>

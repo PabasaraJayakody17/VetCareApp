@@ -40,7 +40,10 @@ export class UpdateDiseasePage implements OnInit {
       });
     }
   }
-
+  updateMyDate($event) {
+    // console.log($event); // --> wil contains $event.day.value, $event.month.value and $event.year.value
+     this.disease.date =  this.disease.date.split('T')[0]; 
+   }
   updateDisease(){
     this.diseaseService.updateDisease(this.disease).then(() => {
       this.router.navigateByUrl('/tabs/view-disease/' + this.ctid);

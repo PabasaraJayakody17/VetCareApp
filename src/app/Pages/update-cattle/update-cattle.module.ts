@@ -5,7 +5,7 @@ import { FormsModule } from '@angular/forms';
 import { IonicModule } from '@ionic/angular';
 
 import { UpdateCattlePageRoutingModule } from './update-cattle-routing.module';
-
+import { FileSizeFormatPipe } from './file-size-format.pipe';
 import { UpdateCattlePage } from './update-cattle.page';
 
 @NgModule({
@@ -15,6 +15,6 @@ import { UpdateCattlePage } from './update-cattle.page';
     IonicModule,
     UpdateCattlePageRoutingModule
   ],
-  declarations: [UpdateCattlePage]
+  declarations: [UpdateCattlePage , FileSizeFormatPipe]
 })
 export class UpdateCattlePageModule {}

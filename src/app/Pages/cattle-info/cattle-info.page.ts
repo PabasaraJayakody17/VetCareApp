@@ -36,7 +36,7 @@ export class CattleInfoPage implements OnInit {
     lastCalvingDate: '',
     cattleImg: '',
   };
-  private cattles: Observable<Cattle[]>;
+//  private cattles: Observable<Cattle[]>;
   public userProfile: UserProfile;
 
   isVetHidden = false;
@@ -54,8 +54,9 @@ export class CattleInfoPage implements OnInit {
                }
 
   ngOnInit() {
-   this.cattles =  this.cattleService.getCattles();
-
+    
+    // window.location.reload();
+    // this.cattle =  this.cattleService.getCattles();
     /*this.profileService.getUserProfile().then(profile$ => {
     profile$.subscribe(userProfile => {
       this.userProfile = userProfile;
@@ -66,16 +67,17 @@ export class CattleInfoPage implements OnInit {
     });
   });*/
  //  console.log(localStorage.getItem('designation'));
-   if (this.designation === 'Instructor'){
+     if (this.designation === 'Instructor'){
     this.isVetHidden = true;
-  }else{
+     }else{
     this.isInsHidden = true;
-  }
+   }
 
   }
 
-  ngAfterViewInit(): void{
+  ionViewWillEnter(): void{
     const id = this.activatedRoute.snapshot.paramMap.get('id');
+    console.log(id);
     if (id){
       this.cattleService.getCattle(id).subscribe(cattleData => {
         this.cattle = cattleData;

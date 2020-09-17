@@ -45,8 +45,7 @@ export class FarmInfoPage implements OnInit {
   ngOnInit() {
     this.cattles = this.cattleService.getCattles();
   }
-
-  ngAfterViewInit(): void{
+  ionViewWillEnter(): void{
     const id = this.activatedRoute.snapshot.paramMap.get('id');
     if (id){
       this.farmService.getFarm(id).subscribe(farmData => {

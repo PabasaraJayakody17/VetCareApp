@@ -26,8 +26,8 @@
   <ion-list>
     <!--ion-item *ngFor="let farm of (farms | async)"-->
       <ion-grid id="farmers" *ngFor="let farm of (farms | async | filter:term)" >
-        <ion-row class="content" >
-          <ion-col size="6" [routerLink]="'/tabs/view-farm/'+farm.id" (click)="gotomore(farm.id)">
+        <ion-row class="content" [routerLink]="'/tabs/view-farm/'+farm.id" (click)="gotomore(farm.id)">
+          <ion-col size="6" >
             <div>{{ farm.farmName }}</div>
           </ion-col>
           <ion-col size="6">

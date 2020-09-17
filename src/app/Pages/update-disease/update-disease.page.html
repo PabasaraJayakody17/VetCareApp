@@ -1,8 +1,11 @@
 <ion-header>
   <ion-toolbar class="tool-one">
     <ion-title>VetCare App</ion-title>
+    <ion-buttons class="help" slot="end">
+      <ion-icon name="help-circle-outline" routerLink="/tabs/help" class="help-icon"></ion-icon>
+    </ion-buttons>  
     <ion-buttons class="setting" slot="end">
-      <ion-icon name="settings-sharp" routerLink="/tabs/settings"></ion-icon>
+      <ion-icon name="settings-sharp"  routerLink="/tabs/settings"></ion-icon>
     </ion-buttons>
   </ion-toolbar>
   <ion-toolbar class="tool-two">
@@ -17,7 +20,7 @@
   <div class="content">
     <div class="ion-padding">
       <ion-item>
-        <ion-datetime type="date" placeholder="Date" max="2050-12-31" dispalyFormat="DD-MM-YYYY" [(ngModel)]="disease.date"></ion-datetime>
+        <ion-datetime #myPicker type="date" placeholder="Date" max="2050-12-31" dispalyFormat="DD-MM-YYYY" [(ngModel)]="disease.date" (ionChange)="updateMyDate(myPicker.value)"></ion-datetime>
       </ion-item>
       <ion-item>
         <ion-input type="text" placeholder="Clinical signs" [(ngModel)]="disease.clinicalSigns"></ion-input>

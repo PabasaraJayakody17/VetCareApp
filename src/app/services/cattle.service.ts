@@ -46,6 +46,7 @@ export class CattleService {
 
   // add cattle
   addCattle(cattle: Cattle){
+   // console.log(cattle.cattleImg);
     return this.cattleCollection.doc(cattle.cattleTagId).set(cattle);
   }
 
@@ -72,5 +73,10 @@ export class CattleService {
   deleteCattle(id: string): Promise<void>{
     return this.cattleCollection.doc(id).delete();
   }
+
+
+  // image upload
+
+  
 
 }

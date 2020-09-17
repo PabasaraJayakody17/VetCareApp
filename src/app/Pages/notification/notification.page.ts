@@ -18,7 +18,7 @@ export class NotificationPage implements OnInit {
   today;
   designation;
   constructor(private router: Router, private vaccinationService: VaccinationService,
-              private activatedRoute: ActivatedRoute, private localNotifications: LocalNotifications) { 
+              private activatedRoute: ActivatedRoute) { 
                 this.designation = localStorage.getItem('designation');
               }
 
@@ -27,7 +27,7 @@ export class NotificationPage implements OnInit {
     this.today = formatDate(this.now, 'yyyy-MM-dd', 'en-US');
     console.log(this.today);
   }
-  single_notification() {
+ /* single_notification() {
     // Schedule a single notification
     this.localNotifications.schedule({
       id: 1,
@@ -35,6 +35,6 @@ export class NotificationPage implements OnInit {
       sound: 'file://sound.mp3',
       data: { secret: 'key_data' }
     });
-  }
+  }*/
 
 }

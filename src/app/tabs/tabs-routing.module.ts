@@ -12,11 +12,10 @@ const routes: Routes = [
         path: 'farm',
         loadChildren: () => import('../Pages/farm/farm.module').then(m => m.FarmPageModule)
       },
-      {
+     /* {
         path: 'notifications',
         loadChildren: () => import('../Pages/notifications/notifications.module').then(m => m.NotificationsPageModule)
-      },
-     
+      },*/
       {
         path: 'profile',
         loadChildren: () => import('../Pages/profile/profile.module').then(m => m.ProfilePageModule)
