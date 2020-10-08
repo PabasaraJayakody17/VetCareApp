@@ -41,6 +41,14 @@ export class AddBreedingPage implements OnInit {
   addBreeding(){
     this.breedingService.addBreeding(this.breeding).then(() => {
       this.router.navigateByUrl('/tabs/view-breeding/' + this.ctid);
+      this.breeding.dateOfHeatObserved= '',
+      this.breeding.dateOfFirstAI= '',
+      this.breeding.dateOfSecondAI= '',
+      this.breeding.semanId= '',
+      this.breeding.dateOfPD= '',
+      this.breeding.dateOfLastCalving= '',
+      this.breeding.noOfCalving= '',
+      this.breeding.AIReceiptNo= ''
     }, err => {
     });
   }

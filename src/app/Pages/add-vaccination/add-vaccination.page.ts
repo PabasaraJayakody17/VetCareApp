@@ -40,6 +40,12 @@ export class AddVaccinationPage implements OnInit {
   addVaccine(){
     this.vaccinationService.addVaccine(this.vaccine).then(() => {
       this.router.navigateByUrl('/tabs/view-vaccine/' + this.ctid);
+      this.vaccine.date= '';
+      this.vaccine.nameOfVaccine= '';
+      this.vaccine.purposeOfVaccine= '';
+      this.vaccine.nextVaccineDate= '';
+      this.vaccine.reasonOfNextVaccine= '';
+      this.vaccine.remarks= '';
     }, err => {
     });
   }

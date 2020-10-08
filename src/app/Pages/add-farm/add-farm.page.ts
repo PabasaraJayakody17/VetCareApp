@@ -36,6 +36,15 @@ export class AddFarmPage implements OnInit {
   addFarm(){
     this.farmService.addFarm(this.farm).then(() => {
       this.router.navigateByUrl('/tabs/farmhouse');
+      this.farm.farmName = '';
+      this.farm.farmRegNo = '';
+      this.farm.ownerName = '';
+      this.farm.veterinarianDivision='';
+      this.farm.GSDivision= '';
+      this.farm.address= '';
+      this.farm.contactNo= '';
+      this.farm.cattleCount= '';
+      this.farm.dairyCattleCount= '';
     }, err => {
     });
   }

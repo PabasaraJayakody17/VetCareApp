@@ -40,6 +40,12 @@ export class AddDiseasePage implements OnInit {
   addDisease(){
     this.diseaseService.addDisease(this.disease).then(() => {
       this.router.navigateByUrl('/tabs/view-disease/' + this.ctid);
+      this.disease.date = '';
+      this.disease.clinicalSigns= '';
+      this.disease.typeOfClinicalSigns= '';
+      this.disease.diagnosis= '';
+      this.disease.treatment= '';
+      this.disease.remarks= '';
     }, err => {
     });
   }

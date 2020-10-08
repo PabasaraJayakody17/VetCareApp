@@ -30,7 +30,7 @@
               <small class="error-message">{{ error.message }}</small>
             </ng-container>
           </div>
-          <ion-item>
+          <!--ion-item>
             <ion-label position="stacked"></ion-label>
             <ion-select   formControlName="designation"  value="{{userProfile?.designation}}"  placeholder="Designation">
               <ion-select-option value="Veterinarian">Veterinarian</ion-select-option>
@@ -41,7 +41,7 @@
             <ng-container *ngIf="designation.hasError(error.type) && (designation.dirty || designation.touched)">
               <small class="error-message">{{ error.message }}</small>
             </ng-container>
-          </div>
+          </div-->
 
           <ion-item>
             <ion-input formControlName="email"  type="text" value="{{userProfile?.email}}" placeholder="Email"></ion-input>

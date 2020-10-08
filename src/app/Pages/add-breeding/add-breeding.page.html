@@ -38,7 +38,7 @@
         <ion-datetime #myPicker4 type="date" placeholder="Date of last calving" max="2050-12-31" dispalyFormat="DD-MM-YYYY" [(ngModel)]="breeding.dateOfLastCalving" (ionChange)="updateMyDate(myPicker4.value)"></ion-datetime>
       </ion-item>
       <ion-item>
-        <ion-input type="text" placeholder="Number of calving" [(ngModel)]="breeding.noOfCalving"></ion-input>
+        <ion-input type="number" placeholder="Number of calving" min="0" [(ngModel)]="breeding.noOfCalving"></ion-input>
       </ion-item>
       <ion-item>
         <ion-input type="text" placeholder="AI receipt no." [(ngModel)]="breeding.AIReceiptNo"></ion-input>

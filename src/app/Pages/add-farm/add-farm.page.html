@@ -41,10 +41,10 @@
         <ion-input type="text" placeholder="Contact No." [(ngModel)]="farm.contactNo"></ion-input>
       </ion-item>
       <ion-item>
-        <ion-input type="text" placeholder="Cattle count" [(ngModel)]="farm.cattleCount"></ion-input>
+        <ion-input type="number" placeholder="Cattle count" [(ngModel)]="farm.cattleCount"></ion-input>
       </ion-item>
       <ion-item>
-        <ion-input type="text" placeholder="Dairy cattle count" [(ngModel)]="farm.dairyCattleCount"></ion-input>
+        <ion-input type="number" placeholder="Dairy cattle count" [(ngModel)]="farm.dairyCattleCount"></ion-input>
       </ion-item>
     </div>
     <ion-button class="save" expand="block" shape="round" (click)="addFarm()">SAVE</ion-button>

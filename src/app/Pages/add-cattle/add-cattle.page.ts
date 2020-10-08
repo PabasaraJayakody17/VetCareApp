@@ -45,15 +45,16 @@ export class AddCattlePage implements OnInit {
   isUploaded: boolean;
 
   fid;
-  cattle: Cattle = {
+  hello = 7;
+  cattle: Cattle= {
     farmid: sessionStorage.getItem('farmId'),
     cattleTagId: '',
     cattleBreed: '',
     cattleDOB: '',
     specialFeature: '',
     sex: '',
-    noLactation: '',
-    birthWeg: '',
+    noLactation:'',
+    birthWeg:'',
     breedingWeg: '', 
     cattleWeaningWeg: '',
     avgPreWeg: '',
@@ -99,12 +100,24 @@ export class AddCattlePage implements OnInit {
     
     this.cattleService.addCattle(this.cattle).then(() => {
       this.router.navigateByUrl('/tabs/view-farm/' + this.fid );
-      
+      this.cattle.cattleBreed = '';
+      this.cattle.cattleTagId= '';
+      this.cattle.cattleDOB= '';
+      this.cattle.specialFeature= '';
+      this.cattle.sex= '',
+      this.cattle.noLactation= '';
+      this.cattle.birthWeg= '';
+      this.cattle.breedingWeg= '';
+      this.cattle.cattleWeaningWeg= '';
+      this.cattle.avgPreWeg= '';
+      this.cattle. avgPostWeg= '';
+      this.cattle.lastCalvingDate= '';
+      this.cattle.cattleImg= '';
     }, err => {
 
     });
   }
-
+ 
   async showActionSheet(){
     await this.actionSheetCtrl.create({
       //header: 'Add New Informations',
