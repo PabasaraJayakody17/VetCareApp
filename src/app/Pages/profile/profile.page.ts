@@ -3,6 +3,13 @@ import { Router } from '@angular/router';
 import { ThemeService } from '../../services/theme.service';
 import { Camera, CameraOptions } from '@ionic-native/camera/ngx';
 import { ActionSheetController, AlertController } from '@ionic/angular';
+import { AngularFireStorage, AngularFireUploadTask } from '@angular/fire/storage';
+import { AngularFirestore, AngularFirestoreCollection } from '@angular/fire/firestore';
+import { Observable } from 'rxjs';
+import { finalize, tap } from 'rxjs/operators';
+import { Compiler } from '@angular/core';
+import { FormGroup } from '@angular/forms';
+import { NavController} from '@ionic/angular';
 import { UserProfile } from 'src/app/models/user';
 import { AuthService } from 'src/app/services/auth.service';
 import { ProfileService } from 'src/app/services/profile.service';
@@ -13,11 +20,42 @@ import { ProfileService } from 'src/app/services/profile.service';
   templateUrl: './profile.page.html',
   styleUrls: ['./profile.page.scss'],
 })
-export class ProfilePage implements OnInit {
+export class ProfilePage implements OnInit { 
+
+    // Upload Task
+    task: AngularFireUploadTask;
+
+    // Progress in percentage
+    percentage: Observable<number>;
+  
+    // Snapshot of uploading file
+    snapshot: Observable<any>;
+  
+    // Uploaded File URL
+    UploadedFileURL: Observable<string>;
+  
+    // Uploaded Image List
+    // images: Observable<MyData[]>;
+  
+    // File details
+    fileName: string;
+    fileSize: number;
+  
+    // Status check
+    isUploading: boolean;
+    isUploaded: boolean;
+  
+    user: UserProfile = {
+      uid: '',
+      email: '',
+      fullName: '',
+      designation: '',
+      userImg: ''
+    }
 
   /*darkval: boolean = false;
-  showtheme: boolean = false;*/
-  myphoto: any;
+  showtheme: boolean = false;
+  myphoto: any;*/
   public userProfile: UserProfile;
 
   constructor(
@@ -27,7 +65,13 @@ export class ProfilePage implements OnInit {
     public themeService: ThemeService,
     private actionSheetCtrl: ActionSheetController,
     public alertController: AlertController,
-    private camera: Camera) { }
+    private _compiler: Compiler,
+    private storage: AngularFireStorage,
+    private navController:NavController,
+    private camera: Camera) { 
+      this.isUploading = false;
+      this.isUploaded = false;
+    }
 
   ngOnInit() {
     this.profileService.getUserProfile().then(profile$ => {
@@ -51,15 +95,14 @@ export class ProfilePage implements OnInit {
       // header: 'Upload profile picture',
       buttons: [
         {
-          // text: "Take from Gallery",
-          icon: 'image',
-          cssClass: 'add-propic',
+          text: "Take from Gallery",
+          icon: "folder",
           handler: () => {
-            console.log('Gallery clicked');
-            this.getImage();
+            console.log("Gallery clicked")
+            this.uploadFile;
           }
         },
-        {
+        /*{
           // text: "Take Photo on Camera",
           icon: 'camera',
           cssClass: 'add-propic',
@@ -76,16 +119,16 @@ export class ProfilePage implements OnInit {
             console.log('Camera clikced ');
             this.presentAlertConfirm();
           }
-        },
-        /*{
+        },*/
+        {
           text: "Cancel",
           role: "cancel"
-        }*/
+        }
       ]
     }).then(res => res.present());
   }
 
-  getImage(){
+  /*getImage(){
     const options: CameraOptions = {
       quality: 100,
       destinationType: this.camera.DestinationType.DATA_URL,
@@ -142,7 +185,65 @@ export class ProfilePage implements OnInit {
     });
 
     await alert.present();
+  }*/
+
+  uploadFile(event: FileList) {
+
+    // The File object
+    const file = event.item(0);
+
+    // Validation for Images Only
+    if (file.type.split('/')[0] !== 'image') {
+     console.error('unsupported file type :( ');
+     return;
+    }
+
+    this.isUploading = true;
+    this.isUploaded = false;
+
+
+    this.fileName = file.name;
+
+    // The storage path
+    const path = `UserStorage/${new Date().getTime()}_${file.name}`;
+
+    // Totally optional metadata
+    const customMetadata = { app: 'image Upload Demo' };
+
+    // File reference
+    const fileRef = this.storage.ref(path);
+
+    // The main task
+    this.task = this.storage.upload(path, file, { customMetadata });
+
+    // Get file progress percentage
+    this.percentage = this.task.percentageChanges();
+    this.snapshot = this.task.snapshotChanges().pipe(
+
+      finalize(() => {
+        // Get uploaded file storage path
+        this.UploadedFileURL = fileRef.getDownloadURL();
+
+        this.UploadedFileURL.subscribe(resp => {
+         /* this.addImagetoDB({
+            name: file.name,
+            filepath: resp,
+            size: this.fileSize
+          });*/
+          this.user.userImg = resp;
+          //console.log(this.cattle.cattleImg);
+          this.isUploading = false;
+          this.isUploaded = true;
+        }, error => {
+          console.error(error);
+        });
+      }),
+      tap(snap => {
+          this.fileSize = snap.totalBytes;
+      })
+    );
   }
+  
   async logOut(): Promise<void> {
     await this.authService.logout();
    // localStorage.clear();

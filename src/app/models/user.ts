@@ -11,4 +11,5 @@ export interface UserProfile {
   email: string;
   fullName: string;
   designation: string;
+  userImg: string;
 }
