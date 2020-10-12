@@ -20,7 +20,7 @@ import { ProfileService } from 'src/app/services/profile.service';
   templateUrl: './profile.page.html',
   styleUrls: ['./profile.page.scss'],
 })
-export class ProfilePage implements OnInit { 
+export class ProfilePage implements OnInit {
 
     // Upload Task
     task: AngularFireUploadTask;
@@ -45,13 +45,8 @@ export class ProfilePage implements OnInit {
     isUploading: boolean;
     isUploaded: boolean;
   
-    user: UserProfile = {
-      uid: '',
-      email: '',
-      fullName: '',
-      designation: '',
-      userImg: ''
-    }
+    userImg;
+
 
   /*darkval: boolean = false;
   showtheme: boolean = false;
@@ -67,8 +62,8 @@ export class ProfilePage implements OnInit {
     public alertController: AlertController,
     private _compiler: Compiler,
     private storage: AngularFireStorage,
-    private navController:NavController,
-    private camera: Camera) { 
+    private navController: NavController,
+    private camera: Camera) {
       this.isUploading = false;
       this.isUploaded = false;
     }
@@ -230,8 +225,9 @@ export class ProfilePage implements OnInit {
             filepath: resp,
             size: this.fileSize
           });*/
-          this.user.userImg = resp;
-          //console.log(this.cattle.cattleImg);
+          this.userImg = resp;
+          this.profileService.updateProfImg(this.userImg);
+          // console.log(this.cattle.cattleImg);
           this.isUploading = false;
           this.isUploaded = true;
         }, error => {

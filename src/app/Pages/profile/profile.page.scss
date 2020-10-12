@@ -1,5 +1,5 @@
 .tool-one{
-  height: 150px;
+  height: 200px;
 }
 
 .my-cam{
@@ -97,8 +97,12 @@ font-size: x-large;
 margin-right: 25px;
 font-size: x-large;
 }
-
-
-
-
+.imghidden{
+  display:none;
+  margin-left: auto;
+  margin-right: auto;
+}
+.imgBtn{
+  margin-left: 7%;
+}
 

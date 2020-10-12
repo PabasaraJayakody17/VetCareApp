@@ -36,7 +36,9 @@ export class ProfileService {
   updateDesignation(designation: string): Promise<void> {
     return this.userProfile.update({designation});
   }
-
+  updateProfImg(userImg: string): Promise<void> {
+    return this.userProfile.update({ userImg });
+  }
   async updateEmail(newEmail: string, password: string): Promise<void> {
     const credential: firebase.auth.AuthCredential = firebase.auth.EmailAuthProvider.credential(
       this.currentUser.email,

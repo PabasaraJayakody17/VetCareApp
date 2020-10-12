@@ -5,7 +5,7 @@ import { FormsModule } from '@angular/forms';
 import { IonicModule } from '@ionic/angular';
 
 import { ProfilePageRoutingModule } from './profile-routing.module';
-
+import { FileSizeFormatPipe } from './file-size-format.pipe';
 import { ProfilePage } from './profile.page';
 
 @NgModule({
@@ -15,6 +15,6 @@ import { ProfilePage } from './profile.page';
     IonicModule,
     ProfilePageRoutingModule
   ],
-  declarations: [ProfilePage]
+  declarations: [ProfilePage , FileSizeFormatPipe]
 })
 export class ProfilePageModule {}
