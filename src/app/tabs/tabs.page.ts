@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-
+import { UserProfile } from 'src/app/models/user';
+import { ProfileService } from 'src/app/services/profile.service';
 @Component({
   selector: 'app-tabs',
   templateUrl: './tabs.page.html',
@@ -7,9 +8,42 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TabsPage implements OnInit {
 
-  constructor() { }
+  designation;
+  isInsHidden = false;
+  isVetHidden = true;
+  public userProfile: UserProfile;
+  constructor(private profileService: ProfileService) {
+    
+   }
 
   ngOnInit() {
+    this.profileService.getUserProfile().then(profile$ => {
+      profile$.subscribe(userProfile => {
+        this.userProfile = userProfile;
+       //  console.log(this.userProfile?.designation);
+        localStorage.setItem('designation', this.userProfile?.designation);
+        console.log( this.userProfile?.designation);
+        this.designation = this.userProfile?.designation;
+        if (this.designation === 'Instructor'){
+          this.isInsHidden = true;
+          // this.isVetHidden = false;
+           }else{
+            this.isInsHidden = false;
+           // this.isVetHidden = true;
+           }
+      //  console.log(localStorage.getItem('designation'));
+      });
+    });
+    /* this.designation = localStorage.getItem('designation');
+    if (this.designation === 'Instructor'){
+      this.isInsHidden = true;
+      // this.isVetHidden = false;
+       }else{
+        this.isInsHidden = false;
+       // this.isVetHidden = true;
+       }*/
+   //  console.log(this.designation);
   }
+
 
 }

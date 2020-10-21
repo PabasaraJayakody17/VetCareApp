@@ -242,7 +242,7 @@ export class ProfilePage implements OnInit {
   
   async logOut(): Promise<void> {
     await this.authService.logout();
-   // localStorage.clear();
+    localStorage.clear();
    // $window.localStorage.clear();
     // ionicHistory.clearCache();
    // $ionicHistory.clearHistory();

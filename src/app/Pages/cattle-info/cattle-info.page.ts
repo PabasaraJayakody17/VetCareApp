@@ -68,7 +68,7 @@ export class CattleInfoPage implements OnInit {
   });*/
  //  console.log(localStorage.getItem('designation'));
      if (this.designation === 'Instructor'){
-    this.isVetHidden = true;
+      this.isVetHidden = true;
      }else{
     this.isInsHidden = true;
    }
