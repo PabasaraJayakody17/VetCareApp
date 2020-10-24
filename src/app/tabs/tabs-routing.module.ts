@@ -41,10 +41,6 @@ const routes: Routes = [
         loadChildren: () => import('../pages/qrscan/qrscan.module').then( m => m.QrscanPageModule)
       },
       {
-        path: 'qr',
-        loadChildren: () => import('../pages/qr/qr.module').then( m => m.QrPageModule)
-      },
-      {
         path: 'settings',
         loadChildren: () => import('../pages/settings/settings.module').then( m => m.SettingsPageModule)
       },
@@ -70,10 +66,6 @@ const routes: Routes = [
         loadChildren: () => import('../pages/update-farm/update-farm.module').then( m => m.UpdateFarmPageModule)
       },
 
-      {
-        path: 'cattlehouse',
-        loadChildren: () => import('../pages/cattlehouse/cattlehouse.module').then( m => m.CattlehousePageModule)
-      },
       {
         path: 'add-cattle',
         loadChildren: () => import('../pages/add-cattle/add-cattle.module').then( m => m.AddCattlePageModule)
@@ -127,19 +119,6 @@ const routes: Routes = [
       },
 
       {
-        path: 'sickcattle',
-        loadChildren: () => import('../pages/sickcattle/sickcattle.module').then( m => m.SickcattlePageModule)
-      },
-      {
-        path: 'vaccinecattle',
-        loadChildren: () => import('../pages/vaccinecattle/vaccinecattle.module').then( m => m.VaccinecattlePageModule)
-      },
-      {
-        path: 'pregnantcattle',
-        loadChildren: () => import('../pages/pregnantcattle/pregnantcattle.module').then( m => m.PregnantcattlePageModule)
-      },
-
-      {
         path: 'notes',
         loadChildren: () => import('../pages/notes/notes.module').then( m => m.NotesPageModule)
       },
@@ -154,14 +133,6 @@ const routes: Routes = [
       {
         path: 'update-note/:id',
         loadChildren: () => import('../pages/update-note/update-note.module').then( m => m.UpdateNotePageModule)
-      },
-      {
-        path: 'chatlist',
-        loadChildren: () => import('../pages/chatlist/chatlist.module').then( m => m.ChatlistPageModule)
-      },
-      {
-        path: 'chat',
-        loadChildren: () => import('../Pages/chat/chat.module').then(m => m.ChatPageModule)
       },
       {
         path: 'notification',
