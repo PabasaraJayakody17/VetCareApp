@@ -25,16 +25,24 @@ export class DiseaseInfoPage implements OnInit {
   }
 
   public diseases: Observable<Disease[]>;
-
+  isVetHidden = false;
+  isInsHidden = false;
+  designation;
   constructor(public alertController: AlertController,
               private router: Router,
               private activatedRoute: ActivatedRoute,
               private diseaseService: DiseaseService) {
-                this.ctid =  sessionStorage.getItem('cattleTagId');
+              this.ctid =  sessionStorage.getItem('cattleTagId');
+              this.designation = localStorage.getItem('designation');
                }
 
   ngOnInit() {
     this.diseases = this.diseaseService.getDiseases();
+    if (this.designation === 'Instructor'){
+      this.isVetHidden = true;
+     }else{
+      this.isInsHidden = true;
+   }
   }
 
   ngAfterViewInit(): void{

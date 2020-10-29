@@ -1,6 +1,6 @@
 <form [formGroup]="authForm" >
 <br>
-  
+    <img src="assets/images/login.png" class="center"  *ngIf="!isSignupPage && !isPasswordResetPage">
     <ion-item *ngIf="!isLoginPage && !isPasswordResetPage">
       <ion-input formControlName="fullName"  type="text"   placeholder="Full Name"></ion-input>
     </ion-item>
@@ -37,7 +37,7 @@
         <small class="error-message">{{ error.message }}</small>
       </ng-container>
     </div>
-
+    <br>
     <ion-item *ngIf="!isPasswordResetPage">
       <ion-icon name="key-sharp" *ngIf="!isSignupPage && !isPasswordResetPage"></ion-icon>
       

@@ -78,7 +78,7 @@
             <div>{{vaccine.remarks}}</div>
           </ion-col>
         </ion-row>
-        <ion-row>
+        <ion-row [hidden]=isVetHidden>
           <ion-col size="6">
             <ion-button class="update" expand="block" [routerLink]="'/tabs/update-vaccine/'+vaccine.id">UPDATE</ion-button>
           </ion-col>

@@ -26,16 +26,24 @@ export class VaccinationInfoPage implements OnInit {
   }
 
   public vaccines: Observable<Vaccination[]>;
-
+  isVetHidden = false;
+  isInsHidden = false;
+  designation;
   constructor(public alertController: AlertController,
               private activatedRoute: ActivatedRoute,
               private router: Router,
               private vaccinationService: VaccinationService) {
-                this.ctid =  sessionStorage.getItem('cattleTagId');
+              this.ctid =  sessionStorage.getItem('cattleTagId');
+              this.designation = localStorage.getItem('designation');
               }
 
   ngOnInit() {
     this.vaccines = this.vaccinationService.getVaccines();
+    if (this.designation === 'Instructor'){
+      this.isVetHidden = true;
+     }else{
+      this.isInsHidden = true;
+   }
   }
 
   ngAfterViewInit(): void{

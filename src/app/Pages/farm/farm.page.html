@@ -1,5 +1,5 @@
-<ion-header>
-  <ion-toolbar class="tool-one">
+<ion-header [hidden]=isInsVetHidden>
+  <ion-toolbar class="tool-one" >
     <ion-title>VetCare App</ion-title>
     <ion-buttons class="help" slot="end">
       <ion-icon name="help-circle-outline" routerLink="/tabs/help" class="help-icon"></ion-icon>
@@ -23,7 +23,7 @@
   </ion-toolbar-->
 </ion-header>
 
-<ion-content>
+<ion-content [hidden]=isInsVetHidden>
   <!-- Default Searchbar -->
   <!--ion-searchbar></ion-searchbar-->
 
@@ -69,13 +69,13 @@
     </ion-card-content> 
   </ion-card>
 
-  <ion-card>
+  <ion-card >
     <ion-card-header>
       <ion-card-subtitle>Actions</ion-card-subtitle>
     </ion-card-header>
-    <ion-card-content>
+    <ion-card-content >
       <ion-grid>
-        <ion-row>
+        <ion-row >
           <!--ion-col size="5.85" class="col-four" routerLink="/tabs/farmhouse">
             <img src="assets/images/barn.png" class="img-two">
             <h1>{{farmCount}}</h1>

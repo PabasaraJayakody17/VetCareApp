@@ -15,6 +15,8 @@ export class FarmPage implements OnInit {
   farmCount;
   cattlecount;
   public userProfile: UserProfile;
+  isInsVetHidden = false;
+  designation;
   constructor(public alertController: AlertController, private afs: AngularFirestore, private profileService: ProfileService) {
 
       this.afs.collection('farms').valueChanges()
@@ -35,35 +37,31 @@ export class FarmPage implements OnInit {
         this.userProfile = userProfile;
        //  console.log(this.userProfile?.designation);
         localStorage.setItem('designation', this.userProfile?.designation);
-      //  console.log(localStorage.getItem('designation'));
+        this.designation = localStorage.getItem('designation');
+        // this.designation = this.userProfile?.designation;
+        if (this.designation !== 'Instructor' && this.designation !== 'Vetrinarian'){
+           this.isInsVetHidden = true;
+           this.presentAlert();
+           // this.isVetHidden = false;
+            }else{
+             this.isInsVetHidden = false;
+            // this.isVetHidden = true;
+            }
       });
     });
   }
 
-  /*async presentAlertConfirm() {
+  async presentAlert() {
     const alert = await this.alertController.create({
       cssClass: 'my-custom-class',
-      header: 'Delete',
-      message: '<strong>Do you want to delete?</strong>',
-      buttons: [
-        {
-          text: 'Cancel',
-          role: 'cancel',
-          cssClass: 'secondary',
-          handler: (blah) => {
-            console.log('Confirm Cancel: blah');
-          }
-        }, {
-          text: 'Okay',
-          handler: () => {
-            console.log('Confirm Okay');
-          }
-        }
-      ]
+      header: 'Alert',
+     // subHeader: 'Subtitle',
+      message: 'You are not allowed to see the content.',
+      buttons: ['OK']
     });
 
     await alert.present();
-  }*/
+  }
 
   
 }

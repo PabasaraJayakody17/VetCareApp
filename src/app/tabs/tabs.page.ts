@@ -11,6 +11,7 @@ export class TabsPage implements OnInit {
   designation;
   isInsHidden = false;
   isVetHidden = true;
+  isInsVetHidden = false;
   public userProfile: UserProfile;
   constructor(private profileService: ProfileService) {
     
@@ -23,14 +24,24 @@ export class TabsPage implements OnInit {
        //  console.log(this.userProfile?.designation);
         localStorage.setItem('designation', this.userProfile?.designation);
         console.log( this.userProfile?.designation);
-        this.designation = this.userProfile?.designation;
+        this.designation = localStorage.getItem('designation');
+       // this.designation = this.userProfile?.designation;
         if (this.designation === 'Instructor'){
           this.isInsHidden = true;
           // this.isVetHidden = false;
-           }else{
+          }
+        else{
             this.isInsHidden = false;
            // this.isVetHidden = true;
            }
+
+        if (this.designation !== 'Instructor' && this.designation !== 'Vetrinarian'){
+            this.isInsVetHidden = true;
+            // this.isVetHidden = false;
+             }else{
+              this.isInsVetHidden = false;
+             // this.isVetHidden = true;
+             }
       //  console.log(localStorage.getItem('designation'));
       });
     });
