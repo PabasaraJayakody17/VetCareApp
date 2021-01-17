@@ -17,6 +17,7 @@ export class FarmPage implements OnInit {
   public userProfile: UserProfile;
   isInsVetHidden = false;
   designation;
+  gsdevision;
   constructor(public alertController: AlertController, private afs: AngularFirestore, private profileService: ProfileService) {
 
       this.afs.collection('farms').valueChanges()
@@ -37,7 +38,9 @@ export class FarmPage implements OnInit {
         this.userProfile = userProfile;
        //  console.log(this.userProfile?.designation);
         localStorage.setItem('designation', this.userProfile?.designation);
+        sessionStorage.setItem('gsdevision', this.userProfile?.gsdevision);
         this.designation = localStorage.getItem('designation');
+        
         // this.designation = this.userProfile?.designation;
         if (this.designation !== 'Instructor' && this.designation !== 'Vetrinarian'){
            this.isInsVetHidden = true;

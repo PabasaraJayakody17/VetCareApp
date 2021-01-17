@@ -12,4 +12,5 @@ export interface UserProfile {
   fullName: string;
   designation: string;
   userImg: string;
+  gsdevision:string;
 }

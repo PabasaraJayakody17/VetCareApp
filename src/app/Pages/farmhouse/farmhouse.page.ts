@@ -18,7 +18,7 @@ export class FarmhousePage implements OnInit {
   public farms: Observable<Farm[]>
   fid: string;
   term: '';
-
+  userGSdevision :string;
  // farms = [];
   constructor(private farmService: FarmService, private router: Router) { 
    /* firebase.firestore().collection('farms').get().then(farmData => {
@@ -28,6 +28,7 @@ export class FarmhousePage implements OnInit {
         
       });
     });*/
+    this.userGSdevision = sessionStorage.getItem('gsdevision');
   }
 
   ngOnInit(): void {

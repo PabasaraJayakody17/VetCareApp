@@ -20,7 +20,7 @@
   <div class="content">
     <div class="ion-padding">
       <ion-item>
-        <ion-input type="text" placeholder="Farm Name" [(ngModel)]="farm.farmName"></ion-input>
+        <ion-input type="text" placeholder="Farm Name" [(ngModel)]="farm.farmName" ></ion-input>
       </ion-item>
       <ion-item>
         <ion-input type="text" placeholder="Farm Reg. No" [(ngModel)]="farm.farmRegNo"></ion-input>
@@ -32,7 +32,7 @@
         <ion-input type="text" placeholder="Veterinarian Division" [(ngModel)]="farm.veterinarianDivision"></ion-input>
       </ion-item>
       <ion-item>
-        <ion-input type="text" placeholder="G.S Division" [(ngModel)]="farm.GSDivision"></ion-input>
+        <ion-input type="text" placeholder="G.S Division" [(ngModel)]="farm.GSDivision" value="{{userProfile?.gsdevision}}" disabled="true"></ion-input>
       </ion-item>
       <ion-item>
         <ion-input type="text" placeholder="Address" [(ngModel)]="farm.address"></ion-input>

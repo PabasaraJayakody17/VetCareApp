@@ -31,7 +31,7 @@ export class FarmInfoPage implements OnInit {
 
   public cattles: Observable<Cattle[]>;
   fid: string;
-
+  
 
   constructor(public alertController: AlertController,
               private activatedRoute: ActivatedRoute,
@@ -40,10 +40,12 @@ export class FarmInfoPage implements OnInit {
               private cattleService: CattleService) {
       // this.fid = localStorage.getItem('farmid'); 
       this.fid = sessionStorage.getItem('farmId');
+      
     }
 
   ngOnInit() {
     this.cattles = this.cattleService.getCattles();
+
   }
   ionViewWillEnter(): void{
     const id = this.activatedRoute.snapshot.paramMap.get('id');
